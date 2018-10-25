@@ -21,7 +21,7 @@
 
 <body>
 <div class="image-container set-full-height"
-     style="background-image: url('${resource(dir: "images/", file: "wizard-book.jpg")}')">
+     style="background-image: url('${resource(dir: "images/", file: "Bar.png")}')">
     <!--   Creative Tim Branding   -->
     <a href="http://creative-tim.com">
         <div class="logo-container">

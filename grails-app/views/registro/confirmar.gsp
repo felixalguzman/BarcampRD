@@ -55,7 +55,7 @@
     <div class="footer">
         <div class="container text-center">
             Evento organizado con <i class="fa fa-heart heart"></i>
-            por el Comité de Estudiantes de Sistemas y Computación, PUCMM, Santiago.
+            por el Comité de Estudiantes de Ingeniería de Sistemas y Computación, PUCMM, Santiago.
         </div>
     </div>
 </div>
