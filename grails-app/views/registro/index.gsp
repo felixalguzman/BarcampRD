@@ -8,9 +8,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    <asset:link rel="icon" href="logopng.ico" type="image/x-ico"/>
-    <asset:link rel="icon" href="logopng.ico" type="image/x-ico"/>
-
+    <asset:link rel="icon" href="LogoRojo.png" type="image/x-ico"/>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
@@ -63,7 +61,7 @@
                             <div class="wizard-navigation">
                                 <ul>
                                     <li><a href="#datos-personales" data-toggle="tab">Datos Personales</a></li>
-                                    <li><a href="#charlas" data-toggle="tab">Selección de Desconferencias</a></li>
+                                    <li><a href="#charlas" data-toggle="tab">Desconferencias</a></li>
                                     <li><a href="#fin" data-toggle="tab">Fin</a></li>
                                 </ul>
                             </div>
@@ -275,7 +273,7 @@
         if (okCedula && okCorreo) {
             $(this).submit();
         } else {
-            alert('No se ha podido registrar su entrad, revise los datos entrados.');
+            alert('No se ha podido registrar su entrada, revise los datos ingresados.');
             e.preventDefault();
         }
     })
