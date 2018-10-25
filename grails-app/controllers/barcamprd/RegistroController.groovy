@@ -11,7 +11,6 @@ class RegistroController {
         boolean ok = false
 
         for (Charla c : Charla.list()) {
-            println(c.llena)
             if (!c.llena) {
                 ok = true
                 break
