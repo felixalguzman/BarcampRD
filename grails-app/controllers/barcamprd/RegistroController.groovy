@@ -4,9 +4,12 @@ class RegistroController {
 
     def index() {
 
-        def charlaHorario = [:]
+        def charlas =  Charla.list().collate(Charla.list().size()/2 as int)
 
-        Charla.list().each {
+        def charlaHorario = [:]
+        def charlaHorario2 = [:]
+
+        charlas[0].each {
             if (charlaHorario.containsKey(it.horario.value)) {
                 charlaHorario[it.horario.value].add(it)
             } else {
@@ -14,7 +17,15 @@ class RegistroController {
             }
         }
 
-        ['charlas': charlaHorario]
+        charlas[1].each {
+            if (charlaHorario2.containsKey(it.horario.value)) {
+                charlaHorario2[it.horario.value].add(it)
+            } else {
+                charlaHorario2[it.horario.value] = [it]
+            }
+        }
+
+        ['charlas': charlaHorario, 'charlas2': charlaHorario2]
     }
 
     def registrar() {

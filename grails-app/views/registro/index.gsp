@@ -21,7 +21,7 @@
 
 <body>
 <div class="image-container set-full-height"
-     style="background-image: url('${resource(dir: "images/", file: "Bar.png")}')">
+     style="background-image: url('${resource(dir: "images/", file: "Otra.png")}');">
     <!--   Creative Tim Branding   -->
     <a href="http://creative-tim.com">
         <div class="logo-container">
@@ -62,6 +62,7 @@
                                 <ul>
                                     <li><a href="#datos-personales" data-toggle="tab">Datos Personales</a></li>
                                     <li><a href="#charlas" data-toggle="tab">Desconferencias</a></li>
+                                    <li><a href="#charlas2" data-toggle="tab">Desconferencias</a></li>
                                     <li><a href="#fin" data-toggle="tab">Fin</a></li>
                                 </ul>
                             </div>
@@ -160,6 +161,26 @@
                                     </div>
                                 </div>
 
+                                <div class="tab-pane" id="charlas2">
+                                    <h4 class="info-text">Selecciona una charla por franja de horas</h4>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-sm-offset-1">
+                                            <h4 style="color: red;">* Debe seleccionar una opción en cada grupo!</h4>
+                                            <g:each in="${charlas2}" var="c">
+                                                <h3>${c.key}</h3>
+                                                <g:each in="${c.value}" var="s">
+                                                    <fieldset name="charlas2">
+                                                        <input type="radio" name="h_${s.horario.id}"
+                                                               value="${s.id}" <g:if test="${s.llena}">disabled</g:if>
+                                                               required> ${s.tema}<br>
+                                                    </fieldset>
+                                                </g:each>
+                                            </g:each>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="tab-pane" id="fin">
                                     <div class="row">
                                         <h2 class="info-text">Gracias por su información!</h2>
@@ -178,7 +199,7 @@
                             <div class="wizard-footer">
                                 <div class="pull-right">
                                     <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next'
-                                           value='Next'/>
+                                           value='Siguiente'/>
                                     %{--<input id='btn-submit' type='submit'
                                            class='btn btn-finish btn-fill btn-danger btn-wd' name='finish'
                                            value='Listo'/>--}%
