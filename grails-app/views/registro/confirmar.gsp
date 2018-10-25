@@ -38,14 +38,23 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card wizard-card" data-color="red" id="wizard">
-                        <div class="wizard-header">
-                            <h3 class="wizard-title">
-                                REGISTRO COMPLETADO!
-                            </h3>
-
-                        </div>
-                        <h5 class="info-text">Nos vemos este próximo 17 de Noviembre!</h5>
-                        <p class="info-text"><a href="https://barcamp.org.do/" class="btn btn-success">PÁGINA OFICIAL DEL BARCAMP RD</a></p>
+                        <g:if test="${ok}">
+                            <div class="wizard-header">
+                                <h3 class="wizard-title">
+                                    REGISTRO COMPLETADO!
+                                </h3>
+                            </div>
+                            <h5 class="info-text">Nos vemos este próximo 17 de Noviembre!</h5>
+                            <p class="info-text"><a href="https://barcamp.org.do/" class="btn btn-success">PÁGINA OFICIAL DEL BARCAMP RD</a></p>
+                        </g:if>
+                        <g:else>
+                            <div class="wizard-header">
+                                <h3 class="wizard-title">
+                                    Ha habido un problema con su registro, intente de nuevo.
+                                </h3>
+                            </div>
+                            <p class="info-text"><a href="/" class="btn btn-success">VOLVER</a></p>
+                        </g:else>
                     </div>
                 </div> <!-- wizard container -->
             </div>
@@ -53,7 +62,7 @@
     </div> <!--  big container -->
 
     <div class="footer">
-        <div class="container text-center">
+        <div style="color: black" class="container text-center">
             Evento organizado con <i class="fa fa-heart heart"></i>
             por el Comité de Estudiantes de Ingeniería de Sistemas y Computación, PUCMM, Santiago.
         </div>

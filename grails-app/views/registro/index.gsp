@@ -151,9 +151,12 @@
                                                 <h3>${c.key}</h3>
                                                 <g:each in="${c.value}" var="s">
                                                     <fieldset name="charlas">
-                                                        <input type="radio" name="h_${s.horario.id}"
-                                                               value="${s.id}" <g:if test="${s.llena}">disabled</g:if>
-                                                               required> ${s.tema}<br>
+                                                        <input type="radio" name="h_${s.horario.id}" style="color: red;"
+                                                               value="${s.id}" <g:if
+                                                                test="${s.llena}">style="color: red;" disabled</g:if>
+                                                               required> <g:if
+                                                            test="${s.llena}"><strike>${s.tema}</strike></g:if>
+                                                        <g:else>${s.tema}</g:else><br>
                                                     </fieldset>
                                                 </g:each>
                                             </g:each>
@@ -173,7 +176,9 @@
                                                     <fieldset name="charlas2">
                                                         <input type="radio" name="h_${s.horario.id}"
                                                                value="${s.id}" <g:if test="${s.llena}">disabled</g:if>
-                                                               required> ${s.tema}<br>
+                                                               required> <g:if
+                                                            test="${s.llena}"><strike>${s.tema}</strike></g:if>
+                                                        <g:else>${s.tema}</g:else><br>
                                                     </fieldset>
                                                 </g:each>
                                             </g:each>
@@ -231,7 +236,7 @@
     </div> <!--  big container -->
 
     <div class="footer">
-        <div class="container text-center">
+        <div style="color: black" class="container text-center">
             Evento organizado con <i class="fa fa-heart heart"></i>
             por el Comité de Estudiantes de Ingeniería de Sistemas y Computación, PUCMM, Santiago.
         </div>
