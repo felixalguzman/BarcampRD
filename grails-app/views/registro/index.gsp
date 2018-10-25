@@ -164,7 +164,7 @@
                                     <div class="row">
                                         <h2 class="info-text">Gracias por su información!</h2>
 
-                                        <h3 class="info-text">Antes de enviar el formulario por favor revisar de nuevo la información ingresada!</h3>
+                                        <h3 class="info-text">Antes de enviar el formulario, por favor revisar de nuevo la información ingresada!</h3>
 
                                         <p class="info-text"><input id='btn-submit' type='submit'
                                                                     class='btn btn-finish btn-fill btn-danger btn-wd'
