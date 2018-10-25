@@ -58,176 +58,190 @@
                                 <h5>A cuáles desconferencias quieres asistir?!</h5>
                             </div>
 
-                            <div class="wizard-navigation">
-                                <ul>
-                                    <li><a href="#datos-personales" data-toggle="tab">Datos Personales</a></li>
-                                    <li><a href="#charlas" data-toggle="tab">Desconferencias</a></li>
-                                    <li><a href="#charlas2" data-toggle="tab">Desconferencias</a></li>
-                                    <li><a href="#fin" data-toggle="tab">Fin</a></li>
-                                </ul>
-                            </div>
+                            <g:if test="${ok}">
+                                <div class="wizard-navigation">
+                                    <ul>
+                                        <li><a href="#datos-personales" data-toggle="tab">Datos Personales</a></li>
+                                        <li><a href="#charlas" data-toggle="tab">Desconferencias</a></li>
+                                        <li><a href="#charlas2" data-toggle="tab">Desconferencias</a></li>
+                                        <li><a href="#fin" data-toggle="tab">Fin</a></li>
+                                    </ul>
+                                </div>
 
-                            <div class="tab-content">
-                                <div class="tab-pane" id="datos-personales">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h4 class="info-text">Información Básica</h4>
-                                        </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="datos-personales">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <h4 class="info-text">Información Básica</h4>
+                                            </div>
 
-                                        <div class="col-sm-12">
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">fingerprint</i>
-                                                </span>
+                                            <div class="col-sm-12">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">fingerprint</i>
+                                                    </span>
 
-                                                <div class="form-group label-floating">
-                                                    <label id="cedula-label" class="control-label">Cédula</label>
-                                                    <input id="cedula" name="cedula" type="text" class="form-control"
-                                                           maxlength="11" minlength="11" required>
+                                                    <div class="form-group label-floating">
+                                                        <label id="cedula-label" class="control-label">Cédula</label>
+                                                        <input id="cedula" name="cedula" type="text"
+                                                               class="form-control"
+                                                               maxlength="11" minlength="11" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">person</i>
+                                                    </span>
+
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Nombre</label>
+                                                        <input name="nombre" type="text" class="form-control" required>
+                                                    </div>
                                                 </div>
                                             </div>
 
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">person</i>
-                                                </span>
+                                            <div class="col-sm-12">
 
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Nombre</label>
-                                                    <input name="nombre" type="text" class="form-control" required>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">email</i>
+                                                    </span>
+
+                                                    <div class="form-group label-floating">
+                                                        <label id="correo-label"
+                                                               class="control-label">Correo Electrónico</label>
+                                                        <input id="email" name="email" type="text" class="form-control"
+                                                               required>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-sm-12">
+                                            <div class="col-sm-12">
 
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">email</i>
-                                                </span>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="material-icons">person</i>
+                                                    </span>
 
-                                                <div class="form-group label-floating">
-                                                    <label id="correo-label"
-                                                           class="control-label">Correo Electrónico</label>
-                                                    <input id="email" name="email" type="text" class="form-control"
-                                                           required>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-12">
-
-                                            <div class="input-group">
-                                                <span class="input-group-addon">
-                                                    <i class="material-icons">person</i>
-                                                </span>
-
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label">Size de Camiseta</label>
-                                                    <fieldset>
-                                                        <input type="radio" name="size" value="S" required> S
-                                                        <input type="radio" name="size" style="margin-left: 20px;"
-                                                               value="M"> M
-                                                        <input type="radio" name="size" style="margin-left: 20px;"
-                                                               value="L"> L
-                                                        <input type="radio" name="size" style="margin-left: 20px;"
-                                                               value="XL"> XL
-                                                        <input type="radio" name="size" style="margin-left: 20px;"
-                                                               value="XXL"> XXL
-                                                    </fieldset>
+                                                    <div class="form-group label-floating">
+                                                        <label class="control-label">Size de Camiseta</label>
+                                                        <fieldset>
+                                                            <input type="radio" name="size" value="S" required> S
+                                                            <input type="radio" name="size" style="margin-left: 20px;"
+                                                                   value="M"> M
+                                                            <input type="radio" name="size" style="margin-left: 20px;"
+                                                                   value="L"> L
+                                                            <input type="radio" name="size" style="margin-left: 20px;"
+                                                                   value="XL"> XL
+                                                            <input type="radio" name="size" style="margin-left: 20px;"
+                                                                   value="XXL"> XXL
+                                                        </fieldset>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="tab-pane" id="charlas">
-                                    <h4 class="info-text">Selecciona una charla por franja de horas</h4>
+                                    <div class="tab-pane" id="charlas">
+                                        <h4 class="info-text">Selecciona una charla por franja de horas</h4>
 
-                                    <div class="row">
-                                        <div class="col-sm-12 col-sm-offset-1">
-                                            <h4 style="color: red;">* Debe seleccionar una opción en cada grupo!</h4>
-                                            <g:each in="${charlas}" var="c">
-                                                <h3>${c.key}</h3>
-                                                <g:each in="${c.value}" var="s">
-                                                    <fieldset name="charlas">
-                                                        <input type="radio" name="h_${s.horario.id}" style="color: red;"
-                                                               value="${s.id}" <g:if
-                                                                test="${s.llena}">style="color: red;" disabled</g:if>
-                                                               required> <g:if
-                                                            test="${s.llena}"><strike>${s.tema}</strike></g:if>
-                                                        <g:else>${s.tema}</g:else><br>
-                                                    </fieldset>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-sm-offset-1">
+                                                <h4 style="color: red;">* Debe seleccionar una opción en cada grupo!</h4>
+                                                <g:each in="${charlas}" var="c">
+                                                    <h3>${c.key}</h3>
+                                                    <g:each in="${c.value}" var="s">
+                                                        <fieldset name="charlas">
+                                                            <input type="radio" name="h_${s.horario.id}"
+                                                                   style="color: red;"
+                                                                   value="${s.id}" <g:if
+                                                                           test="${s.llena}">style="color: red;" disabled</g:if>
+                                                                   required> <g:if
+                                                                test="${s.llena}"><strike>${s.tema}</strike></g:if>
+                                                            <g:else>${s.tema}</g:else><br>
+                                                        </fieldset>
+                                                    </g:each>
                                                 </g:each>
-                                            </g:each>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane" id="charlas2">
-                                    <h4 class="info-text">Selecciona una charla por franja de horas</h4>
-
-                                    <div class="row">
-                                        <div class="col-sm-12 col-sm-offset-1">
-                                            <h4 style="color: red;">* Debe seleccionar una opción en cada grupo!</h4>
-                                            <g:each in="${charlas2}" var="c">
-                                                <h3>${c.key}</h3>
-                                                <g:each in="${c.value}" var="s">
-                                                    <fieldset name="charlas2">
-                                                        <input type="radio" name="h_${s.horario.id}"
-                                                               value="${s.id}" <g:if test="${s.llena}">disabled</g:if>
-                                                               required> <g:if
-                                                            test="${s.llena}"><strike>${s.tema}</strike></g:if>
-                                                        <g:else>${s.tema}</g:else><br>
-                                                    </fieldset>
-                                                </g:each>
-                                            </g:each>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane" id="fin">
-                                    <div class="row">
-                                        <h2 class="info-text">Gracias por su información!</h2>
-
-                                        <h3 class="info-text">Antes de enviar el formulario, por favor revisar de nuevo la información ingresada!</h3>
-
-                                        <p class="info-text"><input id='btn-submit' type='submit'
-                                                                    class='btn btn-finish btn-fill btn-danger btn-wd'
-                                                                    name='finish'
-                                                                    value='Enviar Formulario'/></p>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="wizard-footer">
-                                <div class="pull-right">
-                                    <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next'
-                                           value='Siguiente'/>
-                                    %{--<input id='btn-submit' type='submit'
-                                           class='btn btn-finish btn-fill btn-danger btn-wd' name='finish'
-                                           value='Listo'/>--}%
-                                </div>
-
-                                <div class="pull-left">
-                                    <input type='button' class='btn btn-previous btn-fill btn-default btn-wd'
-                                           name='previous' value='Anterior'/>
-
-                                    %{--<div class="footer-checkbox">
-                                        <div class="col-sm-12">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" name="optionsCheckboxes">
-                                                </label>
-                                                Subscribe to our newsletter
                                             </div>
                                         </div>
-                                    </div>--}%
+                                    </div>
+
+                                    <div class="tab-pane" id="charlas2">
+                                        <h4 class="info-text">Selecciona una charla por franja de horas</h4>
+
+                                        <div class="row">
+                                            <div class="col-sm-12 col-sm-offset-1">
+                                                <h4 style="color: red;">* Debe seleccionar una opción en cada grupo!</h4>
+                                                <g:each in="${charlas2}" var="c">
+                                                    <h3>${c.key}</h3>
+                                                    <g:each in="${c.value}" var="s">
+                                                        <fieldset name="charlas2">
+                                                            <input type="radio" name="h_${s.horario.id}"
+                                                                   value="${s.id}"
+                                                                   <g:if test="${s.llena}">disabled</g:if>
+                                                                   required> <g:if
+                                                                test="${s.llena}"><strike>${s.tema}</strike></g:if>
+                                                            <g:else>${s.tema}</g:else><br>
+                                                        </fieldset>
+                                                    </g:each>
+                                                </g:each>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane" id="fin">
+                                        <div class="row">
+                                            <h2 class="info-text">Gracias por su información!</h2>
+
+                                            <h3 class="info-text">Antes de enviar el formulario, por favor revisar de nuevo la información ingresada!</h3>
+
+                                            <p class="info-text"><input id='btn-submit' type='submit'
+                                                                        class='btn btn-finish btn-fill btn-danger btn-wd'
+                                                                        name='finish'
+                                                                        value='Enviar Formulario'/></p>
+
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div class="clearfix"></div>
-                            </div>
+                                <div class="wizard-footer">
+                                    <div class="pull-right">
+                                        <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next'
+                                               value='Siguiente'/>
+                                        %{--<input id='btn-submit' type='submit'
+                                               class='btn btn-finish btn-fill btn-danger btn-wd' name='finish'
+                                               value='Listo'/>--}%
+                                    </div>
+
+                                    <div class="pull-left">
+                                        <input type='button' class='btn btn-previous btn-fill btn-default btn-wd'
+                                               name='previous' value='Anterior'/>
+
+                                        %{--<div class="footer-checkbox">
+                                            <div class="col-sm-12">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="optionsCheckboxes">
+                                                    </label>
+                                                    Subscribe to our newsletter
+                                                </div>
+                                            </div>
+                                        </div>--}%
+                                    </div>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </g:if>
+                            <g:else>
+                                <div class="wizard-header">
+                                    <h3 class="wizard-title">
+                                        TODAS LAS BOLETAS ESTAN VENDIDAS.
+                                    </h3>
+                                </div>
+                                <p class="info-text"><a href="https://barcamp.org.do/"
+                                                        class="btn btn-success">PÁGINA OFICIAL</a></p>
+                            </g:else>
                         </g:form>
                     </div>
                 </div> <!-- wizard container -->

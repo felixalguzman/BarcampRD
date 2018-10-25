@@ -8,6 +8,15 @@ class RegistroController {
 
         def charlaHorario = [:]
         def charlaHorario2 = [:]
+        boolean ok = false
+
+        for (Charla c : Charla.list()) {
+            println(c.llena)
+            if (!c.llena) {
+                ok = true
+                break
+            }
+        }
 
         charlas[0].each {
             if (charlaHorario.containsKey(it.horario.value)) {
@@ -25,7 +34,7 @@ class RegistroController {
             }
         }
 
-        ['charlas': charlaHorario, 'charlas2': charlaHorario2]
+        ['charlas': charlaHorario, 'charlas2': charlaHorario2, ok: ok]
     }
 
     def registrar() {
@@ -79,7 +88,6 @@ class RegistroController {
                 }
             }
         }
-
         return ok
     }
 }

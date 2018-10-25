@@ -3,7 +3,7 @@ package barcamprd
 class BootStrap {
 
     def init = { servletContext ->
-        def a1 = new Aula(numero: 21, cantidadPersonas: 60).save(flush: true, failOnError: true)
+        /*def a1 = new Aula(numero: 21, cantidadPersonas: 60).save(flush: true, failOnError: true)
         def a2 = new Aula(numero: 22, cantidadPersonas: 60).save(flush: true, failOnError: true)
         def a3 = new Aula(numero: 23, cantidadPersonas: 60).save(flush: true, failOnError: true)
         def a4 = new Aula(numero: 24, cantidadPersonas: 60).save(flush: true, failOnError: true)
@@ -42,7 +42,7 @@ class BootStrap {
         new Charla(charlista: "Mitra Mejía Guzman", tema: "Working Remotely", horario: h6, aula: a1).save(flush: true, failOnError: true)
         new Charla(charlista: "Luis Matos", tema: "¿Xamarin, la mejor herramienta para el desarrollo de aplicaciones moviles?", horario: h6, aula: a2).save(flush: true, failOnError: true)
         new Charla(charlista: "Pablo Reinoso", tema: "Lo increíble de flutter", horario: h6, aula: a3).save(flush: true, failOnError: true)
-        new Charla(charlista: "Karoline Taylor", tema: "Cómo estimar proyectos ágiles sin morir en el intento", horario: h6, aula: a4).save(flush: true, failOnError: true)
+        new Charla(charlista: "Karoline Taylor", tema: "Cómo estimar proyectos ágiles sin morir en el intento", horario: h6, aula: a4).save(flush: true, failOnError: true)*/
     }
     def destroy = {
     }
