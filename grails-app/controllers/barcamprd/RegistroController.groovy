@@ -42,6 +42,7 @@ class RegistroController {
         registro.nombre = params.nombre
         registro.correo = params.email
         registro.sizeCamiseta = params.size
+        registro.estado = EstadoRegistro.findByNumero(1000)
         def c1 = params.h_1 != null ? Charla.findById(params.h_1 as long) : null
         def c2 = params.h_2 != null ? Charla.findById(params.h_2 as long) : null
         def c3 = params.h_3 != null ? Charla.findById(params.h_3 as long) : null
