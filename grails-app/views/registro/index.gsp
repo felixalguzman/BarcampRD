@@ -92,7 +92,7 @@
                                                     <div class="form-group label-floating">
                                                         <label id="cedula-label" class="control-label">Cédula</label>
                                                         <input id="cedula" name="cedula" type="number"
-                                                               class="form-control"
+                                                               class="form-control quantity"
                                                                maxlength="11" minlength="11" required>
                                                     </div>
                                                 </div>
@@ -273,6 +273,32 @@
 <asset:javascript src="jquery.bootstrap.js"/>
 <asset:javascript src="material-bootstrap-wizard.js"/>
 <asset:javascript src="jquery.validate.min.js"/>
+
+<script>
+    var inputQuantity = [];
+    $(function () {
+        $(".quantity").each(function (i) {
+            inputQuantity[i] = this.defaultValue;
+            $(this).data("idx", i); // save this field's index to access later
+        });
+        $(".quantity").on("keyup", function (e) {
+            var $field = $(this),
+                val = this.value,
+                $thisIndex = parseInt($field.data("idx"), 10); // retrieve the index
+//        window.console && console.log($field.is(":invalid"));
+            //  $field.is(":invalid") is for Safari, it must be the last to not error in IE8
+            if (this.validity && this.validity.badInput || isNaN(val) || $field.is(":invalid")) {
+                this.value = inputQuantity[$thisIndex];
+                return;
+            }
+            if (val.length > Number($field.attr("maxlength"))) {
+                val = val.slice(0, 11);
+                $field.val(val);
+            }
+            inputQuantity[$thisIndex] = val;
+        });
+    });
+</script>
 
 <script type="text/javascript">
 
