@@ -42,6 +42,12 @@
                         <p>Registros</p>
                     </a>
                 </li>
+                <li id="li_charlas" class="nav-item">
+                    <a id="" class="nav-link" href="/admin/charlas">
+                        <i class="material-icons">mic</i>
+                        <p>Charlas</p>
+                    </a>
+                </li>
                 <!-- your sidebar here -->
             </ul>
         </div>
