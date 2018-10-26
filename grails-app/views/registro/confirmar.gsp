@@ -8,8 +8,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    <asset:link rel="icon" href="logopng.ico" type="image/x-ico"/>
-    <asset:link rel="icon" href="logopng.ico" type="image/x-ico"/>
+    <asset:link rel="icon" href="LogoRojo.png" type="image/x-ico"/>
 
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
@@ -22,7 +21,7 @@
 </head>
 <body>
 <div class="image-container set-full-height"
-     style="background-image: url('${resource(dir: "images/", file: "wizard-book.jpg")}')">
+     style="background-image: url('${resource(dir: "images/", file: "Otra.png")}')">
 
     <!--  Made With Material Kit  -->
     <a href="https://barcamp.org.do" class="made-with-mk">
