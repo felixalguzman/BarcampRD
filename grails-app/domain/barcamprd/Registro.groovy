@@ -6,6 +6,7 @@ class Registro {
     String nombre
     String correo
     String sizeCamiseta
+    EstadoRegistro estado
 
     static hasMany = [listaCharlas : Charla]
 

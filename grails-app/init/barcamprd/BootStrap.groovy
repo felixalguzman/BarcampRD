@@ -33,8 +33,8 @@ class BootStrap {
         Charla.findByCharlista("Gilmer Chona") ?: new Charla(charlista: "Gilmer Chona", tema: "Java 9, 10, 11 y mas", horario: h4, aula: a1).save(flush: true, failOnError: true)
         Charla.findByCharlista("Pavel Pichardo") ?: new Charla(charlista: "Pavel Pichardo", tema: "Inteligencia Artificial: Como los emprendedores estan formando el futuro.", horario: h4, aula: a2).save(flush: true, failOnError: true)
         Charla.findByCharlista("Roberto Abreu") ?: new Charla(charlista: "Roberto Abreu", tema: "No todo se resuelve con arreglos. Estructura de datos al rescate", horario: h4, aula: a3).save(flush: true, failOnError: true)
-        Charla.findByCharlista("Oracle") ?: new Charla(charlista: "Oracle", tema: "-", horario: h4, aula: a4).save(flush: true, failOnError: true)
-        Charla.findByCharlista("Carlos Camacho") ?: new Charla(charlista: "Carlos Camacho", tema: "--", horario: h5, aula: a1).save(flush: true, failOnError: true)
+        Charla.findByCharlista("Cristopher Salas") ?: new Charla(charlista: "Cristopher Salas", tema: "Asistentes inteligentes, una nueva forma de interacción virtual", horario: h4, aula: a4).save(flush: true, failOnError: true)
+        Charla.findByCharlista("Carlos Camacho") ?: new Charla(charlista: "Carlos Camacho", tema: "Introducción a Serverless - La nube para todos", horario: h5, aula: a1).save(flush: true, failOnError: true)
         Charla.findByCharlista("Paola García") ?: new Charla(charlista: "Paola García", tema: "Páginas web: Base para toda estrategia de marketing digital", horario: h5, aula: a2).save(flush: true, failOnError: true)
         Charla.findByCharlista("Aluis Marte") ?: new Charla(charlista: "Aluis Marte", tema: "Procesos, paralelismo y programación", horario: h5, aula: a3).save(flush: true, failOnError: true)
         Charla.findByCharlista("Eduardo Jana") ?: new Charla(charlista: "Eduardo Jana", tema: "Basic Pentesting", horario: h5, aula: a4).save(flush: true, failOnError: true)
@@ -43,6 +43,9 @@ class BootStrap {
         Charla.findByCharlista("Luis Matos") ?: new Charla(charlista: "Luis Matos", tema: "¿Xamarin, la mejor herramienta para el desarrollo de aplicaciones moviles?", horario: h6, aula: a2).save(flush: true, failOnError: true)
         Charla.findByCharlista("Pablo Reinoso") ?: new Charla(charlista: "Pablo Reinoso", tema: "Lo increíble de flutter", horario: h6, aula: a3).save(flush: true, failOnError: true)
         Charla.findByCharlista("Karoline Taylor") ?: new Charla(charlista: "Karoline Taylor", tema: "Cómo estimar proyectos ágiles sin morir en el intento", horario: h6, aula: a4).save(flush: true, failOnError: true)
+
+        EstadoRegistro.findByNumero(1000) ?: new EstadoRegistro(numero: 1000, texto: 'REGISTRADO').save(flush: true, failOnError: true)
+        EstadoRegistro.findByNumero(1000) ?: new EstadoRegistro(numero: 1001, texto: 'APROBADO').save(flush: true, failOnError: true)
     }
     def destroy = {
     }

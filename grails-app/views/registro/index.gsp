@@ -17,6 +17,14 @@
     <!-- CSS Files -->
     <asset:stylesheet src="bootstrap.min.css"/>
     <asset:stylesheet src="material-bootstrap-wizard.css"/>
+    <style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+    }
+    </style>
 </head>
 
 <body>
@@ -83,7 +91,7 @@
 
                                                     <div class="form-group label-floating">
                                                         <label id="cedula-label" class="control-label">Cédula</label>
-                                                        <input id="cedula" name="cedula" type="text"
+                                                        <input id="cedula" name="cedula" type="number"
                                                                class="form-control"
                                                                maxlength="11" minlength="11" required>
                                                     </div>
@@ -239,6 +247,7 @@
                                         TODAS LAS BOLETAS ESTAN VENDIDAS.
                                     </h3>
                                 </div>
+
                                 <p class="info-text"><a href="https://barcamp.org.do/"
                                                         class="btn btn-success">PÁGINA OFICIAL</a></p>
                             </g:else>
