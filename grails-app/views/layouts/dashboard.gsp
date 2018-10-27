@@ -11,6 +11,8 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+
     <!-- CSS Files -->
     <asset:stylesheet src="material-dashboard.css"/>
 </head>
@@ -30,22 +32,28 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li id="li_dashboard" class="nav-item active">
-                    <a id="a_dashboard" class="nav-link" href="/admin/index">
-                        <i class="material-icons">dashboard</i>
-                        <p>Dashboard</p>
-                    </a>
-                </li>
                 <li id="li_registros" class="nav-item">
-                    <a id="a_registro" class="nav-link" href="/admin/registros">
+                    <a id="a_registro" class="nav-link" href="/admin/">
                         <i class="material-icons">content_paste</i>
                         <p>Registros</p>
                     </a>
                 </li>
                 <li id="li_charlas" class="nav-item">
-                    <a id="" class="nav-link" href="/admin/charlas">
+                    <a class="nav-link" href="/admin/charlas">
                         <i class="material-icons">mic</i>
                         <p>Charlas</p>
+                    </a>
+                </li>
+                <li id="li_aulas" class="nav-item">
+                    <a class="nav-link" href="/admin/aulas">
+                        <i class="material-icons">room</i>
+                        <p>Aulas</p>
+                    </a>
+                </li>
+                <li id="li_horarios" class="nav-item">
+                    <a class="nav-link" href="/admin/horarios">
+                        <i class="material-icons">calendar_today</i>
+                        <p>Horarios</p>
                     </a>
                 </li>
                 <!-- your sidebar here -->
@@ -68,8 +76,8 @@
                 <div class="collapse navbar-collapse justify-content-end">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#pablo">
-                                <i class="material-icons">notifications</i> Notifications
+                            <a class="nav-link" href="/logout">
+                                <i class="material-icons">power_settings_new</i> Logout
                             </a>
                         </li>
                         <!-- your navbar here -->
@@ -107,7 +115,8 @@
 <asset:javascript src="core/popper.min.js"/>
 <asset:javascript src="core/bootstrap-material-design.min.js"/>
 <asset:javascript src="plugins/perfect-scrollbar.jquery.min.js"/>
-
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
 <!--  Google Maps Plugin    -->
 %{--
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>

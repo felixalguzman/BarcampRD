@@ -1,5 +1,8 @@
 package barcamprd
 
+import grails.plugin.springsecurity.annotation.Secured
+
+@Secured(['permitAll'])
 class RegistroController {
 
     def index() {

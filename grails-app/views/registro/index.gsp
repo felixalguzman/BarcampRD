@@ -326,7 +326,6 @@
 
     $("#email").on('change', function (e) {
         var correo = $("#email").val();
-        console.log(correo);
         $.ajax({
             url: "registro/verificarCorreo/",
             data: {data: correo},
