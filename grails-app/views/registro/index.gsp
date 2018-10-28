@@ -90,7 +90,7 @@
                                                     </span>
 
                                                     <div class="form-group label-floating">
-                                                        <label id="cedula-label" class="control-label">Cédula</label>
+                                                        <label id="cedula-label" class="control-label">No. de Identificación</label>
                                                         <input id="cedula" name="cedula" type="number"
                                                                class="form-control quantity"
                                                                maxlength="11" minlength="11" required>

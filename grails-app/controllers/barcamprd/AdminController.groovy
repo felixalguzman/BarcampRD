@@ -7,7 +7,10 @@ import grails.plugin.springsecurity.annotation.Secured
 class AdminController {
 
     def index() {
-        ['user': (User) applicationContext.springSecurityService.getCurrentUser(), registros: Registro.list(), 'totalCharlas': Charla.count, 'registrosConfirmados': Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)).size(), 'charlasLlenas': Charla.findAllByLlena(true).size()]
+        ['user'                : (User) applicationContext.springSecurityService.getCurrentUser(), registros: Registro.list(),
+         'totalCharlas'        : Charla.count,
+         'registrosConfirmados': Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)).size(),
+         'charlasLlenas'       : Charla.findAllByLlena(true).size()]
     }
 
     def charlas() {
@@ -21,5 +24,7 @@ class AdminController {
     def aulas() {
         ['aulas': Aula.list()]
     }
+
+
 
 }

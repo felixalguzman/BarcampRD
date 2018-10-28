@@ -19,56 +19,71 @@
                             <div class="card-icon">
                                 <i class="material-icons">content_copy</i>
                             </div>
+
                             <p class="card-category">Total de Registros</p>
+
                             <h3 class="card-title">${registros.size()}</h3>
                         </div>
+
                         <div class="card-footer">
                             <div class="stats">
-                               %{-- <i class="material-icons text-danger">warning</i>
-                                <a href="#pablo">Get More Space...</a>--}%
+                                %{-- <i class="material-icons text-danger">warning</i>
+                                 <a href="#pablo">Get More Space...</a>--}%
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-stats">
                         <div class="card-header card-header-success card-header-icon">
                             <div class="card-icon">
                                 <i class="material-icons">store</i>
                             </div>
+
                             <p class="card-category">Registros Confirmados</p>
+
                             <h3 class="card-title">${registrosConfirmados}</h3>
                         </div>
+
                         <div class="card-footer">
                             <div class="stats">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                        <div class="card-header card-header-danger card-header-icon">
-                            <div class="card-icon">
-                                <i class="material-icons">info_outline</i>
-                            </div>
-                            <p class="card-category">Total de Charlas</p>
-                            <h3 class="card-title">${totalCharlas}</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-stats">
                         <div class="card-header card-header-info card-header-icon">
                             <div class="card-icon">
-                                <i class="fa fa-twitter"></i>
+                                <i class="material-icons">how_to_reg</i>
                             </div>
+
+                            <p class="card-category">Total de Charlas</p>
+
+                            <h3 class="card-title">${totalCharlas}</h3>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="stats">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header  card-header-danger card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">info_outline</i>
+                            </div>
+
                             <p class="card-category">Charlas Llenas</p>
+
                             <h3 class="card-title">${charlasLlenas}</h3>
                         </div>
+
                         <div class="card-footer">
                             <div class="stats">
                             </div>
@@ -88,12 +103,13 @@
 
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table" id="table">
+                                <table class="table table-hover" id="table">
                                     <thead class=" text-primary">
                                     <th>No. Identificación</th>
                                     <th>Nombre</th>
                                     <th>Correo</th>
                                     <th>Size</th>
+                                    <th>Fecha de Registro</th>
                                     <th>Estado</th>
                                     <th>Charlas Seleccionadas</th>
                                     </thead>
@@ -104,6 +120,7 @@
                                             <td>${r.nombre}</td>
                                             <td>${r.correo}</td>
                                             <td>${r.sizeCamiseta}</td>
+                                            <td>${r.dateCreated}</td>
                                             <td>${r.estado.texto}</td>
                                             <td>
                                                 <button type="button" class="btn btn-twitter"
@@ -129,7 +146,7 @@
                                                             <div class="modal-body">
                                                                 <div class="card-body">
                                                                     <div class="table-responsive">
-                                                                        <table class="table">
+                                                                        <table class="table table-hover">
                                                                             <thead class="text-warning">
                                                                             <th>ID</th>
                                                                             <th>Tema</th>
@@ -171,6 +188,50 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-success">
+                            <div class="ct-chart" id="sizeChart"></div>
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title">Size de Camisetas</h4>
+
+                            <p class="card-category">Cantidad de Camisetas por Size</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="stats">
+                                %{--<i class="material-icons">access_time</i> campaign sent 2 days ago--}%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-warning">
+                            <div class="ct-chart" id="charlasChart"></div>
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title">Persona por Charla</h4>
+
+                            <p class="card-category">Cantidad de personas asisitiendo por charla.</p>
+                        </div>
+
+                        <div class="card-footer">
+                            <div class="stats">
+                                %{--<i class="material-icons">access_time</i> campaign sent 2 days ago--}%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
         <!-- Button trigger modal -->
 

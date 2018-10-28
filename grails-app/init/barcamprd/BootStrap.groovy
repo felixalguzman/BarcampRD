@@ -48,7 +48,7 @@ class BootStrap {
         Charla.findOrSaveWhere(charlista: "Pablo Reinoso", tema: "Lo increíble de flutter", horario: h6, aula: a3)
         Charla.findOrSaveWhere(charlista: "Karoline Taylor", tema: "Cómo estimar proyectos ágiles sin morir en el intento", horario: h6, aula: a4)
 
-        EstadoRegistro.findOrSaveWhere(numero: 1000, texto: 'PENDIENTE')*/
+        EstadoRegistro.findOrSaveWhere(numero: 1000, texto: 'PENDIENTE')
         EstadoRegistro.findOrSaveWhere(numero: 1001, texto: 'APROBADO')
         EstadoRegistro.findOrSaveWhere(numero: 1002, texto: 'CONFIRMADO')
 
@@ -57,7 +57,7 @@ class BootStrap {
 
         if (!user.getAuthorities().contains(userRole)){
             UserRole.create(user, userRole, true)
-        }
+        }*/
 
     }
     def destroy = {
