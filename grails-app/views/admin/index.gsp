@@ -1,13 +1,18 @@
+<%@ page import="barcamprd.Registro; barcamprd.Charla" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
      <meta name="layout" content="dashboard.gsp"/>
     <title>Title</title>
+    <content tag="css">
+        <asset:stylesheet src="material-charts.css"/>
+        <asset:stylesheet src="chartist-plugin-tooltip.css"/>
+    </content>
 </head>
 
 <body>
 
-<content tag="titulo"><a class="navbar-brand" href="#pablo">Registros</a></content>
+<content tag="titulo"><a class="navbar-brand">Registros</a></content>
 
 <content tag="cont">
     <div class="content">
@@ -22,7 +27,7 @@
 
                             <p class="card-category">Total de Registros</p>
 
-                            <h3 class="card-title">${registros.size()}</h3>
+                            <h3 class="card-title">${Registro.count()}</h3>
                         </div>
 
                         <div class="card-footer">
@@ -41,9 +46,9 @@
                                 <i class="material-icons">store</i>
                             </div>
 
-                            <p class="card-category">Registros Confirmados</p>
+                            <p class="card-category">Registros Aprobados</p>
 
-                            <h3 class="card-title">${registrosConfirmados}</h3>
+                            <h3 class="card-title">${registrosAprobados}</h3>
                         </div>
 
                         <div class="card-footer">
@@ -62,7 +67,7 @@
 
                             <p class="card-category">Total de Charlas</p>
 
-                            <h3 class="card-title">${totalCharlas}</h3>
+                            <h3 class="card-title">${Charla.count()}</h3>
                         </div>
 
                         <div class="card-footer">
@@ -81,7 +86,7 @@
 
                             <p class="card-category">Charlas Llenas</p>
 
-                            <h3 class="card-title">${charlasLlenas}</h3>
+                            <h3 class="card-title">${Charla.findAllByLlena(true).size()}</h3>
                         </div>
 
                         <div class="card-footer">
@@ -114,7 +119,7 @@
                                     <th>Charlas Seleccionadas</th>
                                     </thead>
                                     <tbody>
-                                    <g:each in="${registros}" var="r">
+                                    <g:each in="${Registro.list()}" var="r">
                                         <tr>
                                             <td>${r.cedula}</td>
                                             <td>${r.nombre}</td>
@@ -234,6 +239,11 @@
     </div>
 </content>
 <content tag="js">
+    <asset:javascript src="material-charts.js"/>
+    <asset:javascript src="plugins/chartist.min.js"/>
+    <asset:javascript src="plugins/chartist-plugin-tooltip.js"/>
+    <asset:javascript src="plugins/chartist-plugin-pointlabels.js"/>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $(".nav-item").removeClass('active');
@@ -243,7 +253,121 @@
             $.ajax({
                 url: "/admin/sizesCamisetas",
                 success: function (data) {
-                    console.log(data)
+                    var labels = [];
+                    var series = [];
+
+                    for (var key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            labels.push(key);
+                            series.push({meta: key, value: data[key]});
+                        }
+                    }
+
+                    if ($('#sizeChart').length !== 0) {
+                        var dataWebsiteViewsChart = {
+                            labels: labels,
+                            series: [series]
+                        };
+                        var optionsWebsiteViewsChart = {
+                            axisX: {
+                                showGrid: true
+                            },
+                            low: 0,
+                            high: labels.length + 1,
+                            fullWidth: true,
+                            plugins: [
+                                Chartist.plugins.tooltip({
+                                    textAnchor: 'middle'
+                                }),
+                                Chartist.plugins.ctPointLabels({
+                                    textAnchor: 'middle',
+                                    labelInterpolationFnc: function (value) {
+                                        return '' + value
+                                    }
+                                })
+                            ],
+                            chartPadding: {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0
+                            },
+                        };
+                        var responsiveOptions = [
+                            ['screen and (max-width: 640px)', {
+                                seriesBarDistance: 5,
+                                axisX: {
+                                    labelInterpolationFnc: function (value) {
+                                        return value[0];
+                                    }
+                                }
+                            }]
+                        ];
+                        var websiteViewsChart = Chartist.Bar('#sizeChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+                        //start animation for the Emails Subscription Chart
+                        //md.startAnimationForBarChart(websiteViewsChart);
+                    }
+                }
+            });
+
+            $.ajax({
+                url: "/admin/asistentesPorCharla",
+                success: function (data) {
+
+                    console.log(data);
+
+                    var labels = [];
+                    var series = [];
+
+                    for (var key in data) {
+                        if (data.hasOwnProperty(key)) {
+                            labels.push(key);
+                            for (var k2 in data[key]) {
+                                if (data[key].hasOwnProperty(k2)) {
+                                    series.push({meta: k2, value: data[key][k2]});
+                                }
+                            }
+                        }
+                    }
+
+                    if ($('#charlasChart').length !== 0) {
+                        var dataWebsiteViewsChart = {
+                            labels: labels,
+                            series: [series]
+                        };
+                        var optionsWebsiteViewsChart = {
+                            axisX: {
+                                showGrid: true
+                            },
+                            low: 0,
+                            high: labels.length + 1,
+                            fullWidth: true,
+                            plugins: [
+                                Chartist.plugins.tooltip({
+                                    textAnchor: 'middle'
+                                }),
+                            ],
+                            chartPadding: {
+                                top: 0,
+                                right: 0,
+                                bottom: 0,
+                                left: 0
+                            },
+                        };
+                        var responsiveOptions = [
+                            ['screen and (max-width: 640px)', {
+                                seriesBarDistance: 5,
+                                axisX: {
+                                    labelInterpolationFnc: function (value) {
+                                        return value[0];
+                                    }
+                                }
+                            }]
+                        ];
+                        var websiteViewsChart = Chartist.Bar('#charlasChart', dataWebsiteViewsChart, optionsWebsiteViewsChart, responsiveOptions);
+                        //start animation for the Emails Subscription Chart
+                        //md.startAnimationForBarChart(websiteViewsChart);
+                    }
                 }
             });
 

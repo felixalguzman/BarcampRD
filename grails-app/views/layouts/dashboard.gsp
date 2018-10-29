@@ -15,6 +15,7 @@
 
     <!-- CSS Files -->
     <asset:stylesheet src="material-dashboard.css"/>
+    <g:pageProperty name="page.css"/>
 </head>
 
 <body class="">
@@ -121,8 +122,6 @@
 %{--
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 --}%
-<!-- Chartist JS -->
-<asset:javascript src="plugins/chartist.min.js"/>
 <!--  Notifications Plugin    -->
 <asset:javascript src="plugins/bootstrap-notify.js"/>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
