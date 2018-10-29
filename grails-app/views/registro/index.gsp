@@ -90,10 +90,9 @@
                                                     </span>
 
                                                     <div class="form-group label-floating">
-                                                        <label id="cedula-label" class="control-label">No. de Identificación</label>
-                                                        <input id="cedula" name="cedula" type="number"
-                                                               class="form-control quantity"
-                                                               maxlength="11" minlength="11" required>
+                                                        <label id="cedula-label"
+                                                               class="control-label">No. de Identificación</label>
+                                                        <input id="cedula" name="cedula" class="form-control" required>
                                                     </div>
                                                 </div>
 
@@ -274,7 +273,7 @@
 <asset:javascript src="material-bootstrap-wizard.js"/>
 <asset:javascript src="jquery.validate.min.js"/>
 
-<script>
+%{--<script>
     var inputQuantity = [];
     $(function () {
         $(".quantity").each(function (i) {
@@ -298,7 +297,7 @@
             inputQuantity[$thisIndex] = val;
         });
     });
-</script>
+</script>--}%
 
 <script type="text/javascript">
 
