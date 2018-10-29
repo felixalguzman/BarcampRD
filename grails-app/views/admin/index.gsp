@@ -229,21 +229,25 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-        <!-- Button trigger modal -->
-
-
-        <!-- Modal -->
     </div>
 </content>
 <content tag="js">
-    <script>
-        $(".nav-item").removeClass('active');
-        $("#li_registros").addClass('active');
-        $("#table").DataTable();
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".nav-item").removeClass('active');
+            $("#li_registros").addClass('active');
+            $("#table").DataTable();
+
+            $.ajax({
+                url: "/admin/sizesCamisetas",
+                success: function (data) {
+                    console.log(data)
+                }
+            });
+
+        });
     </script>
 </content>
 
