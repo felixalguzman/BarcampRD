@@ -8,7 +8,7 @@ import grails.plugin.springsecurity.annotation.Secured
 class AdminController {
 
     def index() {
-        ['user'                : (User) applicationContext.springSecurityService.getCurrentUser(),
+        ['user'              : (User) applicationContext.springSecurityService.getCurrentUser(),
          'registrosAprobados': Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)).size()]
     }
 
@@ -43,5 +43,22 @@ class AdminController {
             cantPorCharla[it.id] = map
         }
         render cantPorCharla as JSON
+    }
+
+    def borrarRegistro() {
+        def reg = Registro.findByCedula(params.noId as String)
+        if (reg != null) {
+            reg.listaCharlas.each {
+                it.cantidadAsistentes--
+                if (it.cantidadAsistentes < it.aula.cantidadPersonas) {
+                    it.llena = false
+                }
+                it.save(flush: true, failOnError: true)
+            }
+            reg.delete(flush: true, failOnError: true)
+            render params.noId
+        } else {
+            render 'no va'
+        }
     }
 }
