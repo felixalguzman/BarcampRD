@@ -222,7 +222,7 @@
                         </div>
 
                         <div class="card-body">
-                            <h4 class="card-title">Persona por Charla</h4>
+                            <h4 class="card-title">Personas por Charla</h4>
 
                             <p class="card-category">Cantidad de personas asisitiendo por charla.</p>
                         </div>
