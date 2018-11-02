@@ -7,6 +7,11 @@ import barcamprd.auth.UserRole
 class BootStrap {
 
     def init = { servletContext ->
+
+        def adminRole = Role.findOrSaveWhere(authority: 'ROLE_ADMIN')
+        def userRole = Role.findOrSaveWhere(authority: 'ROLE_USER')
+        def admin = User.findOrSaveWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
+
         /*def a1 = Aula.findOrSaveWhere(numero: 21, cantidadPersonas: 60)
         def a2 = Aula.findOrSaveWhere(numero: 22, cantidadPersonas: 60)
         def a3 = Aula.findOrSaveWhere(numero: 23, cantidadPersonas: 60)

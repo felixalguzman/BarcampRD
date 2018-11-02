@@ -1,4 +1,4 @@
-<%@ page import="barcamprd.Registro; barcamprd.Charla" %>
+<%@ page import="barcamprd.EstadoRegistro; barcamprd.Registro; barcamprd.Charla" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,7 +126,15 @@
                                             <td>${r.correo}</td>
                                             <td>${r.sizeCamiseta}</td>
                                             <td>${r.dateCreated}</td>
-                                            <td>${r.estado.texto}</td>
+                                            <g:if test="${r.estado.numero == EstadoRegistro.ESTADO_REGISTRADO}">
+                                                <td><button id="aprobarbtn"
+                                                            class="btn btn-primary"
+                                                            onclick="aprobar(${r.id})">APROBAR</button>
+                                                </td>
+                                            </g:if>
+                                            <g:else>
+                                                <td class="text-success text-center">${r.estado.texto}</td>
+                                            </g:else>
                                             <td>
                                                 <button type="button" class="btn btn-twitter"
                                                         data-toggle="modal"
@@ -313,9 +321,6 @@
             $.ajax({
                 url: "/admin/asistentesPorCharla",
                 success: function (data) {
-
-                    console.log(data);
-
                     var labels = [];
                     var series = [];
 
@@ -372,6 +377,23 @@
             });
 
         });
+    </script>
+    <script type="text/javascript">
+        function aprobar(id) {
+            if (confirm('Seguro que quiere confirmar?')) {
+                $.ajax({
+                    url: "/admin/aprobarRegistro",
+                    data: {data: id},
+                    success: function (data) {
+                        if (data === 'true') {
+                            window.location = "/admin/"
+                        } else {
+                            alert('Error al aprobar el registro.')
+                        }
+                    }
+                });
+            }
+        }
     </script>
 </content>
 

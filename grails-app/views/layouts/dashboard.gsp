@@ -1,15 +1,18 @@
+<%@ page import="barcamprd.auth.User" %>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <asset:link rel="icon" href="LogoRojo.png" type="image/x-ico"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>Admin BarcampRD</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+          name='viewport'/>
     <!--     Fonts and icons     -->
 
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 
@@ -28,32 +31,44 @@
     -->
         <div class="logo">
             <a href="https://barcamp.org.do/" class="simple-text logo-normal">
-                Barcamp RD
+                <div class="logo">
+                    <img style="margin-top: -50px; width: 250px; height: 125px;"
+                         src="${resource(dir: "images/", file: "barcamp.png")}">
+                </div>
+
+                <div class="brand" style="margin-bottom: -10px; margin-top: 10px;">
+                    ${((User) applicationContext.springSecurityService.getCurrentUser()).nombre}
+                </div>
             </a>
         </div>
+
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li id="li_registros" class="nav-item">
                     <a id="a_registro" class="nav-link" href="/admin/">
                         <i class="material-icons">content_paste</i>
+
                         <p>Registros</p>
                     </a>
                 </li>
                 <li id="li_charlas" class="nav-item">
                     <a class="nav-link" href="/admin/charlas">
                         <i class="material-icons">mic</i>
+
                         <p>Charlas</p>
                     </a>
                 </li>
                 <li id="li_aulas" class="nav-item">
                     <a class="nav-link" href="/admin/aulas">
                         <i class="material-icons">room</i>
+
                         <p>Aulas</p>
                     </a>
                 </li>
                 <li id="li_horarios" class="nav-item">
                     <a class="nav-link" href="/admin/horarios">
                         <i class="material-icons">calendar_today</i>
+
                         <p>Horarios</p>
                     </a>
                 </li>
@@ -61,6 +76,7 @@
             </ul>
         </div>
     </div>
+
     <div class="main-panel">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
@@ -68,12 +84,14 @@
                 <div class="navbar-wrapper">
                     <g:pageProperty name="page.titulo"/>
                 </div>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
+                        aria-expanded="false" aria-label="Toggle navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                     <span class="navbar-toggler-icon icon-bar"></span>
                 </button>
+
                 <div class="collapse navbar-collapse justify-content-end">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -90,7 +108,6 @@
 
         <g:pageProperty name="page.cont"/>
 
-
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="float-left">
@@ -100,6 +117,7 @@
                         </li>
                     </ul>
                 </nav>
+
                 <div class="copyright float-right">
                     &copy;
                     <script>

@@ -26,8 +26,6 @@ class AulaController {
 
     def save(Aula aula) {
 
-        println('hp;a')
-
         if (aula == null) {
             notFound()
             return
