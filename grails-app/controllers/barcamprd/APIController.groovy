@@ -12,6 +12,15 @@ class APIController {
         render Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)) as JSON
     }
 
+    def consultarRegistro(){
+        def registro = Registro.findById(params.id as long)
+
+        if (registro != null)
+            render registro as JSON
+        else
+            render 'Registro no disponible'
+    }
+
     def confirmar(){
         def registro = Registro.findById(params.id as long)
         def antes = registro.estado.texto
