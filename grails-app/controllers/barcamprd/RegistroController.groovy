@@ -1,6 +1,16 @@
 package barcamprd
 
 import grails.plugin.springsecurity.annotation.Secured
+import jxl.Workbook
+import jxl.format.Alignment
+import jxl.format.Border
+import jxl.format.BorderLineStyle
+import jxl.format.VerticalAlignment
+import jxl.write.Label
+import jxl.write.WritableCellFormat
+import jxl.write.WritableFont
+import jxl.write.WritableSheet
+import jxl.write.WritableWorkbook
 
 @Secured(['permitAll'])
 class RegistroController {
@@ -93,4 +103,97 @@ class RegistroController {
         }
         return ok
     }
+
+    /*def descargarCuadre() {
+        def (inicio, fin) = params.data.tokenize('_')
+        def tanda = params.tanda as int
+
+        response.setContentType('application/vnd.ms-excel')
+        response.setHeader('Content-Disposition', 'Attachment;Filename="registro.xls"')
+
+        WritableWorkbook workbook = Workbook.createWorkbook(response.outputStream)
+        WritableSheet sheet1 = workbook.createSheet("Registro", 0)
+
+        WritableFont cellFontTitulo = new WritableFont(WritableFont.TIMES, 12)
+        cellFontTitulo.setBoldStyle(WritableFont.BOLD)
+
+        WritableFont cellFont = new WritableFont(WritableFont.TIMES, 12)
+        WritableCellFormat cellFormatTitulo = new WritableCellFormat(cellFontTitulo)
+        WritableCellFormat cellFormat = new WritableCellFormat(cellFont)
+        cellFormatTitulo.setAlignment(Alignment.CENTRE)
+        cellFormatTitulo.setVerticalAlignment(VerticalAlignment.CENTRE)
+        cellFormatTitulo.setBorder(Border.ALL, BorderLineStyle.THIN)
+        cellFormat.setAlignment(Alignment.CENTRE)
+        cellFormat.setVerticalAlignment(VerticalAlignment.CENTRE)
+        cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN)
+
+        sheet1.addCell(new Label(0, 0, "ID", cellFormatTitulo))
+        sheet1.addCell(new Label(1, 0, "Nombre", cellFormatTitulo))
+        sheet1.addCell(new Label(2, 0, "Método de Pago", cellFormatTitulo))
+        sheet1.addCell(new Label(3, 0, "Fecha", cellFormatTitulo))
+        sheet1.addCell(new Label(4, 0, "Monto", cellFormatTitulo))
+
+        
+
+        def totalEfectivo = 0
+        def totalTarjeta = 0
+        def fs = getCuadre(tanda, inicio as String, fin as String)
+
+        def fsEfectivo = []
+        def fsTarjeta = []
+
+        fs.each {
+            if (it['metodoPago'] == 'Efectivo') {
+                fsEfectivo.add(it)
+            } else {
+                fsTarjeta.add(it)
+            }
+        }
+
+        for (int i = 0; i < fsEfectivo.size(); i++) {
+            sheet1.addCell(new Label(0, i + 1, fsEfectivo[i]['id'] as String, cellFormat))
+            sheet1.addCell(new Label(1, i + 1, fsEfectivo[i]['usuario'] as String, cellFormat))
+            sheet1.addCell(new Label(2, i + 1, fsEfectivo[i]['metodoPago'] as String, cellFormat))
+            sheet1.addCell(new Label(3, i + 1, fsEfectivo[i]['fecha'] as String, cellFormat))
+            sheet1.addCell(new Label(4, i + 1, fsEfectivo[i]['monto'] as String, cellFormat))
+            totalEfectivo += fsEfectivo[i]['monto']
+        }
+        sheet1.mergeCells(0, fsEfectivo.size() + 1, 3, fsEfectivo.size() + 1)
+        sheet1.addCell(new Label(0, fsEfectivo.size() + 1, 'Total', cellFormatTitulo))
+        sheet1.addCell(new Label(4, fsEfectivo.size() + 1, totalEfectivo as String, cellFormatTitulo))
+
+        for (int i = 0; i < fsTarjeta.size(); i++) {
+            sheet1.addCell(new Label(7, i + 1, fsTarjeta[i]['id'] as String, cellFormat))
+            sheet1.addCell(new Label(8, i + 1, fsTarjeta[i]['usuario'] as String, cellFormat))
+            sheet1.addCell(new Label(9, i + 1, fsTarjeta[i]['metodoPago'] as String, cellFormat))
+            sheet1.addCell(new Label(10, i + 1, fsTarjeta[i]['fecha'] as String, cellFormat))
+            sheet1.addCell(new Label(11, i + 1, fsTarjeta[i]['monto'] as String, cellFormat))
+            totalTarjeta += fsTarjeta[i]['monto']
+        }
+
+        sheet1.mergeCells(7, fsTarjeta.size() + 1, 10, fsTarjeta.size() + 1)
+        sheet1.addCell(new Label(7, fsTarjeta.size() + 1, 'Total', cellFormatTitulo))
+        sheet1.addCell(new Label(11, fsTarjeta.size() + 1, totalTarjeta as String, cellFormatTitulo))
+
+        //PLATOS DESPACHADOS
+        def platos = getPlatos(inicio as String, fin as String)
+
+        int i = 0
+        platos.each { fecha, map ->
+            sheet2.mergeCells(0, i , 1, i)
+            sheet2.addCell(new Label(0, i, fecha as String, cellFormatTitulo))
+            sheet2.addCell(new Label(0, i + 1, "Nombre Plato", cellFormatTitulo))
+            sheet2.addCell(new Label(1, i + 1, "Cantidad", cellFormatTitulo))
+
+            map.each { plato, cantidad ->
+                sheet2.addCell(new Label(0, i+2, plato as String, cellFormat))
+                sheet2.addCell(new Label(1, i+2, cantidad as String, cellFormat))
+                i++
+            }
+            i += 3
+        }
+
+        workbook.write()
+        workbook.close()
+    }*/
 }

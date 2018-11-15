@@ -57,13 +57,23 @@ dependencies {
     testCompile "org.grails.plugins:geb:1.1.2"
     testRuntime "org.seleniumhq.selenium:selenium-chrome-driver:2.47.1"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
-    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"\
+    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
     
     //base de datos mysql.
     runtime 'mysql:mysql-connector-java:5.1.34'
     
     //Spring Security
     compile 'org.grails.plugins:spring-security-ui:3.1.2'
+
+    //JXLS
+    compile "org.grails.plugins:export:2.0.0"
+    compile 'org.grails.plugins:rendering:2.0.3'
+
+    // https://mvnrepository.com/artifact/org.jxls/jxls
+    compile group: 'org.jxls', name: 'jxls', version: '2.4.6'
+    runtime 'net.sourceforge.jexcelapi:jxl:2.6.12'
+
+
 }
 
 bootRun {
