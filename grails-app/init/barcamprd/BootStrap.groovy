@@ -11,6 +11,7 @@ class BootStrap {
         def adminRole = Role.findOrSaveWhere(authority: 'ROLE_ADMIN')
         def userRole = Role.findOrSaveWhere(authority: 'ROLE_USER')
         def admin = User.findOrSaveWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
+        def confirmar = Confirmar.findOrSaveWhere(confirmar: false)
 
         /*def a1 = Aula.findOrSaveWhere(numero: 21, cantidadPersonas: 60)
         def a2 = Aula.findOrSaveWhere(numero: 22, cantidadPersonas: 60)

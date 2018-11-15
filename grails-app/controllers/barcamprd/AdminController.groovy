@@ -73,4 +73,15 @@ class AdminController {
         }
         render ok
     }
+
+    def confirmarRegistro(String data) {
+        def ok = false
+        def registro = Registro.findById(data as long)
+        if (registro != null) {
+            registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
+            registro.save(flush: true, failOnError: true)
+            ok = true
+        }
+        render ok
+    }
 }

@@ -1,4 +1,4 @@
-<%@ page import="barcamprd.EstadoRegistro; barcamprd.Registro; barcamprd.Charla" %>
+<%@ page import="barcamprd.Confirmar; barcamprd.EstadoRegistro; barcamprd.Registro; barcamprd.Charla" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,7 +133,15 @@
                                                 </td>
                                             </g:if>
                                             <g:else>
-                                                <td class="text-success text-center">${r.estado.texto}</td>
+                                                <g:if test="${Confirmar.first().confirmar && r.estado.numero == EstadoRegistro.ESTADO_APROBADO}">
+                                                    <td><button id="confbtn"
+                                                                class="btn btn-success"
+                                                                onclick="confirmar(${r.id})">CONFIRMAR</button>
+                                                    </td>
+                                                </g:if>
+                                                <g:else>
+                                                    <td class="text-success text-center">${r.estado.texto}</td>
+                                                </g:else>
                                             </g:else>
                                             <td>
                                                 <button type="button" class="btn btn-twitter"
@@ -380,7 +388,7 @@
     </script>
     <script type="text/javascript">
         function aprobar(id) {
-            if (confirm('Seguro que quiere confirmar?')) {
+            if (confirm('Seguro que quiere aprobar?')) {
                 $.ajax({
                     url: "/admin/aprobarRegistro",
                     data: {data: id},
@@ -389,6 +397,22 @@
                             window.location = "/admin/"
                         } else {
                             alert('Error al aprobar el registro.')
+                        }
+                    }
+                });
+            }
+        }
+
+        function confirmar(id) {
+            if (confirm('Seguro que quiere confirmar?')) {
+                $.ajax({
+                    url: "/admin/confirmarRegistro",
+                    data: {data: id},
+                    success: function (data) {
+                        if (data === 'true') {
+                            window.location = "/admin/"
+                        } else {
+                            alert('Error al confirmar el registro.')
                         }
                     }
                 });

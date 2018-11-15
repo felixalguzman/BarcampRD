@@ -18,6 +18,6 @@ class APIController {
         println(registro.nombre)
         /*registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
         registro.save(flush: true, failOnError: true)*/
-        return registro.estado.texto
+        render registro.estado.texto
     }
 }
