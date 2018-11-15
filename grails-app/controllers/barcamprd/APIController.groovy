@@ -9,15 +9,14 @@ class APIController {
     def index() { }
 
     def registros(){
-        render Registro.list() as JSON
+        render Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)) as JSON
     }
 
     def confirmar(){
-        long id = params.id
-        def registro = Registro.findById(id)
-        println(registro.nombre)
-        /*registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
-        registro.save(flush: true, failOnError: true)*/
-        render registro.estado.texto
+        def registro = Registro.findById(params.id as long)
+        def antes = registro.estado.texto
+        registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
+        /*registro.save(flush: true, failOnError: true)*/
+        render "Cambiando de " + antes + " a " + registro.estado.texto
     }
 }
