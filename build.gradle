@@ -10,7 +10,7 @@ buildscript {
     }
 }
 
-version "0.8"
+version "0.9"
 group "barcamprd"
 
 apply plugin:"eclipse"
@@ -72,6 +72,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jxls/jxls
     compile group: 'org.jxls', name: 'jxls', version: '2.4.6'
     runtime 'net.sourceforge.jexcelapi:jxl:2.6.12'
+
+    //QR
+    compile 'org.grails.plugins:qrcode:0.9'
 
 
 }
