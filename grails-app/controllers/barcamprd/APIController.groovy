@@ -9,7 +9,23 @@ class APIController {
     def index() { }
 
     def registros(){
-        render Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)) as JSON
+
+        def lista = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
+
+        println(lista)
+
+        def listMap = []
+
+        lista.each {
+            def map = [:]
+            map['id'] = it.id
+            map['nombre'] = it.nombre
+            map['cedula'] = it.cedula
+            map['size'] = it.sizeCamiseta
+            listMap.add(map)
+        }
+
+        render listMap as JSON
     }
 
     def consultarRegistro(){
