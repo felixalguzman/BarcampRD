@@ -15,10 +15,17 @@ class APIController {
     def consultarRegistro(){
         def registro = Registro.findById(params.id as long)
 
-        if (registro != null)
-            render registro as JSON
-        else
+        def map = [:]
+
+        if (registro != null){
+            map['id'] = registro.id
+            map['nombre'] = registro.nombre
+            map['cedula'] = registro.cedula
+            map['size'] = registro.sizeCamiseta
+            render map as JSON
+        } else{
             render 'Registro no disponible'
+        }
     }
 
     def confirmar(){
