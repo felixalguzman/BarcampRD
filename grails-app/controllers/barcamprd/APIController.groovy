@@ -6,8 +6,14 @@ import grails.plugin.springsecurity.annotation.Secured
 @Secured(['permitAll'])
 class APIController {
 
-    def index() { }
+    def index() {
+        render "API del FORM"
+    }
 
+    /**
+     * 
+     * @return
+     */
     def registros(){
         def lista = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
         def listMap = []
@@ -22,27 +28,44 @@ class APIController {
         render listMap as JSON
     }
 
-    def consultarRegistro(){
-        def registro = Registro.findById(params.id as long)
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    def consultarRegistro(long id){
+        println "......"
+        def registro = Registro.findById(id)
 
         def map = [:]
 
-        if (registro != null){
+        if (registro){
             map['id'] = registro.id
             map['nombre'] = registro.nombre
             map['cedula'] = registro.cedula
             map['size'] = registro.sizeCamiseta
             render map as JSON
         } else{
-            render 'Registro no disponible'
+            response.status = 400
+            render('Registro no existe')
         }
     }
 
-    def confirmar(){
-        def registro = Registro.findById(params.id as long)
-        def antes = registro.estado.texto
-        registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
-        /*registro.save(flush: true, failOnError: true)*/
-        render "Cambiando de " + antes + " a " + registro.estado.texto
+    /**
+     * 
+     * @param id
+     * @return
+     */
+    def confirmar(long id){
+        def registro = Registro.findById(id)
+        if(registro) {
+            def antes = registro.estado.texto
+            registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
+            /*registro.save(flush: true, failOnError: true)*/
+            render "Cambiando de " + antes + " a " + registro.estado.texto
+        } else{
+            response.status = 400
+            render('Registro no existe')
+        }
     }
 }
