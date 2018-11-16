@@ -8,8 +8,17 @@ import grails.plugin.springsecurity.annotation.Secured
 class AdminController {
 
     def index() {
+        def registros = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
+        def registrosFormatted = []
+        registros.each {
+            def lista = it.listaCharlas.sort{ it.id }
+            it.listaCharlas = lista
+            registrosFormatted.add(it)
+        }
+
         ['user'              : (User) applicationContext.springSecurityService.getCurrentUser(),
-         'registrosAprobados': Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)).size()]
+         'registrosAprobados': Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)).size(),
+         'registros'         : registrosFormatted]
     }
 
     def charlas() {

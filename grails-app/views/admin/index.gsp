@@ -119,7 +119,7 @@
                                     <th>Charlas Seleccionadas</th>
                                     </thead>
                                     <tbody>
-                                    <g:each in="${Registro.list()}" var="r">
+                                    <g:each in="${registros}" var="r">
                                         <tr>
                                             <td>${r.cedula}</td>
                                             <td>${r.nombre}</td>
