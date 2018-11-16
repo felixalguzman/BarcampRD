@@ -9,13 +9,8 @@ class APIController {
     def index() { }
 
     def registros(){
-
         def lista = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
-
-        println(lista)
-
         def listMap = []
-
         lista.each {
             def map = [:]
             map['id'] = it.id
@@ -24,7 +19,6 @@ class APIController {
             map['size'] = it.sizeCamiseta
             listMap.add(map)
         }
-
         render listMap as JSON
     }
 
