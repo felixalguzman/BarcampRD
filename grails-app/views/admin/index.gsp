@@ -117,7 +117,6 @@
                                     <th>Fecha de Registro</th>
                                     <th>Estado</th>
                                     <th>Charlas Seleccionadas</th>
-                                    <th>QR</th>
                                     </thead>
                                     <tbody>
                                     <g:each in="${Registro.list()}" var="r">
@@ -201,9 +200,6 @@
                                                 </div>
 
                                             </td>
-                                        </tr>
-                                        <tr>
-
                                         </tr>
                                     </g:each>
                                     </tbody>
