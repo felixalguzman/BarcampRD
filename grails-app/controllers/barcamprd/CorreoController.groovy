@@ -16,18 +16,19 @@ class CorreoController {
         def registros = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
 
             registros.each {
-                HttpResponse<String> salida = Unirest.get("http://localhost:8080/correo/?id=" + it.id).asString()
-                println "la salida: " + salida.body
-                String API_KEY = "7cc9b263021914c819d287b6ffc3bda8e90fd9d3";
-                Client client = new Client(API_KEY);
-                client.sendMessage(
-                        "logistica@barcamp.org.do",
-                        it.correo,
-                        "Información importante Barcamp 2018",
-                        "",
-                        salida.body)
-
-                sleep(3000)
+                if (it.id != 11){
+                    HttpResponse<String> salida = Unirest.get("http://localhost:8080/correo/?id=" + it.id).asString()
+                    println "la salida: " + salida.body
+                    String API_KEY = "7cc9b263021914c819d287b6ffc3bda8e90fd9d3";
+                    Client client = new Client(API_KEY);
+                    client.sendMessage(
+                            "logistica@barcamp.org.do",
+                            it.correo,
+                            "Información importante Barcamp 2018",
+                            "",
+                            salida.body)
+                    sleep(3000)
+                }
             }
 
     }
