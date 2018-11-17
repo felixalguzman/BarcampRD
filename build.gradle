@@ -75,6 +75,9 @@ dependencies {
     // https://mvnrepository.com/artifact/org.jxls/jxls
     compile group: 'org.jxls', name: 'jxls', version: '2.4.6'
     runtime 'net.sourceforge.jexcelapi:jxl:2.6.12'
+
+    //
+    compile('com.mashape.unirest:unirest-java:1.4.9')
 }
 
 bootRun {
