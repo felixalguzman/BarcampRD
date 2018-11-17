@@ -34,7 +34,7 @@ class CorreoController {
                 reg.save(flush: true, failOnSafe: true)
             }
         }
-
+        render 'Enviando...'
     }
 
     def index() {
