@@ -19,7 +19,7 @@
             <g:each in="${participante.listaCharlas}" var="charlas">
                 <h5>${charlas.tema}</h5>
             </g:each>
-            <img href="https://form.barcamp.org.do/correo/qr/?id=${participante.id}"> Ver QR</img>
+            <a href="https://form.barcamp.org.do/correo/qr/?id=${participante.id}"> Ver QR</a>
         </section>
 
 
