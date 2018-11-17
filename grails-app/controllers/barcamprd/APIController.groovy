@@ -61,7 +61,7 @@ class APIController {
         if(registro) {
             def antes = registro.estado.texto
             registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
-            /*registro.save(flush: true, failOnError: true)*/
+            registro.save(flush: true, failOnError: true)
             render "Cambiando de " + antes + " a " + registro.estado.texto
         } else{
             response.status = 400
