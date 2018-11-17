@@ -26,7 +26,10 @@ class CorreoController {
                         "Información importante Barcamp 2018",
                         "",
                         salida.body)
+
+                sleep(5000)
             }
+
     }
 
     def index() {
