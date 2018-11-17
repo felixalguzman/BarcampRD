@@ -27,7 +27,7 @@ class CorreoController {
                         "",
                         salida.body)
 
-                sleep(5000)
+                sleep(3000)
             }
 
     }
