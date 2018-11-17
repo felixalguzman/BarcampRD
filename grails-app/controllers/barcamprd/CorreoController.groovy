@@ -14,6 +14,7 @@ class CorreoController {
     def proceso() throws SparkPostException {
 
         //String salida = g.render(view: "index", model: model)
+        //HttpResponse<String> salida =  Unirest.get("https://form.barcamp.org.do/correo/").asString()
         HttpResponse<String> salida =  Unirest.get("http://localhost:8080/correo/").asString()
         println "la salida: "+salida.body
         String API_KEY = "7cc9b263021914c819d287b6ffc3bda8e90fd9d3";
@@ -30,5 +31,10 @@ class CorreoController {
     def index(){
         def lista = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
         [participantes : Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))]
+    }
+
+    def qr(){
+        println(params.id)
+        ['participante': Registro.findById(params.id as long)]
     }
 }

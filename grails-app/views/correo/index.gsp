@@ -19,7 +19,7 @@
             <g:each in="${participantes.get(0).listaCharlas}" var="charlas">
                 <h5>${charlas.tema}</h5>
             </g:each>
-            <qrcode:image height="150" width="150" text="${participantes.get(0).id};${participantes.get(0).nombre};${participantes.get(0).cedula};${participantes.get(0).sizeCamiseta}"/>
+            <a href="https://form.barcamp.org.do/correo/qr/?id=${participantes.get(0).id}"> Ver QR</a>
         </section>
 
 
