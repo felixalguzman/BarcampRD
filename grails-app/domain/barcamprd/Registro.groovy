@@ -7,7 +7,8 @@ class Registro {
     String correo
     String sizeCamiseta
     EstadoRegistro estado
-    boolean correoEnviado = false
+    boolean correoConfirmacionEnviado = false
+    boolean correoEncuestaEnviado = false
 
     static hasMany = [listaCharlas : Charla]
 
