@@ -21,14 +21,14 @@
 </head>
 <body>
 <div class="image-container set-full-height"
-     style="background-image: url('${resource(dir: "images/", file: "Otra.png")}')">
+     style="background-image: url('${resource(dir: "images/", file: "jconf fondo.png")}');">
 
     <!--  Made With Material Kit  -->
-    <a href="https://barcamp.org.do" class="made-with-mk">
-        <div class="brand">BC</div>
+%{--    <a href="https://barcamp.org.do" class="made-with-mk">--}%
+%{--        <div class="brand">BC</div>--}%
 
-        <div class="made-with">Barcamp <strong>RD</strong></div>
-    </a>
+%{--        <div class="made-with">Barcamp <strong>RD</strong></div>--}%
+%{--    </a>--}%
 
     <!--   Big container   -->
     <div class="container">
@@ -43,8 +43,8 @@
                                     REGISTRO COMPLETADO!
                                 </h3>
                             </div>
-                            <h5 class="info-text">Nos vemos este próximo 17 de Noviembre!</h5>
-                            <p class="info-text"><a href="https://barcamp.org.do/" class="btn btn-success">PÁGINA OFICIAL DEL BARCAMP RD</a></p>
+                            <h5 class="info-text">Nos vemos este próximo 29 de Junio!</h5>
+                            <p class="info-text"><a href="https://jconfdominicana.org" class="btn btn-success">PÁGINA OFICIAL DE JCONF DOMINICANA</a></p>
                         </g:if>
                         <g:else>
                             <div class="wizard-header">
