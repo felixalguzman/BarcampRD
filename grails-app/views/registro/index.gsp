@@ -248,7 +248,7 @@
                                     </h3>
                                 </div>
 
-                                <p class="info-text"><a href="https://barcamp.org.do/"
+                                <p class="info-text"><a href="https://jconfdominicana.org"
                                                         class="btn btn-success">PÁGINA OFICIAL</a></p>
                             </g:else>
                         </g:form>
