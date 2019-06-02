@@ -33,7 +33,7 @@
             <a href="https://jconfdominicana.org" class="simple-text logo-normal">
                 <div class="logo">
                     <img style="margin-top: -50px; width: 250px; height: 125px;"
-                         src="${resource(dir: "images/", file: "barcamp.png")}">
+                         src="${resource(dir: "images/", file: "jconfLogoPeq.png")}" width="200">
                 </div>
 
                 <div class="brand" style="margin-bottom: -10px; margin-top: 10px;">

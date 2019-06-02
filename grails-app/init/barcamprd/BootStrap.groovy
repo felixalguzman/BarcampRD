@@ -10,8 +10,10 @@ class BootStrap {
 
         def adminRole = Role.findOrSaveWhere(authority: 'ROLE_ADMIN')
 //        def userRole = Role.findOrSaveWhere(authority: 'ROLE_ADMIN')
-        def admin = User.findOrSaveWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
+//        def admin = User.findOrSaveWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
         def confirmar = Confirmar.findOrSaveWhere(confirmar: false)
+
+//        admin.save(flush: true, failOnError: true)
 
         def a1 = Aula.findOrSaveWhere(numero: 21, cantidadPersonas: 60)
         def a2 = Aula.findOrSaveWhere(numero: 22, cantidadPersonas: 60)
@@ -52,7 +54,6 @@ class BootStrap {
         Charla.findOrSaveWhere(charlista: "Aluis Marte", tema: "\"Paralelismo en java para todos\" ", horario: h5, aula: a3)
 
 
-
 //        Charla.findOrSaveWhere(charlista: "Luis Contreras", tema: "Una imagen vale mas mil palabras", horario: h1, aula: a1)
 //        Charla.findOrSaveWhere(charlista: "Clivens Petit", tema: "Desarrollar Lenguajes DSL(Domain Specific Language) con Antlr", horario: h1, aula: a2)
 //        Charla.findOrSaveWhere(charlista: "Eudris Cabrera", tema: "Desarrollo de aplicaciones orientada a la nube con Java EE 8 / Jakarta EE y Microprofile", horario: h1, aula: a3)
@@ -88,10 +89,10 @@ class BootStrap {
 
         def userRole = Role.findOrSaveWhere(authority: 'ROLE_ADMIN')
         def user = User.findOrSaveWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
-//        userRole.save(flush: true, failOnError: true)
-//        if (!user.getAuthorities().contains(userRole)) {
-//            UserRole.create(user, userRole, true)
-//        }
+        user.save(flush: true, failOnError: true)
+        if (!user.getAuthorities().contains(userRole)) {
+            UserRole.create(user, userRole, true)
+        }
 
     }
     def destroy = {
