@@ -69,4 +69,8 @@ class APIController {
         }
     }
 
+    def charlas(){
+        def charlas = Charla.findAll()
+        render charlas as JSON
+    }
 }

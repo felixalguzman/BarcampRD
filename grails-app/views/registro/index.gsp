@@ -16,6 +16,7 @@
 
     <!-- CSS Files -->
     <asset:stylesheet src="bootstrap.min.css"/>
+    <asset:stylesheet src="custom.css"/>
     <asset:stylesheet src="material-bootstrap-wizard.css"/>
     <style>
     input::-webkit-outer-spin-button,
@@ -29,7 +30,7 @@
 
 <body>
 <div class="image-container set-full-height"
-     style="background-image: url('${resource(dir: "images/", file: "Otra.png")}');">
+     style="background-image: url('${resource(dir: "images/", file: "jconf fondo.png")}');">
     <!--   Creative Tim Branding   -->
     <a href="http://creative-tim.com">
         <div class="logo-container">
@@ -43,11 +44,11 @@
     </a>
 
     <!--  Made With Material Kit  -->
-    <a href="https://barcamp.org.do" class="made-with-mk">
-        <div class="brand">BC</div>
+%{--    <a href="https://barcamp.org.do" class="made-with-mk">--}%
+%{--        <div class="brand">BC</div>--}%
 
-        <div class="made-with">Barcamp <strong>RD</strong></div>
-    </a>
+%{--        <div class="made-with">Barcamp <strong>RD</strong></div>--}%
+%{--    </a>--}%
 
     <!--   Big container   -->
     <div class="container">
@@ -55,7 +56,7 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <!--      Wizard container        -->
                 <div class="wizard-container">
-                    <div class="card wizard-card" data-color="red" id="wizard">
+                    <div class="card wizard-card" data-color="navy" id="wizard">
                         <g:form action="registrar" method="get">
                             <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
 
@@ -214,7 +215,7 @@
 
                                 <div class="wizard-footer">
                                     <div class="pull-right">
-                                        <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next'
+                                        <input type='button' class='btn btn-next btn-fill btn-navy btn-wd' name='next'
                                                value='Siguiente'/>
                                         %{--<input id='btn-submit' type='submit'
                                                class='btn btn-finish btn-fill btn-danger btn-wd' name='finish'
@@ -260,7 +261,7 @@
     <div class="footer">
         <div style="color: black" class="container text-center">
             Evento organizado con <i class="fa fa-heart heart"></i>
-            por el Comité de Estudiantes de Ingeniería de Sistemas y Computación, PUCMM, Santiago.
+            por el Comité de Estudiantes de Ingeniería de Sistemas y el equipo de Java Dominicano.
         </div>
     </div>
 </div>
