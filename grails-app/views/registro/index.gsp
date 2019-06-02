@@ -91,7 +91,7 @@
 
                                                     <div class="form-group label-floating">
                                                         <label id="cedula-label"
-                                                               class="control-label">No. de Identificación</label>
+                                                               class="control-label">No. de registro asignado</label>
                                                         <input id="cedula" name="cedula" class="form-control" required>
                                                     </div>
                                                 </div>

@@ -9,11 +9,11 @@ class BootStrap {
     def init = { servletContext ->
 
         def adminRole = Role.findOrSaveWhere(authority: 'ROLE_ADMIN')
-        def userRole = Role.findOrSaveWhere(authority: 'ROLE_USER')
+//        def userRole = Role.findOrSaveWhere(authority: 'ROLE_ADMIN')
         def admin = User.findOrSaveWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
         def confirmar = Confirmar.findOrSaveWhere(confirmar: false)
 
-        /*def a1 = Aula.findOrSaveWhere(numero: 21, cantidadPersonas: 60)
+        def a1 = Aula.findOrSaveWhere(numero: 21, cantidadPersonas: 60)
         def a2 = Aula.findOrSaveWhere(numero: 22, cantidadPersonas: 60)
         def a3 = Aula.findOrSaveWhere(numero: 23, cantidadPersonas: 60)
         def a4 = Aula.findOrSaveWhere(numero: 24, cantidadPersonas: 60)
@@ -63,7 +63,7 @@ class BootStrap {
 
         if (!user.getAuthorities().contains(userRole)){
             UserRole.create(user, userRole, true)
-        }*/
+        }
 
     }
     def destroy = {

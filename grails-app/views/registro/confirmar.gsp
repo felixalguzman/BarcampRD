@@ -63,7 +63,7 @@
     <div class="footer">
         <div style="color: black" class="container text-center">
             Evento organizado con <i class="fa fa-heart heart"></i>
-            por el Comité de Estudiantes de Ingeniería de Sistemas y Computación, PUCMM, Santiago.
+            por el Comité de Estudiantes de Ingeniería de Sistemas y el equipo de Java Dominicano.
         </div>
     </div>
 </div>
