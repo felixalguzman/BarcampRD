@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Registro Barcamp RD 2018</title>
+    <title>Registro JconfDominicana</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    <asset:link rel="icon" href="LogoRojo.png" type="image/x-ico"/>
+    <asset:link rel="icon" href="favicon-32x32.png" type="image/x-ico"/>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
@@ -62,7 +62,7 @@
 
                             <div class="wizard-header">
                                 <h3 class="wizard-title">
-                                    Registro al Barcamp RD
+                                    Registro para JconfDominicana
                                 </h3>
                                 <h5>¡¿A cuáles conferencias quieres asistir?!</h5>
                             </div>
