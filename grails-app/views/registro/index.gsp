@@ -64,15 +64,15 @@
                                 <h3 class="wizard-title">
                                     Registro al Barcamp RD
                                 </h3>
-                                <h5>A cuáles desconferencias quieres asistir?!</h5>
+                                <h5>¡¿A cuáles conferencias quieres asistir?!</h5>
                             </div>
 
                             <g:if test="${ok}">
                                 <div class="wizard-navigation">
                                     <ul>
                                         <li><a href="#datos-personales" data-toggle="tab">Datos Personales</a></li>
-                                        <li><a href="#charlas" data-toggle="tab">Desconferencias</a></li>
-                                        <li><a href="#charlas2" data-toggle="tab">Desconferencias</a></li>
+                                        <li><a href="#charlas" data-toggle="tab">Conferencias</a></li>
+                                        <li><a href="#charlas2" data-toggle="tab">Conferencias</a></li>
                                         <li><a href="#fin" data-toggle="tab">Fin</a></li>
                                     </ul>
                                 </div>
@@ -316,7 +316,7 @@
                     $("#cedula-label").css('color', 'red');
                     okCedula = false;
                 } else {
-                    $("#cedula-label").text('Cédula');
+                    $("#cedula-label").text('No. de registro asignado');
                     $("#cedula-label").css('color', '');
                     okCedula = true;
                 }
