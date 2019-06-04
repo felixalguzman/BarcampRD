@@ -33,25 +33,25 @@ class BootStrap {
         def h4 = Horario.findOrSaveWhere(value: "5:00 p.m - 6:00 p.m")
         def h5 = Horario.findOrSaveWhere(value: "6:00 p.m - 7:00 p.m")
 
-        Charla.findOrSaveWhere(charlista: "Mercedes Wyss", tema: "Modern Identity Management", horario: h1, aula: a1)
-        Charla.findOrSaveWhere(charlista: "Stacey Jenkins", tema: "Empowering Soft Skills ", horario: h1, aula: a2)
-        Charla.findOrSaveWhere(charlista: "Carlos Camacho", tema: "", horario: h1, aula: a3)
+        Charla.findOrSaveWhere(charlista: "Mercedes Wyss", tema: "(ES) Modern Identity Management", horario: h1, aula: a1)
+        Charla.findOrSaveWhere(charlista: "Sebastian Daschner", tema: "(EN) Cloud Native, Service-Meshed Java Enterprise With Istio", horario: h1, aula: a2)
+        Charla.findOrSaveWhere(charlista: "Eliezer Herrera", tema: "(ES) Plataformas, herramientas y librerías políglotas en plataformas Java", horario: h1, aula: a3)
 
-        Charla.findOrSaveWhere(charlista: "Carlos Paulino", tema: "Continuous Integration", horario: h2, aula: a1)
-        Charla.findOrSaveWhere(charlista: "Mark Heckler", tema: "", horario: h2, aula: a2)
-        Charla.findOrSaveWhere(charlista: "Hilmer Chona", tema: "Dockerizing", horario: h2, aula: a3)
+        Charla.findOrSaveWhere(charlista: "Carlos Paulino", tema: "(ES) Build, Test, Ship, Repeat: Effective testing and delivery using Continuous Integration", horario: h2, aula: a1)
+        Charla.findOrSaveWhere(charlista: "Mark Heckler", tema: "(ES) Bebiendo del Stream: Como usar las plataformas de mensajería para escalamiento y rendimiento", horario: h2, aula: a2)
+        Charla.findOrSaveWhere(charlista: "Carlos Camacho", tema: "", horario: h2, aula: a3)
 
-        Charla.findOrSaveWhere(charlista: "Omar Berroterán", tema: "GraphQL", horario: h3, aula: a1)
-        Charla.findOrSaveWhere(charlista: "Ukrania", tema: "", horario: h3, aula: a2)
+        Charla.findOrSaveWhere(charlista: "Omar Berroterán", tema: "(ES) GraphQL: Creando un webservice rapidamente sin multiples endpoints", horario: h3, aula: a1)
+        Charla.findOrSaveWhere(charlista: "Oleh Dokuka", tema: "RSocket - new Reactive cross-network Protocol", horario: h3, aula: a2)
         Charla.findOrSaveWhere(charlista: "Eudris Cabrera", tema: "", horario: h3, aula: a3)
 
-        Charla.findOrSaveWhere(charlista: "Miguel Useche", tema: "WebAssembly", horario: h4, aula: a1)
-        Charla.findOrSaveWhere(charlista: "Grzegorz Piwowarek", tema: "The Dark Side of Java ", horario: h4, aula: a2)
-        Charla.findOrSaveWhere(charlista: "", tema: "", horario: h4, aula: a3)
+        Charla.findOrSaveWhere(charlista: "Miguel Useche", tema: "(ES) Java is back to the browser thanks to WebAssembly!", horario: h4, aula: a1)
+        Charla.findOrSaveWhere(charlista: "Josh Long", tema: "(EN) The Bootiful Application", horario: h4, aula: a2)
+        Charla.findOrSaveWhere(charlista: "Aluis Marte", tema: "(ES) Paralelismo en java para todos", horario: h4, aula: a3)
 
-        Charla.findOrSaveWhere(charlista: "Eury Perez", tema: "Kotlin's", horario: h5, aula: a1)
-        Charla.findOrSaveWhere(charlista: "United Kingdom", tema: "", horario: h5, aula: a2)
-        Charla.findOrSaveWhere(charlista: "Aluis Marte", tema: "\"Paralelismo en java para todos\" ", horario: h5, aula: a3)
+        Charla.findOrSaveWhere(charlista: "Eury Perez", tema: "(ES) Unleashing Kotlin's power: A talk for Java developers", horario: h5, aula: a1)
+        Charla.findOrSaveWhere(charlista: "Igor Suhorukov", tema: "(EN) Continuous code quality in java projects", horario: h5, aula: a2)
+        Charla.findOrSaveWhere(charlista: "Hilmer Chona", tema: "(ES) Unleashing Kotlin's power: A talk for Java developers", horario: h5, aula: a3)
 
 
 //        Charla.findOrSaveWhere(charlista: "Luis Contreras", tema: "Una imagen vale mas mil palabras", horario: h1, aula: a1)
