@@ -4,6 +4,7 @@ class Charla {
 
     String charlista
     String tema
+    String descripcionCharla
     Aula aula
     Horario horario
     boolean llena = false
@@ -13,6 +14,11 @@ class Charla {
     Date lastUpdated;
 
     static constraints = {
+        descripcionCharla nullable: true
         tema unique: true
+    }
+
+    static mapping = {
+        descripcionCharla type: "text"
     }
 }

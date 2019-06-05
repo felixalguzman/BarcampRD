@@ -44,11 +44,11 @@
     </a>
 
     <!--  Made With Material Kit  -->
-%{--    <a href="https://barcamp.org.do" class="made-with-mk">--}%
-%{--        <div class="brand">BC</div>--}%
+    %{--    <a href="https://barcamp.org.do" class="made-with-mk">--}%
+    %{--        <div class="brand">BC</div>--}%
 
-%{--        <div class="made-with">Barcamp <strong>RD</strong></div>--}%
-%{--    </a>--}%
+    %{--        <div class="made-with">Barcamp <strong>RD</strong></div>--}%
+    %{--    </a>--}%
 
     <!--   Big container   -->
     <div class="container">
@@ -167,7 +167,34 @@
                                                                            test="${s.llena}">style="color: red;" disabled</g:if>
                                                                    required> <g:if
                                                                 test="${s.llena}"><strike>${s.tema}</strike></g:if>
-                                                            <g:else>${s.tema}</g:else><br>
+                                                            <g:else>
+
+                                                                ${s.charlista} - ${s.tema}
+
+                                                                <g:if test="${s.descripcionCharla != null}">
+
+                                                                    <br>
+
+                                                                    <div class="col-sm-10">
+                                                                        <a style="color: black" data-toggle="collapse"
+                                                                           data-target="#${s.id}"
+                                                                           aria-expanded="true"
+                                                                           aria-controls="collapseOne">
+                                                                            Descripci&oacute;n <i
+                                                                                class="fa fa-caret-down"></i>
+                                                                        </a>
+
+                                                                        <div class="form-group label-floating">
+
+                                                                            %{--                                                                        <label class="control-label" ></label>--}%
+                                                                            <p id="${s.id}"
+                                                                               class="collapse description">${s?.descripcionCharla}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </g:if>
+
+                                                            </g:else><br>
                                                         </fieldset>
                                                     </g:each>
                                                 </g:each>
@@ -190,7 +217,34 @@
                                                                    <g:if test="${s.llena}">disabled</g:if>
                                                                    required> <g:if
                                                                 test="${s.llena}"><strike>${s.tema}</strike></g:if>
-                                                            <g:else>${s.tema}</g:else><br>
+                                                            <g:else>
+
+                                                                ${s.charlista} - ${s.tema}
+
+                                                                <g:if test="${s.descripcionCharla != null}">
+
+                                                                    <br>
+
+                                                                    <div class="col-sm-10">
+                                                                        <a style="color: black" data-toggle="collapse"
+                                                                           data-target="#${s.id}"
+                                                                           aria-expanded="true"
+                                                                           aria-controls="collapseOne">
+                                                                            Descripci&oacute;n <i
+                                                                                class="fa fa-caret-down"></i>
+                                                                        </a>
+
+                                                                        <div class="form-group label-floating">
+
+                                                                            %{--                                                                        <label class="control-label" ></label>--}%
+                                                                            <p id="${s.id}"
+                                                                               class="collapse description">${s?.descripcionCharla}</p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </g:if>
+
+                                                            </g:else><br>
                                                         </fieldset>
                                                     </g:each>
                                                 </g:each>
@@ -205,7 +259,7 @@
                                             <h3 class="info-text">Antes de enviar el formulario, por favor revisar de nuevo la información ingresada!</h3>
 
                                             <p class="info-text"><input id='btn-submit' type='submit'
-                                                                        class='btn btn-finish btn-fill btn-danger btn-wd'
+                                                                        class='btn btn-finish btn-fill btn-rojo btn-wd'
                                                                         name='finish'
                                                                         value='Enviar Formulario'/></p>
 
@@ -350,6 +404,7 @@
             alert('No se ha podido registrar su entrada, revise los datos ingresados.');
             e.preventDefault();
         }
-    })
+    });
+
 </script>
 </html>
