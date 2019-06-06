@@ -93,7 +93,9 @@
                                                     <div class="form-group label-floating">
                                                         <label id="cedula-label"
                                                                class="control-label">No. de registro asignado</label>
-                                                        <input id="cedula" name="cedula" class="form-control" required>
+                                                        <input id="cedula" name="cedula" class="form-control"
+                                                               pattern="[0-9]{5}" type="number"
+                                                               onkeyup="validarForm();" required>
                                                     </div>
                                                 </div>
 
@@ -104,7 +106,8 @@
 
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Nombre</label>
-                                                        <input name="nombre" type="text" class="form-control" required>
+                                                        <input name="nombre" type="text" class="form-control"
+                                                               onkeyup="validarForm();" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -120,6 +123,7 @@
                                                         <label id="correo-label"
                                                                class="control-label">Correo Electrónico</label>
                                                         <input id="email" name="email" type="text" class="form-control"
+                                                               onkeyup="validarForm();"
                                                                required>
                                                     </div>
                                                 </div>
@@ -135,7 +139,8 @@
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Size de Camiseta</label>
                                                         <fieldset>
-                                                            <input type="radio" name="size" value="S" required> S
+                                                            <input type="radio" name="size" value="S" required
+                                                                   onchange="validarForm()"> S
                                                             <input type="radio" name="size" style="margin-left: 20px;"
                                                                    value="M"> M
                                                             <input type="radio" name="size" style="margin-left: 20px;"
@@ -269,7 +274,9 @@
 
                                 <div class="wizard-footer">
                                     <div class="pull-right">
-                                        <input type='button' class='btn btn-next btn-fill btn-navy btn-wd' name='next'
+                                        <input type='button' id="primerSiguiente"
+                                               class='btn btn-next btn-fill btn-navy btn-wd' name='next'
+                                               disabled="disabled"
                                                value='Siguiente'/>
                                         %{--<input id='btn-submit' type='submit'
                                                class='btn btn-finish btn-fill btn-danger btn-wd' name='finish'
@@ -359,43 +366,85 @@
     var okCedula = false;
     var okCorreo = false;
 
+
     $("#cedula").on('change', function (e) {
         var cedula = $("#cedula").val();
-        $.ajax({
-            url: "registro/verificarCedula/",
-            data: {data: cedula},
-            success: function (data) {
-                if (data === 'true') {
-                    $("#cedula-label").text('* Ya existe un registro con esta cédula!');
-                    $("#cedula-label").css('color', 'red');
-                    okCedula = false;
-                } else {
-                    $("#cedula-label").text('No. de registro asignado');
-                    $("#cedula-label").css('color', '');
-                    okCedula = true;
+
+        // if (Number.isInteger(cedula) === true) {
+
+            $.ajax({
+                url: "registro/verificarCedula/",
+                data: {data: cedula},
+                success: function (data) {
+                    if (data === 'true') {
+                        $("#cedula-label").text('* Ya existe un registro con este número!');
+                        $("#cedula-label").css('color', 'red');
+                        okCedula = false;
+                    } else {
+                        $("#cedula-label").text('No. de registro asignado');
+                        $("#cedula-label").css('color', '');
+                        okCedula = true;
+                    }
                 }
-            }
-        });
+            });
+
+        // }
+
+
     });
 
-    $("#email").on('change', function (e) {
-        var correo = $("#email").val();
-        $.ajax({
-            url: "registro/verificarCorreo/",
-            data: {data: correo},
-            success: function (data) {
-                if (data === 'true') {
-                    $("#correo-label").text('* Ya existe un registro con este correo!');
-                    $("#correo-label").css('color', 'red');
-                    okCorreo = false;
-                } else {
-                    $("#correo-label").text('Correo Electrónico');
-                    $("#correo-label").css('color', '');
-                    okCorreo = true;
-                }
-            }
-        });
+    //called when key is pressed in textbox
+    $("#cedula").keypress(function (e) {
+        //if the letter is not digit then display error and don't type anything
+        if (e.which !== 8 && e.which !== 0 && (e.which < 48 || e.which > 57)) {
+            //display error message
+            // $("#errmsg").html("Digits Only").show().fadeOut("slow");
+            return false;
+        }
     });
+
+
+    $('#email').bind('input propertychange', function () {
+        var correo = $("#email").val();
+
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(correo) && correo.length > 0) {
+
+            $.ajax({
+                url: "registro/verificarCorreo/",
+                data: {data: correo},
+                success: function (data) {
+                    if (data === 'true') {
+                        $("#correo-label").text('* Ya existe un registro con este correo!');
+                        $("#correo-label").css('color', 'red');
+                        okCorreo = false;
+                        $("#email").prop('required', true);
+
+                    } else {
+                        $("#correo-label").text('Correo Electrónico');
+                        $("#correo-label").css('color', '');
+                        okCorreo = true;
+                    }
+                }
+            });
+        } else {
+            $("#correo-label").text('* Correo no válido!');
+            $("#correo-label").css('color', 'red');
+            okCorreo = false;
+
+            $("#email").prop('required', true);
+        }
+
+
+    });
+
+    function validarForm() {
+
+        console.log("validando form: ", 'correo: ' + okCorreo, 'cedula: ' + okCedula);
+
+        document.getElementById('primerSiguiente').disabled = !(okCorreo === true && okCedula === true);
+
+    }
+
 
     $("#btn-submit").on('click', function (e) {
         if (okCedula && okCorreo) {
