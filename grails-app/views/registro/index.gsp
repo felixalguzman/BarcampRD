@@ -95,7 +95,7 @@
                                                                class="control-label">No. de registro asignado</label>
                                                         <input id="cedula" name="cedula" class="form-control"
                                                                pattern="[0-9]{5}" type="number"
-                                                               onkeyup="validarForm();" required>
+                                                               required>
                                                     </div>
                                                 </div>
 
@@ -182,7 +182,7 @@
 
                                                                     <div class="col-sm-10">
                                                                         <a style="color: black" data-toggle="collapse"
-                                                                           data-target="#${s.id}"
+                                                                          onclick="toggle(${s.id})"
                                                                            aria-expanded="true"
                                                                            aria-controls="collapseOne">
                                                                             Descripci&oacute;n <i
@@ -192,8 +192,8 @@
                                                                         <div class="form-group label-floating">
 
                                                                             %{--                                                                        <label class="control-label" ></label>--}%
-                                                                            <p id="${s.id}"
-                                                                               class="collapse description">${s?.descripcionCharla}</p>
+                                                                            <p id="${s.id}" style="display: none"
+                                                                               class="description">${s?.descripcionCharla}</p>
                                                                         </div>
                                                                     </div>
 
@@ -372,35 +372,25 @@
 
         // if (Number.isInteger(cedula) === true) {
 
-            $.ajax({
-                url: "registro/verificarCedula/",
-                data: {data: cedula},
-                success: function (data) {
-                    if (data === 'true') {
-                        $("#cedula-label").text('* Ya existe un registro con este número!');
-                        $("#cedula-label").css('color', 'red');
-                        okCedula = false;
-                    } else {
-                        $("#cedula-label").text('No. de registro asignado');
-                        $("#cedula-label").css('color', '');
-                        okCedula = true;
-                    }
+        $.ajax({
+            url: "registro/verificarCedula/",
+            data: {data: cedula},
+            success: function (data) {
+                if (data === 'true') {
+                    $("#cedula-label").text('* Ya existe un registro con este número!');
+                    $("#cedula-label").css('color', 'red');
+                    okCedula = false;
+                } else {
+                    $("#cedula-label").text('No. de registro asignado');
+                    $("#cedula-label").css('color', '');
+                    okCedula = true;
                 }
-            });
+            }
+        });
 
         // }
 
 
-    });
-
-    //called when key is pressed in textbox
-    $("#cedula").keypress(function (e) {
-        //if the letter is not digit then display error and don't type anything
-        if (e.which !== 8 && e.which !== 0 && (e.which < 48 || e.which > 57)) {
-            //display error message
-            // $("#errmsg").html("Digits Only").show().fadeOut("slow");
-            return false;
-        }
     });
 
 
@@ -443,6 +433,15 @@
 
         document.getElementById('primerSiguiente').disabled = !(okCorreo === true && okCedula === true);
 
+    }
+
+    function toggle(id) {
+        var x = document.getElementById(id);
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
     }
 
 
