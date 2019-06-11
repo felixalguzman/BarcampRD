@@ -86,14 +86,14 @@ class BootStrap {
         EstadoRegistro.findOrSaveWhere(numero: 1001, texto: 'APROBADO')
         EstadoRegistro.findOrSaveWhere(numero: 1002, texto: 'CONFIRMADO')
 
-        def userRole = Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
-        def user = User.findOrCreateWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
+//        def userRole = Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
+//        def user = User.findOrCreateWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
 //        if(user == null){
-            user.save(flush: true, failOnError: true)
+//            user.save(flush: true, failOnError: true)
 //        }
-        if (!user.getAuthorities().contains(userRole)) {
-            UserRole.create(user, userRole, true)
-        }
+//        if (!user.getAuthorities().contains(userRole)) {
+//            UserRole.create(user, userRole, true)
+//        }
 
     }
     def destroy = {
