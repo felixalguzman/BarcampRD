@@ -88,12 +88,12 @@ class BootStrap {
 
         def userRole = Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
         def user = User.findOrCreateWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
-        if(user == null){
-            user.save(flush: true, failOnError: true)
-        }
-        if (!user.getAuthorities().contains(userRole)) {
-            UserRole.create(user, userRole, true)
-        }
+//        if(user == null){
+//            user.save(flush: true, failOnError: true)
+//        }
+//        if (!user.getAuthorities().contains(userRole)) {
+//            UserRole.create(user, userRole, true)
+//        }
 
     }
     def destroy = {
