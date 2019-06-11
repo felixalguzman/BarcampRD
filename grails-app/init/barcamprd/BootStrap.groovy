@@ -49,7 +49,7 @@ class BootStrap {
         Charla.findOrSaveWhere(charlista: "Eudris Cabrera", tema: "(ES) Pruebas de integración para servicios Rest usando Rest Assured", horario: h3, aula: a4, descripcionCharla: "El objetivo de ésta sección es mostrar como realizar pruebas integrales sobre los puntos finales (endpoints) de los servicios REST utilizando Assured, una librería Java para la validación de servicios REST.")
 
         Charla.findOrSaveWhere(charlista: "Miguel Useche", tema: "(ES) Java is back to the browser thanks to WebAssembly!", horario: h4, aula: a1, descripcionCharla: "In the past it was very popular to run Java code inside browsers trough Java Applets, but it lost popularity in the past decade.But now thanks to WebAssembly (a way to run other languages besides JS on the browser) it's possible to run your Java app in the browser again. Learn who you can do it!")
-        Charla.findOrSaveWhere(charlista: "Chris Phillips", tema: "(EN) Turning External Services to Internal APIs", horario: h4, aula: a2, descripcionCharla: "How do you control the cost for your 3rd party Service? How do you track usage? How do you stop unauthorised users? How do you quickly migrate from one provider to another? This session will answer the questions above and show how an internal API Gateway can work with your external dependencies")
+        Charla.findOrSaveWhere(charlista: "Sebastian Daschner", tema: "(EN) Cloud Native, Service-Meshed Java Enterprise With Istio", horario: h4, aula: a2, descripcionCharla: "This sessions shows how to implement service-meshed applications using Java EE 8 and MicroProfile. We will develop a mesh of microservices, managed by Kubernetes and Istio")
         Charla.findOrSaveWhere(charlista: "Eury Perez", tema: "(ES) Unleashing Kotlin's power: A talk for Java developers", horario: h4, aula: a3, descripcionCharla: "Kotlin is the most trending topic for JVM-related professionals, because of the functional fever and all it has to offer. As per my experience Java devs don't take advantage of it fully, because it's not only about learning a new syntax, but changing the mindset. This talk is aimed to solve that")
         Charla.findOrSaveWhere(charlista: "Aluis Marte", tema: "(ES) Paralelismo en java para todos", horario: h4, aula: a4, descripcionCharla: "Tienes problemas a la hora de programar en paralelo? no sabes como usar de forma eficiente tu CPU? tienes tareas complejas que tardan mucho, pero no sabes como atacarlas? Programas en paralelo, pero te consumes la maquina sin pensar en los demás procesos?")
 
@@ -88,12 +88,12 @@ class BootStrap {
 
         def userRole = Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
         def user = User.findOrCreateWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
-//        if(user == null){
-//            user.save(flush: true, failOnError: true)
-//        }
-//        if (!user.getAuthorities().contains(userRole)) {
-//            UserRole.create(user, userRole, true)
-//        }
+        if(user == null){
+            user.save(flush: true, failOnError: true)
+        }
+        if (!user.getAuthorities().contains(userRole)) {
+            UserRole.create(user, userRole, true)
+        }
 
     }
     def destroy = {
