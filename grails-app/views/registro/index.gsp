@@ -107,7 +107,7 @@
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Nombre</label>
                                                         <input name="nombre" type="text" class="form-control"
-                                                               onkeyup="validarForm();" required>
+                                                              required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -122,8 +122,7 @@
                                                     <div class="form-group label-floating">
                                                         <label id="correo-label"
                                                                class="control-label">Correo Electrónico</label>
-                                                        <input id="email" name="email" type="text" class="form-control"
-                                                               onkeyup="validarForm();"
+                                                        <input id="email" name="email" type="email" class="form-control"
                                                                required>
                                                     </div>
                                                 </div>
@@ -139,8 +138,7 @@
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Size de Camiseta</label>
                                                         <fieldset>
-                                                            <input type="radio" name="size" value="S" required
-                                                                   onchange="validarForm()"> S
+                                                            <input type="radio" name="size" value="S" required> S
                                                             <input type="radio" name="size" style="margin-left: 20px;"
                                                                    value="M"> M
                                                             <input type="radio" name="size" style="margin-left: 20px;"
@@ -276,7 +274,7 @@
                                     <div class="pull-right">
                                         <input type='button' id="primerSiguiente"
                                                class='btn btn-next btn-fill btn-navy btn-wd' name='next'
-                                               disabled="disabled"
+
                                                value='Siguiente'/>
                                         %{--<input id='btn-submit' type='submit'
                                                class='btn btn-finish btn-fill btn-danger btn-wd' name='finish'
@@ -397,8 +395,6 @@
     $('#email').bind('input propertychange', function () {
         var correo = $("#email").val();
 
-        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(correo) && correo.length > 0) {
-
             $.ajax({
                 url: "registro/verificarCorreo/",
                 data: {data: correo},
@@ -416,13 +412,7 @@
                     }
                 }
             });
-        } else {
-            $("#correo-label").text('* Correo no válido!');
-            $("#correo-label").css('color', 'red');
-            okCorreo = false;
 
-            $("#email").prop('required', true);
-        }
 
 
     });
