@@ -83,6 +83,20 @@ class APIController {
         }
     }
 
+    def registroUsuarioByNumero(String  numeroRegistro) {
+        def registro = Registro.findByCedula(numeroRegistro)
+        if (registro) {
+            def map = [:]
+            map['nombre'] = registro.nombre
+            map['correo'] = registro.correo
+            map['charlas'] = registro.listaCharlas
+            render map as JSON
+        } else {
+            response.status = 404
+            render "Registro no encontrado"
+        }
+    }
+
     def charlas() {
         def charlas = Charla.findAll()
         render charlas as JSON
