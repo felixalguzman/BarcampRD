@@ -98,7 +98,20 @@ class APIController {
     }
 
     def charlas() {
+
         def charlas = Charla.findAll()
-        render charlas as JSON
+        def listMap = []
+        charlas.each {
+            def map = [:]
+            map['numeroAula'] = it.aula.numero
+            map['cantidadAsistentes'] = it.cantidadAsistentes
+            map['descripcionCharla'] = it.descripcionCharla
+            map['horario'] = it.horario.value
+            map['charlista'] = it.charlista
+            map['tema'] = it.tema
+            map['imagenCharlista'] = it.imagenCharlista
+            listMap.add(map)
+        }
+        render listMap as JSON
     }
 }

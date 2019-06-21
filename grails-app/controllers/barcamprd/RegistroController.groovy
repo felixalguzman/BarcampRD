@@ -17,7 +17,8 @@ class RegistroController {
 
     def index() {
 
-        def charlas = Charla.list().collate(Charla.list().size() / 2 as int)
+        def teatro = Aula.findByLugar("Teatro")
+        def charlas = Charla.findAllByAulaNotEqual(teatro).collate(Charla.countByAulaNotEqual(teatro) / 2 as int)
 
         def charlaHorario = [:]
         def charlaHorario2 = [:]
