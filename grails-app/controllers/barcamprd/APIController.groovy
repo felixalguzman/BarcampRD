@@ -110,6 +110,8 @@ class APIController {
             map['charlista'] = it.charlista
             map['tema'] = it.tema
             map['imagenCharlista'] = it.imagenCharlista
+            map['talkFormar'] = it?.talkFormat
+            map['audienceLevel'] = it?.audienceLevel
             listMap.add(map)
         }
         render listMap as JSON
