@@ -10,6 +10,8 @@ class Charla {
     Horario horario
     boolean llena = false
     int cantidadAsistentes = 0
+    String audienceLevel
+    String talkFormat
 
     Date dateCreated;
     Date lastUpdated;
@@ -17,6 +19,8 @@ class Charla {
     static constraints = {
         descripcionCharla nullable: true
         imagenCharlista nullable: true
+        audienceLevel nullable: true
+        talkFormat nullable: true
         tema unique: true
     }
 
