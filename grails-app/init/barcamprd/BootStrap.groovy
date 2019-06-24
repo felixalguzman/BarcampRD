@@ -36,15 +36,16 @@ class BootStrap {
         def h4 = Horario.findOrSaveWhere(value: "5:30 p.m - 6:30 p.m")
 
 
-        def h5 = Horario.findOrSaveWhere(value: "8:30 p.m - 9:30 p.m")
-        def h6 = Horario.findOrSaveWhere(value: "9:30 p.m - 10:30 p.m")
-        def h7 = Horario.findOrSaveWhere(value: "10:30 p.m - 11:30 p.m")
-        def h8 = Horario.findOrSaveWhere(value: "11:30 p.m - 1:00 p.m")
+        def h5 = Horario.findOrSaveWhere(value: "8:30 a.m - 9:30 a.m")
+        def h6 = Horario.findOrSaveWhere(value: "9:30 a.m - 10:30 a.m")
+        def h7 = Horario.findOrSaveWhere(value: "10:30 a.m - 11:30 a.m")
+        def h8 = Horario.findOrSaveWhere(value: "11:30 a.m - 1:00 p.m")
 //        def h5 = Horario.findOrSaveWhere(value: "6:00 p.m - 7:00 p.m")
 
         Charla.findOrSaveWhere(charlista: "Heather Van Cura",tema: "(EN) The Future of Java and You", horario: h5, aula: a5, descripcionCharla: "")
         Charla.findOrSaveWhere(charlista: "Sebastian Daschner",tema: "(ES) ¿Java EE? ¿Jakarta EE? ¿MicroProfile? ¿O tal vez, todos ellos? ", horario: h6, aula: a5, descripcionCharla: "")
         Charla.findOrSaveWhere(charlista: "Mark Heckler", tema: "(ES) Bebiendo del Stream: Como usar las plataformas de mensajería para escalamiento y rendimiento", horario: h7, aula: a5, descripcionCharla: "")
+        Charla.findOrSaveWhere(charlista: "Igor Suhorukov, Sebastian Daschner, Oleh Dokuka,  Heather Van Cura", tema: "Panel", horario: h8, aula: a5, descripcionCharla: "")
 
         Charla.findOrSaveWhere(charlista: "Mercedes Wyss", tema: "(ES) Modern Identity Management", horario: h1, aula: a1, descripcionCharla: "Identity Management is an umbrella term for all of the core logic around identity. The main purpose of this talk is gain an in-depth knowledge of terms like manage provisioning, account management, identity governance, authentication, authorization, identity federation and how improve this with PaaS")
         Charla.findOrSaveWhere(charlista: "Oleh Dokuka",audienceLevel: "All",talkFormat: "30-45 minutes", tema: "(EN) RSocket - new Reactive cross-network Protocol", horario: h1, aula: a2, descripcionCharla: "Are you doing microservices? Got exhausted of slow REST? Got mad of unreliable gRPC? An answer is RSocket. RSocket in a new network protocol with reactive streams semantic. It will make your system super fast and resilient. Come and learn why RSocket is the future of any cross-services communication")
