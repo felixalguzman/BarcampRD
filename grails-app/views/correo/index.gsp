@@ -9,7 +9,7 @@
 
     <h5>Buenas tardes, ${participante.nombre}</h5>
 
-    <p>Este Sábado 17 de noviembre a las 8:00 A.M. empezará el evento; por favor de llegar más temprano para el registro. El registro sera en el teatro universitario entrando por la puerta trasera de este edificio, la cual esta ubicada cerca de los edificios de Padre Arroyo y el Kiosko.</p>
+    <p>Este Sábado 29 de junio a las 8:00 A.M. empezará el evento; por favor de llegar más temprano para el registro. El registro sera en el teatro universitario entrando por la puerta trasera de este edificio, la cual esta ubicada cerca de los edificios de Padre Arroyo y el Kiosko.</p>
 
     <p>La logistica del evento es; en la mañana estaremos en el teatro(Ubicado al frente de la puerta 2) y luego en la tarde pasaremos a los salones octogonales del edificio Padre Arroyo (Segunda planta del edificio, cerca del teatro universitario).
 
