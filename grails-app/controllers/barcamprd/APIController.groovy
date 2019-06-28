@@ -78,6 +78,7 @@ class APIController {
         def registro = Registro.findByCorreo(email)
         if (registro) {
             def map = [:]
+            map['id'] = registro.id
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.listaCharlas
@@ -94,7 +95,7 @@ class APIController {
         def registro = Registro.findByCedula(numeroRegistro)
         if (registro) {
             def map = [:]
-
+            map['id'] = registro.id
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.listaCharlas
