@@ -75,10 +75,13 @@ class RegistroController {
     }
 
     def verificarCedula() {
+        println "verificar data num ${params.data}"
+
         render Registro.findByCedula(params.data) ? true : false
     }
 
     def verificarCorreo() {
+        println "verificar data correo ${params.data}"
         render Registro.findByCorreo(params.data) ? true : false
     }
 

@@ -438,6 +438,8 @@
     $("#btn-submit").on('click', function (e) {
         if (okCedula && okCorreo) {
             $(this).submit();
+
+            console.log("cedula",okCedula, "correo", okCorreo);
         } else {
             alert('No se ha podido registrar su entrada, revise los datos ingresados.');
             e.preventDefault();
