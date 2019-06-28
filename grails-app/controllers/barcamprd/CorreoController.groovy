@@ -115,6 +115,7 @@ class CorreoController {
         def registros = Registro.findAll()
 
         registros.each {
+            it.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_REGISTRADO)
             it.correoConfirmacionEnviado = false
             def reg = Registro.findById(it.id)
             reg.correoConfirmacionEnviado = false
