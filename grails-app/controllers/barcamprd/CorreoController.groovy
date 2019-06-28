@@ -28,7 +28,7 @@ class CorreoController {
                 client.sendMessage(
                         "logistica@jconfdominicana.org",
                         it.correo.toLowerCase(),
-                        "Información importante Barcamp 2018",
+                        "Información importante Jconfdominicana 2019",
                         "",
                         salida.body)
                 it.correoConfirmacionEnviado = true

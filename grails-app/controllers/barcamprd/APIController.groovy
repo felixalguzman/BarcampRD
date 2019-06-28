@@ -37,14 +37,19 @@ class APIController {
         println "......"
         def registro = Registro.findById(id)
 
-        def map = [:]
-
         if (registro) {
+            def map = [:]
             map['id'] = registro.id
             map['nombre'] = registro.nombre
             map['cedula'] = registro.cedula
             map['size'] = registro.sizeCamiseta
-            render map as JSON
+
+            map['correo'] = registro.correo
+            map['charlas'] = registro.listaCharlas
+            JSON.use('deep'){
+                render map as JSON
+            }
+
         } else {
             response.status = 400
             render('Registro no existe')
@@ -76,21 +81,27 @@ class APIController {
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.listaCharlas
-            render map as JSON
+            JSON.use('deep'){
+                render map as JSON
+            }
         } else {
             response.status = 404
             render "Registro no encontrado"
         }
     }
 
-    def registroUsuarioByNumero(String  numeroRegistro) {
+    def registroUsuarioByNumero(String numeroRegistro) {
         def registro = Registro.findByCedula(numeroRegistro)
         if (registro) {
             def map = [:]
+
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.listaCharlas
-            render map as JSON
+            JSON.use('deep'){
+                render map as JSON
+            }
+
         } else {
             response.status = 404
             render "Registro no encontrado"

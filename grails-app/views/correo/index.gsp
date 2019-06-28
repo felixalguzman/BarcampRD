@@ -9,9 +9,9 @@
 
     <h5>Buenas tardes, ${participante.nombre}</h5>
 
-    <p>Este Sábado 29 de junio a las 8:00 A.M. empezará el evento; por favor de llegar más temprano para el registro. El registro sera en el teatro universitario entrando por la puerta trasera de este edificio, la cual esta ubicada cerca de los edificios de Padre Arroyo y el Kiosko.</p>
+    <p>¡Se acerca el gran día! En nombre del equipo de JConf Dominicana, le recordamos que este sábado 29 de junio a las 8:00 A.M. el evento tendrá inicio formalmente. Agradeceríamos que llegara lo más temprano posible para poder proceder con el registro. El registro será en el teatro universitario entrando por la puerta trasera de este edificio, la cual está ubicada cerca de los edificios de Padre Arroyo y el Kiosko.</p>
 
-    <p>La logistica del evento es en la mañana estaremos en el teatro(Ubicado al frente de la puerta 2) y luego en la tarde pasaremos a los salones octogonales del edificio Padre Arroyo (Segunda planta del edificio, cerca del teatro universitario).
+    <p>La logística del evento es en la mañana estaremos en el teatro(Ubicado al frente de la puerta 2) y luego en la tarde pasaremos a los salones octogonales del edificio Padre Arroyo (Segunda planta del edificio, cerca del teatro universitario).
 
     <p>
 
@@ -25,11 +25,14 @@
     <g:each in="${participante.listaCharlas}" var="charlas">
         <h5>${charlas.tema} - ${charlas.horario.value}</h5>
     </g:each>
+    <br>
     <a href="https://form.jconfdominicana.org/correo/qr/?id=${participante.id}">Ver QR</a>
-    <a href="https://jconfdominicana.org/code-of-conduct.html">Codigo de conducta</a>
+
+    <br>
+    <a href="https://jconfdominicana.org/code-of-conduct.html">Código de conducta</a>
 
 
-    <p>Favor de traer el codigo QR descargado el cual esta adjunto a este email para facilitar a la hora del registro.</p>
+    <p>Favor de traer el código QR descargado el cual está adjunto a este email para facilitar a la hora del registro.</p>
 
 
     %{--<div class="row">
