@@ -16,7 +16,9 @@
     <p>
 
 
-    <p>Adjunto a este correo encontrará el código de conducta del evento. Esperamos lo lea y acepte todas las condiciones indicadas en el mismo.</p>
+        
+    <p>Adjunto a este correo encontrará el código de conducta del evento. 
+        Esperamos lo lea y acepte todas las condiciones indicadas en el mismo.</p>
 
 
     <br>
