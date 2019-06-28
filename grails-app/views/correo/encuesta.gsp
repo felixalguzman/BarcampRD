@@ -7,6 +7,7 @@
 <div id="content" role="main">
     <section class="">
         <h3>Hola ${participante.nombre}!</h3>
+
         <p>
             Antes que nada, queremos agradecerte por haber sido parte de la experiencia Barcamp RD 2018. Esperamos que todas las charlas que seleccionaste, así como las demás actividades del día haya sido de tu total agrado y que les hayas sacado el mayor provecho posible.
             <br><br>

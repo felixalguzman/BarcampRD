@@ -11,15 +11,15 @@
 
     <p>¡Se acerca el gran día! En nombre del equipo de JConf Dominicana, le recordamos que este sábado 29 de junio a las 8:00 A.M. el evento tendrá inicio formalmente. Agradeceríamos que llegara lo más temprano posible para poder proceder con el registro. El registro será en el teatro universitario entrando por la puerta trasera de este edificio, la cual está ubicada cerca de los edificios de Padre Arroyo y el Kiosko.</p>
 
-    <p>La logística del evento es en la mañana estaremos en el teatro(Ubicado al frente de la puerta 2) y luego en la tarde pasaremos a los salones octogonales del edificio Padre Arroyo (Segunda planta del edificio, cerca del teatro universitario).
+    <p>La logística del evento es en la mañana estaremos en el teatro(Ubicado al frente de la puerta 2) y
+    luego en la tarde pasaremos a los salones octogonales del edificio Padre Arroyo (Segunda planta del edificio,
+    cerca del teatro universitario).
 
     <p>
 
 
-        
-    <p>Adjunto a este correo encontrará el código de conducta del evento. 
-        Esperamos lo lea y acepte todas las condiciones indicadas en el mismo.</p>
-
+    <p>Adjunto a este correo encontrará el código de conducta del evento.
+    Esperamos lo lea y acepte todas las condiciones indicadas en el mismo.</p>
 
     <br>
     <h4>Las charlas en las que se ha reservado un asiento para usted son las siguientes:</h4>
