@@ -7,11 +7,12 @@
 <body>
 <div id="content" role="main">
 
-    <h5>Buenas tardes, ${participante.nombre}</h5>
+    <h5>Buenas, ${participante.nombre}</h5>
 
     <p>¡Se acerca el gran día! En nombre del equipo de JConf Dominicana, le recordamos que este sábado 29 de junio a las 8:00 A.M. el evento tendrá inicio formalmente. Agradeceríamos que llegara lo más temprano posible para poder proceder con el registro. El registro será en el teatro universitario entrando por la puerta trasera de este edificio, la cual está ubicada cerca de los edificios de Padre Arroyo y el Kiosko.</p>
 
-    <p>La logística del evento es en la mañana estaremos en el <a href="https://goo.gl/maps/WkeP3Fh4bbhbyDfM6">teatro</a> (Ubicado al frente de la puerta 2) y
+    <p>La logística del evento es en la mañana estaremos en el <a
+            href="https://goo.gl/maps/WkeP3Fh4bbhbyDfM6">teatro</a> (Ubicado al frente de la puerta 2) y
     luego en la tarde pasaremos a los salones octogonales del edificio Padre Arroyo (Segunda planta del edificio,
     cerca del teatro universitario).
 
@@ -38,11 +39,15 @@
 
     <p>
         FACEBOOK: <a href="https://www.facebook.com/JConf-Dominicana-602164203595878/">
-        <img style="vertical-align:middle" border="0" src="http://sundevilgymnastics.com/wp-content/uploads/2016/11/FB-Icon.png" width="30" height="30">
+        <img style="vertical-align:middle" border="0"
+             src="http://sundevilgymnastics.com/wp-content/uploads/2016/11/FB-Icon.png" width="30" height="30">
     </a>
 
-          INSTAGRAM: <a href="https://www.instagram.com/jconfdominicana/">
-        <img style="vertical-align:middle" border="0" src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Instagram-512.png" width="30" height="30">
+        INSTAGRAM: <a href="https://www.instagram.com/jconfdominicana/">
+        <img style="vertical-align:middle" border="0"
+             src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Instagram-512.png"
+             width="30" height="30">
+    </a>
     </p>
 
     %{--<div class="row">
