@@ -63,14 +63,19 @@ class APIController {
      */
     def confirmar(long id) {
         def registro = Registro.findById(id)
+        def map = [:]
         if (registro) {
             def antes = registro.estado.texto
             registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
             registro.save(flush: true, failOnError: true)
-            render "Cambiando de " + antes + " a " + registro.estado.texto
+            map['codigo'] = 200
+            map['status'] = 'ok'
+            render map as JSON
         } else {
             response.status = 400
-            render('Registro no existe')
+            map['codigo'] = 400
+            map['status'] = 'error'
+            render map as JSON
         }
     }
 
