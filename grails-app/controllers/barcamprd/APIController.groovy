@@ -62,7 +62,7 @@ class APIController {
      * @return
      */
     def confirmar(long id) {
-        def registro = Registro.findById(id)
+        def registro = Registro.findByIdAndEstado(id, EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
         def map = [:]
         if (registro) {
             def antes = registro.estado.texto
