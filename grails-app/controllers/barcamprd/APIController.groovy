@@ -46,7 +46,7 @@ class APIController {
 
             map['correo'] = registro.correo
             map['charlas'] = registro.listaCharlas
-            JSON.use('deep'){
+            JSON.use('deep') {
                 render map as JSON
             }
 
@@ -62,7 +62,7 @@ class APIController {
      * @return
      */
     def confirmar(long id) {
-        def registro = Registro.findById(id)
+        def registro = Registro.findByIdAndEstado(id, EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
         if (registro) {
             def antes = registro.estado.texto
             registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
@@ -81,7 +81,7 @@ class APIController {
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.listaCharlas
-            JSON.use('deep'){
+            JSON.use('deep') {
                 render map as JSON
             }
         } else {
@@ -98,7 +98,7 @@ class APIController {
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.listaCharlas
-            JSON.use('deep'){
+            JSON.use('deep') {
                 render map as JSON
             }
 
