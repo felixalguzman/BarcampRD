@@ -3,7 +3,7 @@ package barcamprd
 import grails.testing.gorm.DomainUnitTest
 import spock.lang.Specification
 
-class RegistroSpec extends Specification implements DomainUnitTest<Registro> {
+class EstadoParticipanteSpec extends Specification implements DomainUnitTest<EstadoRegistro> {
 
     def setup() {
     }

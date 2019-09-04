@@ -8,21 +8,26 @@ import grails.plugin.springsecurity.annotation.Secured
 class AdminController {
 
     def index() {
-        def registros = Registro.findAll()
+        def registros = Participante.findAll()
         def registrosFormatted = []
         registros.each {
-            def lista = it.listaCharlas.sort{ it.id }
-            it.listaCharlas = lista
+            def lista = it.charlas.sort { it.id }
+            it.charlas = lista
             registrosFormatted.add(it)
         }
 
         ['user'              : (User) applicationContext.springSecurityService.getCurrentUser(),
-         'registrosAprobados': Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)).size(),
-         'registros'         : registrosFormatted]
+         'registrosAprobados': Participante.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)).size(),
+         'registros'         : registrosFormatted,
+         participantes       : Participante.count()]
     }
 
     def charlas() {
         ['charlas': Charla.list(),]
+    }
+
+    def charlistas() {
+        [charlistas: Charlista.findAll()]
     }
 
     def horarios() {
@@ -33,9 +38,24 @@ class AdminController {
         ['aulas': Aula.list()]
     }
 
+    def charlasPorCharlista(int idCharlista) {
+
+
+        def charlista = Charlista.findById(idCharlista)
+        def list = []
+        charlista.charlas.eachWithIndex { Charla charla, int i ->
+
+            def map = [:]
+            map.put('nombre', charla.tema)
+
+
+        }
+
+    }
+
     def sizesCamisetas() {
         def sizes = [:]
-        Registro.list().each {
+        Participante.list().each {
             if (sizes.keySet().contains(it.sizeCamiseta)) {
                 sizes[it.sizeCamiseta]++
             } else
@@ -55,9 +75,9 @@ class AdminController {
     }
 
     def borrarRegistro() {
-        def reg = Registro.findByCedula(params.noId as String)
+        def reg = Participante.findByCedula(params.noId as String)
         if (reg != null) {
-            reg.listaCharlas.each {
+            reg.charlas.each {
                 it.cantidadAsistentes--
                 if (it.cantidadAsistentes < it.aula.cantidadPersonas) {
                     it.llena = false
@@ -73,7 +93,7 @@ class AdminController {
 
     def aprobarRegistro(String data) {
         def ok = false
-        def registro = Registro.findById(data as long)
+        def registro = Participante.findById(data as long)
 
         if (registro != null) {
             registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO)
@@ -85,7 +105,7 @@ class AdminController {
 
     def confirmarRegistro(String data) {
         def ok = false
-        def registro = Registro.findById(data as long)
+        def registro = Participante.findById(data as long)
         if (registro != null) {
             registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
             registro.save(flush: true, failOnError: true)

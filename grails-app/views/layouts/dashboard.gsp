@@ -58,6 +58,15 @@
                         <p>Charlas</p>
                     </a>
                 </li>
+
+                <li id="li_charlistas" class="nav-item">
+                    <a class="nav-link" href="/admin/charlistas">
+                        <i class="material-icons">emoji_people</i>
+
+                        <p>Charlistas</p>
+                    </a>
+                </li>
+
                 <li id="li_aulas" class="nav-item">
                     <a class="nav-link" href="/admin/aulas">
                         <i class="material-icons">room</i>

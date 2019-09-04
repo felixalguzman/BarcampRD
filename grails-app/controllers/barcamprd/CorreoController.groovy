@@ -16,7 +16,7 @@ class CorreoController {
     def groovyPageRenderer;
 
     def proceso() throws SparkPostException, SparkPostErrorServerResponseException {
-        def registros = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
+        def registros = Participante.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
 
         registros.each {
             println('Enviando correo a ' + it.correo)
@@ -32,7 +32,7 @@ class CorreoController {
                         "",
                         salida.body)
                 it.correoConfirmacionEnviado = true
-                def reg = Registro.findById(it.id)
+                def reg = Participante.findById(it.id)
                 reg.correoConfirmacionEnviado = true
                 reg.save(flush: true, failOnSafe: true)
             }
@@ -41,26 +41,26 @@ class CorreoController {
     }
 
     def index() {
-        def registro = Registro.findById(params.id as long)
+        def registro = Participante.findById(params.id as long)
 
 
-        registro.listaCharlas = registro.listaCharlas.sort { it.horario.value }
+        registro.charlas = registro.charlas.sort { it.horario.value }
         [participante: registro]
     }
 
     def encuesta() {
-        def registro = Registro.findById(params.id as long)
+        def registro = Participante.findById(params.id as long)
         [participante: registro]
     }
 
     def qr() {
         println(params.id as long)
-        ['participante': Registro.findById(params.id as long)]
+        ['participante': Participante.findById(params.id as long)]
     }
 
 
     def enviarSurvey() {
-        def registros = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO))
+        def registros = Participante.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO))
 
         registros.each {
             if (!it.correoEncuestaEnviado) {
@@ -112,11 +112,12 @@ class CorreoController {
 
     def disable() {
 
-        def registros = Registro.findAll()
+        def registros = Participante.findAll()
 
         registros.each {
+            it.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_PENDIENTE)
             it.correoConfirmacionEnviado = false
-            def reg = Registro.findById(it.id)
+            def reg = Participante.findById(it.id)
             reg.correoConfirmacionEnviado = false
             reg.save(flush: true, failOnSafe: true)
         }

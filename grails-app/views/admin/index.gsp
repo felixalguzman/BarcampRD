@@ -1,4 +1,4 @@
-<%@ page import="barcamprd.Confirmar; barcamprd.EstadoRegistro; barcamprd.Registro; barcamprd.Charla" %>
+<%@ page import="barcamprd.Confirmar; barcamprd.EstadoRegistro; barcamprd.Participante; barcamprd.Charla" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,9 +25,9 @@
                                 <i class="material-icons">content_copy</i>
                             </div>
 
-                            <p class="card-category">Total de Registros</p>
+                            <p class="card-category">Total de Participantes</p>
 
-                            <h3 class="card-title">${Registro.count()}</h3>
+                            <h3 class="card-title">${participantes}</h3>
                         </div>
 
                         <div class="card-footer">
@@ -46,7 +46,7 @@
                                 <i class="material-icons">store</i>
                             </div>
 
-                            <p class="card-category">Registros Aprobados</p>
+                            <p class="card-category">Participantes Aprobados</p>
 
                             <h3 class="card-title">${registrosAprobados}</h3>
                         </div>
@@ -126,7 +126,7 @@
                                             <td>${r.correo}</td>
                                             <td>${r.sizeCamiseta}</td>
                                             <td>${r.dateCreated}</td>
-                                            <g:if test="${r.estado.numero == EstadoRegistro.ESTADO_REGISTRADO}">
+                                            <g:if test="${r.estado.numero == EstadoRegistro.ESTADO_PENDIENTE}">
                                                 <td><button id="aprobarbtn"
                                                             class="btn btn-primary"
                                                             onclick="aprobar(${r.id})">APROBAR</button>

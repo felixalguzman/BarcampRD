@@ -15,7 +15,7 @@ class APIController {
      * @return
      */
     def registros() {
-        def lista = Registro.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
+        def lista = Participante.findAllByEstado(EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
         def listMap = []
         lista.each {
             def map = [:]
@@ -35,7 +35,7 @@ class APIController {
      */
     def consultarRegistro(long id) {
         println "......"
-        def registro = Registro.findById(id)
+        def registro = Participante.findById(id)
 
         if (registro) {
             def map = [:]
@@ -45,14 +45,14 @@ class APIController {
             map['size'] = registro.sizeCamiseta
 
             map['correo'] = registro.correo
-            map['charlas'] = registro.listaCharlas
-            JSON.use('deep') {
+            map['charlas'] = registro.charlas
+            JSON.use('deep'){
                 render map as JSON
             }
 
         } else {
             response.status = 400
-            render('Registro no existe')
+            render('Participante no existe')
         }
     }
 
@@ -62,49 +62,55 @@ class APIController {
      * @return
      */
     def confirmar(long id) {
-        def registro = Registro.findByIdAndEstado(id, EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
+        def registro = Participante.findByIdAndEstado(id, EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_APROBADO))
+        def map = [:]
         if (registro) {
             def antes = registro.estado.texto
             registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_CONFIRMADO)
             registro.save(flush: true, failOnError: true)
-            render "Cambiando de " + antes + " a " + registro.estado.texto
+            map['codigo'] = 200
+            map['status'] = 'ok'
+            render map as JSON
         } else {
             response.status = 400
-            render('Registro no existe')
+            map['codigo'] = 400
+            map['status'] = 'error'
+            render map as JSON
         }
     }
 
     def registroUsuario(String email) {
-        def registro = Registro.findByCorreo(email)
+        def registro = Participante.findByCorreo(email)
         if (registro) {
             def map = [:]
+            map['id'] = registro.id
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
-            map['charlas'] = registro.listaCharlas
-            JSON.use('deep') {
+            map['charlas'] = registro.charlas
+            JSON.use('deep'){
                 render map as JSON
             }
         } else {
             response.status = 404
-            render "Registro no encontrado"
+            render "Participante no encontrado"
         }
     }
 
     def registroUsuarioByNumero(String numeroRegistro) {
-        def registro = Registro.findByCedula(numeroRegistro)
+        def registro = Participante.findByCedula(numeroRegistro)
         if (registro) {
             def map = [:]
-
+            map['id'] = registro.id
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
-            map['charlas'] = registro.listaCharlas
-            JSON.use('deep') {
+            map['charlas'] = registro.charlas
+            JSON.use('deep'){
                 render map as JSON
             }
 
         } else {
             response.status = 404
-            render "Registro no encontrado"
+            render "Participante no encontrado"
         }
     }
 

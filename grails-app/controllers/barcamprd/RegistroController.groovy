@@ -1,16 +1,6 @@
 package barcamprd
 
 import grails.plugin.springsecurity.annotation.Secured
-import jxl.Workbook
-import jxl.format.Alignment
-import jxl.format.Border
-import jxl.format.BorderLineStyle
-import jxl.format.VerticalAlignment
-import jxl.write.Label
-import jxl.write.WritableCellFormat
-import jxl.write.WritableFont
-import jxl.write.WritableSheet
-import jxl.write.WritableWorkbook
 
 @Secured(['permitAll'])
 class RegistroController {
@@ -51,7 +41,7 @@ class RegistroController {
     }
 
     def registrar() {
-        def registro = new Registro()
+        def registro = new Participante()
         registro.cedula = params.cedula
         registro.nombre = params.nombre
         registro.correo = params.email
@@ -67,7 +57,7 @@ class RegistroController {
         def ok = verificarCupoCharla(charlas)
 
         if (ok) {
-            registro.listaCharlas = new ArrayList<Charla>(charlas)
+            registro.charlas = new ArrayList<Charla>(charlas)
             registro.save(flush: true, failOnError: true)
         }
 
@@ -77,12 +67,12 @@ class RegistroController {
     def verificarCedula() {
         println "verificar data num ${params.data}"
 
-        render Registro.findByCedula(params.data) ? true : false
+        render Participante.findByCedula(params.data) ? true : false
     }
 
     def verificarCorreo() {
         println "verificar data correo ${params.data}"
-        render Registro.findByCorreo(params.data) ? true : false
+        render Participante.findByCorreo(params.data) ? true : false
     }
 
     def confirmar() {
@@ -116,7 +106,7 @@ class RegistroController {
         response.setHeader('Content-Disposition', 'Attachment;Filename="registro.xls"')
 
         WritableWorkbook workbook = Workbook.createWorkbook(response.outputStream)
-        WritableSheet sheet1 = workbook.createSheet("Registro", 0)
+        WritableSheet sheet1 = workbook.createSheet("Participante", 0)
 
         WritableFont cellFontTitulo = new WritableFont(WritableFont.TIMES, 12)
         cellFontTitulo.setBoldStyle(WritableFont.BOLD)

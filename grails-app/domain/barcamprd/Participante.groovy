@@ -1,16 +1,17 @@
 package barcamprd
 
-class Registro {
+class Participante {
 
     String cedula
     String nombre
     String correo
-    String sizeCamiseta
+    SizeCamiseta sizeCamiseta
     EstadoRegistro estado
     boolean correoConfirmacionEnviado = false
     boolean correoEncuestaEnviado = false
+    boolean pago = false
 
-    static hasMany = [listaCharlas : Charla]
+    static hasMany = [charlas: Charla]
 
     Date dateCreated;
     Date lastUpdated;
@@ -21,6 +22,6 @@ class Registro {
     }
 
     static mapping = {
-        listaCharlas(lazy: false)
+        charlas(lazy: false)
     }
 }

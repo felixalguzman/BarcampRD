@@ -1,9 +1,9 @@
 package barcamprd
 
-import grails.testing.gorm.DomainUnitTest
+import grails.testing.web.controllers.ControllerUnitTest
 import spock.lang.Specification
 
-class EstadoRegistroSpec extends Specification implements DomainUnitTest<EstadoRegistro> {
+class ParticipanteControllerSpec extends Specification implements ControllerUnitTest<RegistroController> {
 
     def setup() {
     }
