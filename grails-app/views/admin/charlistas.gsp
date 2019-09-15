@@ -43,23 +43,23 @@
                                                                         <div class="col-md-12">
                                                                             <div class="card">
                                                                                 <div class="card-header card-header-danger">
-                                                                                    <h4 class="card-title">Crear Aula</h4>
+                                                                                    <h4 class="card-title">Crear Charlista</h4>
 
-                                                                                    <p class="card-category">Llene las informaciones de la nueva aula.</p>
+                                                                                    <p class="card-category">Llene las informaciones del charlista.</p>
                                                                                 </div>
 
                                                                                 <div class="card-body">
                                                                                     <g:form method="post"
-                                                                                            controller="aula"
+                                                                                            controller="charlista"
                                                                                             action="save">
                                                                                         <div class="row">
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
                                                                                                     <label id="numero-label"
-                                                                                                           class="bmd-label-floating">Numero</label>
+                                                                                                           class="bmd-label-floating">Nombre</label>
                                                                                                     <input type="text"
-                                                                                                           id="numero"
-                                                                                                           name="numero"
+                                                                                                           id="nombre"
+                                                                                                           name="nombre"
                                                                                                            class="form-control"
                                                                                                            required>
                                                                                                 </div>
@@ -67,15 +67,39 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
-                                                                                                    <label class="bmd-label-floating">Cantidad de Personas</label>
+                                                                                                    <label class="bmd-label-floating">Pa&iacute;s</label>
                                                                                                     <input type="text"
-                                                                                                           id="cantidadPersonas"
-                                                                                                           name="cantidadPersonas"
+                                                                                                           id="pais"
+                                                                                                           name="pais"
                                                                                                            class="form-control"
                                                                                                            required>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-8">
+
+                                                                                                <label for="images">Foto</label>
+                                                                                                <input type="file"
+                                                                                                       accept="image/*"
+                                                                                                       class="form-control"
+                                                                                                       id="seleccionarFoto"
+                                                                                                       name="images[]"
+                                                                                                       onchange="preview_images();"
+                                                                                                       data-buttonText="Elegir fotos"/>
+
+                                                                                                <input id="images"
+                                                                                                       hidden
+                                                                                                       name="imagenCharlista">
+
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                        <div class="card-avatar" id="fotos">
+
+                                                                                        </div>
+
                                                                                         <button type="submit"
                                                                                                 id="submit"
                                                                                                 class="btn btn-danger pull-right">Crear</button>
@@ -138,6 +162,9 @@
         $(".nav-item").removeClass('active');
         $("#li_aulas").addClass('active');
         $("#table").DataTable();
+
+
+
     </script>
 
     <script>
@@ -171,6 +198,33 @@
         function buscarCharlasPorCharlista(idCharlista) {
 
 
+        }
+
+        function preview_images() {
+            const total_file = document.getElementById("seleccionarFoto").files.length;
+
+            for (let i = 0; i < total_file; i++) {
+                $('#fotos').children().remove();
+                $('#fotos').append("<img class='img' height='300' src='"  + URL.createObjectURL(event.target.files[i]) + "'>");
+                toDataURL(URL.createObjectURL(event.target.files[i]), function (base64) {
+                    $('#images').val(base64);
+                });
+            }
+
+        }
+
+        function toDataURL(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                var reader = new FileReader();
+                reader.onloadend = function () {
+                    callback(reader.result);
+                };
+                reader.readAsDataURL(xhr.response);
+            };
+            xhr.open('GET', url);
+            xhr.responseType = 'blob';
+            xhr.send();
         }
     </script>
 </content>
