@@ -23,7 +23,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    %{--<button type="button" class="btn btn-twitter"
+                                    <button type="button" class="btn btn-twitter"
                                             data-toggle="modal"
                                             data-target="#crearCharla">Crear Charla
                                     </button>
@@ -45,21 +45,100 @@
                                                                                 <div class="card-header card-header-danger">
                                                                                     <h4 class="card-title">Crear Charla</h4>
 
-                                                                                    <p class="card-category">Llene las informaciones de la nueva aula.</p>
+                                                                                    <p class="card-category">Llene las informaciones de la charla.</p>
                                                                                 </div>
 
                                                                                 <div class="card-body">
-                                                                                    <g:form method="post"
-                                                                                            controller="aula"
-                                                                                            action="save">
+                                                                                    <g:form>
                                                                                         <div class="row">
+                                                                                            <div class="col-sm-6">
+                                                                                                <div class="form-group label-floating">
+                                                                                                    <label class="control-label">Charlista</label>
+                                                                                                    <select class="form-control valid"
+                                                                                                            aria-invalid="false">
+                                                                                                        <option disabled=""
+                                                                                                                selected=""></option>
+                                                                                                        <g:each in="${charlistas}">
+                                                                                                            <option name="charlista"
+                                                                                                                    value="${it.id}">${it.nombre}</option>
+
+                                                                                                        </g:each>
+                                                                                                    </select>
+                                                                                                    <span class="material-input"></span>
+                                                                                                </div>
+
+                                                                                            </div>
+
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
-                                                                                                    <label id="numero-label"
-                                                                                                           class="bmd-label-floating">Numero</label>
+                                                                                                    <label for="tema"
+                                                                                                           class="bmd-label-floating">Tema</label>
                                                                                                     <input type="text"
-                                                                                                           id="numero"
-                                                                                                           name="numero"
+                                                                                                           id="tema"
+                                                                                                           name="tema"
+                                                                                                           class="form-control"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                            <div class="col-sm-12">
+                                                                                                <div class="form-group is-empty">
+                                                                                                    <label for="descripcion">Descripci&oacute;n charla</label>
+                                                                                                    <textarea
+                                                                                                            id="descripcion"
+                                                                                                            class="form-control"
+                                                                                                            name="descripcionCharla"
+                                                                                                            rows="3"></textarea>
+                                                                                                    <span class="material-input"></span>
+                                                                                                </div>
+                                                                                            </div>
+
+
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group label-floating">
+                                                                                                    <label for="aula"
+                                                                                                           class="control-label">Aula</label>
+                                                                                                    <select id="aula"
+                                                                                                            class="form-control valid"
+                                                                                                            aria-invalid="false">
+                                                                                                        <option disabled=""
+                                                                                                                selected=""></option>
+                                                                                                        <g:each in="${aulas}">
+                                                                                                            <option name="aula"
+                                                                                                                    value="${it.id}">${it.lugar} - ${it.cantidadPersonas}</option>
+                                                                                                        </g:each>
+                                                                                                    </select>
+                                                                                                    <span class="material-input"></span>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group label-floating">
+                                                                                                    <label for="horario"
+                                                                                                           class="control-label">Horario</label>
+                                                                                                    <select id="horario"
+                                                                                                            class="form-control valid"
+                                                                                                            aria-invalid="false">
+                                                                                                        <option disabled=""
+                                                                                                                selected=""></option>
+                                                                                                        <g:each in="${horarios}">
+                                                                                                            <option name="horario"
+                                                                                                                    value="${it.id}">${it.value}</option>
+                                                                                                        </g:each>
+                                                                                                    </select>
+                                                                                                    <span class="material-input"></span>
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                            <div class="col-md-6">
+                                                                                                <div class="form-group">
+                                                                                                    <label for="audienceLevel"
+                                                                                                           class="bmd-label-floating">Nivel audiencia</label>
+                                                                                                    <input type="text"
+                                                                                                           id="audienceLevel"
+                                                                                                           name="audienceLevel"
                                                                                                            class="form-control"
                                                                                                            required>
                                                                                                 </div>
@@ -67,15 +146,19 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
-                                                                                                    <label class="bmd-label-floating">Cantidad de Personas</label>
+                                                                                                    <label for="talkFormat"
+                                                                                                           class="bmd-label-floating">Talk Format</label>
                                                                                                     <input type="text"
-                                                                                                           id="cantidadPersonas"
-                                                                                                           name="cantidadPersonas"
+                                                                                                           id="talkFormat"
+                                                                                                           name="tema"
                                                                                                            class="form-control"
                                                                                                            required>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
+
+
+
                                                                                         <button type="submit"
                                                                                                 id="submit"
                                                                                                 class="btn btn-danger pull-right">Crear</button>
@@ -99,7 +182,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>--}%
+                                    </div>
 
                                     <div class="table-responsive">
                                         <table class="table" id="table">

@@ -107,6 +107,7 @@
                                             <th>ID</th>
                                             <th>Numero</th>
                                             <th>Cantidad De Personas Soportadas</th>
+                                            <th>Lugar</th>
                                             </thead>
                                             <tbody>
                                             <g:each in="${aulas}" var="a">
@@ -114,6 +115,7 @@
                                                     <td>${a.id}</td>
                                                     <td>${a.numero}</td>
                                                     <td>${a.cantidadPersonas}</td>
+                                                    <td>${a.lugar}</td>
                                                     <td>
                                                         <div>
                                                             <button type="button" class="btn btn-warning"

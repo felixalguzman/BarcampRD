@@ -2,7 +2,7 @@ package barcamprd
 
 class Charla {
 
-    String charlista
+    Charlista charlista
     String tema
     String descripcionCharla
     Aula aula

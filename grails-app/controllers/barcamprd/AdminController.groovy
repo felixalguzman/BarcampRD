@@ -23,7 +23,7 @@ class AdminController {
     }
 
     def charlas() {
-        ['charlas': Charla.list(),]
+        ['charlas': Charla.list(), charlistas: Charlista.findAll(), aulas: Aula.findAll(), horarios: Horario.findAll()]
     }
 
     def charlistas() {
