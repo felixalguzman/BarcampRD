@@ -1,5 +1,6 @@
 package barcamprd
 
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
@@ -13,7 +14,7 @@ class CharlistaController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond charlistaService.list(params), model:[charlistaCount: charlistaService.count()]
+        respond charlistaService.list(params), model: [charlistaCount: charlistaService.count()]
     }
 
     def show(Long id) {
@@ -24,6 +25,22 @@ class CharlistaController {
         respond new Charlista(params)
     }
 
+    def guardarCharlista(String nombre, String pais, String imagenCharlista) {
+        def charlista = new Charlista(nombre: nombre, pais: pais)
+
+        charlista.setImagenCharlista(imagenCharlista)
+        charlista.save(flush: true, failOnError: true)
+
+//        render view: '/admin/charlistas', model: [charlistas: Charlista.findAll()]
+        redirect(controller: "admin", action: "charlistas")
+
+        def ok = [ok: true]
+//        render ok as JSON
+        return false
+
+
+    }
+
     def save(Charlista charlista) {
         if (charlista == null) {
             notFound()
@@ -31,22 +48,17 @@ class CharlistaController {
         }
 
         try {
-            charlistaService.save(charlista)
-            redirect(view: "charlistas", controller: "admin")
+//            charlistaService.save(charlista)
+
+            charlista.save(flush: true, failOnError: true)
+//            redirect(uri: "admin/charlistas")
 
         } catch (ValidationException e) {
-            respond charlista.errors, view:'create'
-            return
+            respond charlista.errors, view: 'create'
         }
 
+        respond view: '/admin/charlistas'
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'charlista.label', default: 'Charlista'), charlista.id])
-                redirect charlista
-            }
-            '*' { respond charlista, [status: CREATED] }
-        }
     }
 
     def edit(Long id) {
@@ -62,7 +74,7 @@ class CharlistaController {
         try {
             charlistaService.save(charlista)
         } catch (ValidationException e) {
-            respond charlista.errors, view:'edit'
+            respond charlista.errors, view: 'edit'
             return
         }
 
@@ -71,7 +83,7 @@ class CharlistaController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'charlista.label', default: 'Charlista'), charlista.id])
                 redirect charlista
             }
-            '*'{ respond charlista, [status: OK] }
+            '*' { respond charlista, [status: OK] }
         }
     }
 
@@ -86,9 +98,9 @@ class CharlistaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'charlista.label', default: 'Charlista'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -98,7 +110,7 @@ class CharlistaController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'charlista.label', default: 'Charlista'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

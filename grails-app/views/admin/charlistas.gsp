@@ -49,13 +49,13 @@
                                                                                 </div>
 
                                                                                 <div class="card-body">
-                                                                                    <g:form method="post"
-                                                                                            controller="charlista"
-                                                                                            action="save">
+                                                                                    <g:form controller="charlista"
+                                                                                            action="guardarCharlista">
                                                                                         <div class="row">
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
                                                                                                     <label id="numero-label"
+                                                                                                           for="nombre"
                                                                                                            class="bmd-label-floating">Nombre</label>
                                                                                                     <input type="text"
                                                                                                            id="nombre"
@@ -67,7 +67,8 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
-                                                                                                    <label class="bmd-label-floating">Pa&iacute;s</label>
+                                                                                                    <label for="pais"
+                                                                                                           class="bmd-label-floating">Pa&iacute;s</label>
                                                                                                     <input type="text"
                                                                                                            id="pais"
                                                                                                            name="pais"
@@ -96,7 +97,8 @@
                                                                                             </div>
                                                                                         </div>
 
-                                                                                        <div class="card-avatar" id="fotos">
+                                                                                        <div class="card-avatar"
+                                                                                             id="fotos">
 
                                                                                         </div>
 
@@ -160,7 +162,7 @@
 <content tag="js">
     <script>
         $(".nav-item").removeClass('active');
-        $("#li_aulas").addClass('active');
+        $("#li_charlistas").addClass('active');
         $("#table").DataTable();
 
 
@@ -168,32 +170,37 @@
     </script>
 
     <script>
-        $("#submit").on('click', function (e) {
-            $.ajax({
-                url: "/aula/numeroDisponible/",
-                data: {data: $("#numero").val()},
-                success: function (data) {
-                    var numeroOK = false;
-                    if (data === 'true') {
-                        $("#numero-label").text('* Ya existe un aula con este numero!');
-                        $("#numero-label").css('color', 'red');
-                        numeroOK = false;
-                    } else {
-                        $("#numero-label").text('Correo Electrónico');
-                        $("#numero-label").css('color', '');
-                        numeroOK = true;
-                    }
-                    if (!numeroOK) {
-                        e.preventDefault();
-                    } else {
-                        $(this).submit();
-                    }
-                }
-            });
+        %{--$("#submit").on('click', function (e) {--}%
+        %{--    e.preventDefault();--}%
+        %{--    $.ajax({--}%
+        %{--        url: "${createLink(controller: "charlista", action: "guardarCharlista")}",--}%
+        %{--        data: $("form").serialize(),--}%
+        %{--        success: function (data) {--}%
 
-            //e.preventDefault();
-            console.log('click')
-        });
+        %{--            --}%%{--window.location.href = "${createLink(controller: "admin", action: "charlistas")}";--}%
+
+
+        %{--            //         var numeroOK = false;--}%
+        %{--            //         if (data === 'true') {--}%
+        %{--            //             $("#numero-label").text('* Ya existe un aula con este numero!');--}%
+        %{--            //             $("#numero-label").css('color', 'red');--}%
+        %{--            //             numeroOK = false;--}%
+        %{--            //         } else {--}%
+        %{--            //             $("#numero-label").text('Correo Electrónico');--}%
+        %{--            //             $("#numero-label").css('color', '');--}%
+        %{--            //             numeroOK = true;--}%
+        %{--            //         }--}%
+        %{--            //         if (!numeroOK) {--}%
+        %{--            //             e.preventDefault();--}%
+        %{--            //         } else {--}%
+        %{--            //             $(this).submit();--}%
+        %{--            //         }--}%
+        %{--        }--}%
+        %{--    });--}%
+
+        %{--    //e.preventDefault();--}%
+        %{--    console.log('click')--}%
+        %{--});--}%
 
         function buscarCharlasPorCharlista(idCharlista) {
 
@@ -205,7 +212,7 @@
 
             for (let i = 0; i < total_file; i++) {
                 $('#fotos').children().remove();
-                $('#fotos').append("<img class='img' height='300' src='"  + URL.createObjectURL(event.target.files[i]) + "'>");
+                $('#fotos').append("<img class='img' height='300' src='" + URL.createObjectURL(event.target.files[i]) + "'>");
                 toDataURL(URL.createObjectURL(event.target.files[i]), function (base64) {
                     $('#images').val(base64);
                 });

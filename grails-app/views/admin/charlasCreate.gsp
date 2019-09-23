@@ -65,7 +65,7 @@
 <content tag="js">
     <script>
         $(".nav-item").removeClass('active');
-        $("#li_charlas").addClass('active');
+        $("#li_charlistas").addClass('active');
         $("#table").DataTable();
     </script>
 
