@@ -7,12 +7,13 @@ class Charlista {
     String nombre
     String imagenCharlista
     String pais
+    String telefono
 
 
     static constraints = {
         imagenCharlista nullable: true
         pais nullable: true
-
+        telefono nullable: true
     }
 
     static mapping = {

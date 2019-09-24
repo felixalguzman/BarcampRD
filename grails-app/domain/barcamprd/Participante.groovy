@@ -5,7 +5,7 @@ class Participante {
     String cedula
     String nombre
     String correo
-    SizeCamiseta sizeCamiseta
+    String sizeCamiseta
     EstadoRegistro estado
     boolean correoConfirmacionEnviado = false
     boolean correoEncuestaEnviado = false

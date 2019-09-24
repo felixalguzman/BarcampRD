@@ -25,10 +25,11 @@ class CharlistaController {
         respond new Charlista(params)
     }
 
-    def guardarCharlista(String nombre, String pais, String imagenCharlista) {
+    def guardarCharlista(String nombre, String pais, String imagenCharlista, String telefono) {
         def charlista = new Charlista(nombre: nombre, pais: pais)
 
         charlista.setImagenCharlista(imagenCharlista)
+        charlista.setTelefono(telefono)
         charlista.save(flush: true, failOnError: true)
 
 //        render view: '/admin/charlistas', model: [charlistas: Charlista.findAll()]

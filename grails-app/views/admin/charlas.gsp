@@ -49,22 +49,30 @@
                                                                                 </div>
 
                                                                                 <div class="card-body">
-                                                                                    <g:form>
+                                                                                    <g:form controller="charla"
+                                                                                            action="guardarCharla">
                                                                                         <div class="row">
                                                                                             <div class="col-sm-6">
                                                                                                 <div class="form-group label-floating">
-                                                                                                    <label class="control-label">Charlista</label>
-                                                                                                    <select class="form-control valid"
-                                                                                                            aria-invalid="false">
-                                                                                                        <option disabled=""
-                                                                                                                selected=""></option>
-                                                                                                        <g:each in="${charlistas}">
-                                                                                                            <option name="charlista"
-                                                                                                                    value="${it.id}">${it.nombre}</option>
+                                                                                                    <label for="charlista"
+                                                                                                           class="control-label">Charlista</label>
 
-                                                                                                        </g:each>
-                                                                                                    </select>
-                                                                                                    <span class="material-input"></span>
+                                                                                                    <g:select
+                                                                                                            id="charlista"
+                                                                                                            name='charlista'
+                                                                                                            class="form-control valid"
+                                                                                                            aria-invalid="false"
+                                                                                                            value="${{
+                                                                                                                it.nombre
+                                                                                                            }}"
+                                                                                                            noSelection="${['null': 'Seleccione...']}"
+                                                                                                            from='${charlistas}'
+                                                                                                            optionKey="id"
+                                                                                                            optionValue="nombre">
+
+                                                                                                        <span class="material-input"></span>
+                                                                                                    </g:select>
+
                                                                                                 </div>
 
                                                                                             </div>
@@ -84,9 +92,9 @@
 
                                                                                             <div class="col-sm-12">
                                                                                                 <div class="form-group is-empty">
-                                                                                                    <label for="descripcion">Descripci&oacute;n charla</label>
+                                                                                                    <label for="descripcionCharla">Descripci&oacute;n charla</label>
                                                                                                     <textarea
-                                                                                                            id="descripcion"
+                                                                                                            id="descripcionCharla"
                                                                                                             class="form-control"
                                                                                                             name="descripcionCharla"
                                                                                                             rows="3"></textarea>
@@ -99,17 +107,21 @@
                                                                                                 <div class="form-group label-floating">
                                                                                                     <label for="aula"
                                                                                                            class="control-label">Aula</label>
-                                                                                                    <select id="aula"
-                                                                                                            class="form-control valid"
-                                                                                                            aria-invalid="false">
-                                                                                                        <option disabled=""
-                                                                                                                selected=""></option>
-                                                                                                        <g:each in="${aulas}">
-                                                                                                            <option name="aula"
-                                                                                                                    value="${it.id}">${it.lugar} - ${it.cantidadPersonas}</option>
-                                                                                                        </g:each>
-                                                                                                    </select>
-                                                                                                    <span class="material-input"></span>
+
+                                                                                                    <g:select id="aula"
+                                                                                                              name='aula'
+                                                                                                              class="form-control valid"
+                                                                                                              aria-invalid="false"
+                                                                                                              value="${{
+                                                                                                                  it.nombre
+                                                                                                              }}"
+                                                                                                              noSelection="${['null': 'Seleccione...']}"
+                                                                                                              from='${aulas}'
+                                                                                                              optionKey="id"
+                                                                                                              optionValue="lugar">
+
+                                                                                                        <span class="material-input"></span>
+                                                                                                    </g:select>
                                                                                                 </div>
                                                                                             </div>
 
@@ -117,17 +129,22 @@
                                                                                                 <div class="form-group label-floating">
                                                                                                     <label for="horario"
                                                                                                            class="control-label">Horario</label>
-                                                                                                    <select id="horario"
+                                                                                                    <g:select
+                                                                                                            id="horario"
+                                                                                                            name='horario'
                                                                                                             class="form-control valid"
-                                                                                                            aria-invalid="false">
-                                                                                                        <option disabled=""
-                                                                                                                selected=""></option>
-                                                                                                        <g:each in="${horarios}">
-                                                                                                            <option name="horario"
-                                                                                                                    value="${it.id}">${it.value}</option>
-                                                                                                        </g:each>
-                                                                                                    </select>
-                                                                                                    <span class="material-input"></span>
+                                                                                                            aria-invalid="false"
+                                                                                                            value="${{
+                                                                                                                it.nombre
+                                                                                                            }}"
+                                                                                                            noSelection="${['null': 'Seleccione...']}"
+                                                                                                            from='${horarios}'
+                                                                                                            optionKey="id"
+                                                                                                            optionValue="value">
+
+                                                                                                        <span class="material-input"></span>
+                                                                                                    </g:select>
+
                                                                                                 </div>
 
                                                                                             </div>
@@ -150,7 +167,7 @@
                                                                                                            class="bmd-label-floating">Talk Format</label>
                                                                                                     <input type="text"
                                                                                                            id="talkFormat"
-                                                                                                           name="tema"
+                                                                                                           name="talkFormat"
                                                                                                            class="form-control"
                                                                                                            required>
                                                                                                 </div>
@@ -187,21 +204,39 @@
                                     <div class="table-responsive">
                                         <table class="table" id="table">
                                             <thead class=" text-primary">
-                                            <th>ID</th>
-                                            <th>Charlista</th>
-                                            <th>Tema</th>
-                                            <th>Cantidad Asistentes</th>
-                                            <th>Llena</th>
-                                            <th>Asistentes</th>
+                                            <tr>
+
+                                                <th>ID</th>
+                                                <th>Charlista</th>
+                                                <th>Tema</th>
+                                                <th>Cantidad Asistentes</th>
+                                                <th>Llena</th>
+                                                <th>Horario</th>
+                                                <th>Asistentes</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
                                             <g:each in="${charlas}" var="a">
                                                 <tr>
                                                     <td>${a.id}</td>
-                                                    <td>${a.charlista}</td>
+                                                    <td>${a.charlista.nombre}</td>
                                                     <td>${a.tema}</td>
-                                                    <td>${a.cantidadAsistentes}/${a.aula.cantidadPersonas}</td>
-                                                    <td>${a.llena}</td>
+                                                    <td>${a.cantidadParticipantes()}/${a.aula.cantidadPersonas}</td>
+                                                    <td>
+
+                                                        <g:if test="${a.llena}">
+                                                            <div class="card-icon" style="color: red">
+                                                                <i class="material-icons">check</i>
+                                                            </div>
+                                                        </g:if>
+                                                        <g:else>
+                                                            <div class="card-icon" style="color: green">
+                                                                <i class="material-icons">clear</i>
+                                                            </div>
+                                                        </g:else>
+
+                                                    </td>
+                                                    <td>${a.horario.value}</td>
                                                     <td>
 
                                                     </td>

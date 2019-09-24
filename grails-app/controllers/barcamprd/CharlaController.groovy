@@ -1,8 +1,9 @@
 package barcamprd
 
+import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
-
+@Secured(['ROLE_ADMIN'])
 class CharlaController {
 
     CharlaService charlaService
@@ -11,7 +12,7 @@ class CharlaController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond charlaService.list(params), model:[charlaCount: charlaService.count()]
+        respond charlaService.list(params), model: [charlaCount: charlaService.count()]
     }
 
     def show(Long id) {
@@ -22,7 +23,23 @@ class CharlaController {
         respond new Charla(params)
     }
 
-    def guardarCharla(){
+    def guardarCharla(String tema, String descripcionCharla, int aula, int horario, String audienceLevel, String talkFormat) {
+
+        def charlistaC = Charlista.findById(params.charlista as Integer)
+        def aulaC = Aula.findById(aula)
+        def horarioC = Horario.findById(horario)
+
+        println "charlista: ${params.charlista as Integer} aula: ${aula} horario: ${horario}"
+
+        def charla = new Charla(charlista: charlistaC, aula: aulaC, horario: horarioC, tema: tema)
+        charla.setDescripcionCharla(descripcionCharla)
+        charla.setAudienceLevel(audienceLevel)
+        charla.setTalkFormat(talkFormat)
+
+        charla.save(flush: true, failOnError: true)
+
+        redirect(controller: "admin", action: "charlas")
+        return false
 
     }
 
@@ -39,7 +56,7 @@ class CharlaController {
         try {
             charlaService.save(charla)
         } catch (ValidationException e) {
-            respond charla.errors, view:'edit'
+            respond charla.errors, view: 'edit'
             return
         }
 
@@ -48,7 +65,7 @@ class CharlaController {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'charla.label', default: 'Charla'), charla.id])
                 redirect charla
             }
-            '*'{ respond charla, [status: OK] }
+            '*' { respond charla, [status: OK] }
         }
     }
 
@@ -63,9 +80,9 @@ class CharlaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'charla.label', default: 'Charla'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "index", method: "GET"
             }
-            '*'{ render status: NO_CONTENT }
+            '*' { render status: NO_CONTENT }
         }
     }
 
@@ -75,7 +92,7 @@ class CharlaController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'charla.label', default: 'Charla'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }

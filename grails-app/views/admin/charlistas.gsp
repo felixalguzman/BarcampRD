@@ -76,6 +76,17 @@
                                                                                                            required>
                                                                                                 </div>
                                                                                             </div>
+
+                                                                                            <div class="col-md-12">
+                                                                                                <div class="form-group">
+                                                                                                    <label for="telefono"
+                                                                                                           class="bmd-label-floating">Tel&eacute;lefono</label>
+                                                                                                    <input type="tel"
+                                                                                                           id="telefono"
+                                                                                                           name="telefono"
+                                                                                                           class="form-control">
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
 
                                                                                         <div class="row">
@@ -132,6 +143,7 @@
                                             <thead class=" text-primary">
                                             <th>ID</th>
                                             <th>Nombre</th>
+                                            <th>Tel&eacute;lefono</th>
                                             <th>Charlas</th>
                                             %{--                                            <th>Cantidad De Personas Soportadas</th>--}%
                                             </thead>
@@ -140,6 +152,7 @@
                                                 <tr>
                                                     <td>${c.id}</td>
                                                     <td>${c.nombre}</td>
+                                                    <td>${c.telefono}</td>
                                                     <td><button class="btn btn-navy" id="${c.id}"
                                                                 onclick="buscarCharlasPorCharlista(this.id)">Charlas</button>
                                                     </td>

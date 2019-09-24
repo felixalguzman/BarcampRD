@@ -113,4 +113,16 @@ class AdminController {
         }
         render ok
     }
+
+    def cambiarEstadoPendiente(String data) {
+        def ok = false
+        def registro = Participante.findById(data as long)
+        if (registro != null) {
+            registro.estado = EstadoRegistro.findByNumero(EstadoRegistro.ESTADO_PENDIENTE)
+            registro.save(flush: true, failOnError: true)
+            ok = true
+        }
+        render ok
+    }
+
 }

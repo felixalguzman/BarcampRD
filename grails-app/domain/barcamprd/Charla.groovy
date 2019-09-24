@@ -24,4 +24,22 @@ class Charla {
     static mapping = {
         descripcionCharla type: "text"
     }
+
+    def cantidadParticipantes() {
+
+        def c = Participante.createCriteria()
+        def cantidad = c.get {
+            charlas {
+                eq("id", id)
+            }
+
+            projections {
+                count("charlas")
+            }
+
+        }
+
+        println "cantidad: ${cantidad}"
+        return cantidad
+    }
 }

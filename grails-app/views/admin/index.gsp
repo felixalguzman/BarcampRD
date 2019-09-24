@@ -110,13 +110,16 @@
                             <div class="table-responsive">
                                 <table class="table table-hover" id="table">
                                     <thead class=" text-primary">
-                                    <th>No. Identificación</th>
-                                    <th>Nombre</th>
-                                    <th>Correo</th>
-                                    <th>Size</th>
-                                    <th>Fecha de Registro</th>
-                                    <th>Estado</th>
-                                    <th>Charlas Seleccionadas</th>
+                                    <tr>
+
+                                        <th>No. Id</th>
+                                        <th>Nombre</th>
+                                        <th>Correo</th>
+                                        <th>Size</th>
+                                        <th>Fecha de Registro</th>
+                                        <th>Estado</th>
+                                        <th>Charlas</th>
+                                    </tr>
                                     </thead>
                                     <tbody>
                                     <g:each in="${registros}" var="r">
@@ -125,23 +128,28 @@
                                             <td>${r.nombre}</td>
                                             <td>${r.correo}</td>
                                             <td>${r.sizeCamiseta}</td>
-                                            <td>${r.dateCreated}</td>
+                                            <td><g:formatDate format="yyyy-MM-dd" date="${r.dateCreated}"/>
+                                            </td>
                                             <g:if test="${r.estado.numero == EstadoRegistro.ESTADO_PENDIENTE}">
                                                 <td><button id="aprobarbtn"
-                                                            class="btn btn-primary"
+                                                            class="btn btn-facebook"
                                                             onclick="aprobar(${r.id})">APROBAR</button>
                                                 </td>
                                             </g:if>
                                             <g:else>
-                                                <g:if test="${Confirmar.first().confirmar && r.estado.numero == EstadoRegistro.ESTADO_APROBADO}">
-                                                    <td><button id="confbtn"
+                                                <g:if test="${r.estado.numero == EstadoRegistro.ESTADO_APROBADO}">
+                                                    <td>
+
+                                                        <button id="pendienteBtn"
+                                                                class="btn btn-warning"
+                                                                onclick="pendiente(${r.id})">PENDIENTE</button>
+
+                                                        <button id="confbtn"
                                                                 class="btn btn-success"
                                                                 onclick="confirmar(${r.id})">CONFIRMAR</button>
+
                                                     </td>
                                                 </g:if>
-                                                <g:else>
-                                                    <td class="text-success text-center">${r.estado.texto}</td>
-                                                </g:else>
                                             </g:else>
                                             <td>
                                                 <button type="button" class="btn btn-twitter"
@@ -169,17 +177,22 @@
                                                                     <div class="table-responsive">
                                                                         <table class="table table-hover">
                                                                             <thead class="text-warning">
-                                                                            <th>ID</th>
-                                                                            <th>Tema</th>
-                                                                            <th>Horario</th>
-                                                                            <th>Aula</th>
+                                                                            <tr>
+
+                                                                                <th>ID</th>
+                                                                                <th>Tema</th>
+                                                                                <th>Charlista</th>
+                                                                                <th>Horario</th>
+                                                                                <th>Aula</th>
+                                                                            </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                            <g:each in="${r.listaCharlas}"
+                                                                            <g:each in="${r.charlas}"
                                                                                     var="charla">
                                                                                 <tr>
                                                                                     <td>${charla.id}</td>
                                                                                     <td>${charla.tema}</td>
+                                                                                    <td>${charla.charlista.nombre}</td>
                                                                                     <td>${charla.horario.value}</td>
                                                                                     <td>${charla.aula.numero}</td>
                                                                                 </tr>
@@ -418,6 +431,23 @@
                 });
             }
         }
+
+        function pendiente(id) {
+
+            $.ajax({
+                url: "${createLink(controller: "admin", action: "cambiarEstadoPendiente")}",
+                data: {data: id},
+                success: function (data) {
+                    if (data === 'true') {
+                        window.location = "/admin/"
+                    } else {
+                        alert('Error al cambiar el registro.')
+                    }
+                }
+            });
+
+        }
+
     </script>
 </content>
 

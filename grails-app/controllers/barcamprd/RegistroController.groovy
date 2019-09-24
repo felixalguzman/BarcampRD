@@ -41,12 +41,12 @@ class RegistroController {
     }
 
     def registrar() {
-        def registro = new Participante()
-        registro.cedula = params.cedula
-        registro.nombre = params.nombre
-        registro.correo = params.email
-        registro.sizeCamiseta = params.size
-        registro.estado = EstadoRegistro.findByNumero(1000)
+        def participante = new Participante()
+        participante.cedula = params.cedula
+        participante.nombre = params.nombre
+        participante.correo = params.email
+        participante.sizeCamiseta = params.size
+        participante.estado = EstadoRegistro.findByNumero(1000)
         def c1 = params.h_1 != null ? Charla.findById(params.h_1 as long) : null
         def c2 = params.h_2 != null ? Charla.findById(params.h_2 as long) : null
         def c3 = params.h_3 != null ? Charla.findById(params.h_3 as long) : null
@@ -57,8 +57,8 @@ class RegistroController {
         def ok = verificarCupoCharla(charlas)
 
         if (ok) {
-            registro.charlas = new ArrayList<Charla>(charlas)
-            registro.save(flush: true, failOnError: true)
+            participante.charlas = new ArrayList<Charla>(charlas)
+            participante.save(flush: true, failOnError: true)
         }
 
         redirect(controller: 'registro', action: 'confirmar', params: [ok: ok])
@@ -85,8 +85,8 @@ class RegistroController {
         for (Charla c : listaCharlas) {
             if (c != null) {
                 if (!c.llena) {
-                    c.cantidadAsistentes++
-                    if (c.cantidadAsistentes >= c.aula.cantidadPersonas)
+                    c.cantidadParticipantes()++
+                    if (c.cantidadParticipantes() >= c.aula.cantidadPersonas)
                         c.llena = true
                     c.save(flush: true, failOnError: true)
                 } else {
