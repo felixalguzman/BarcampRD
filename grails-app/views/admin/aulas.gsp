@@ -104,10 +104,13 @@
                                     <div class="table-responsive">
                                         <table class="table" id="table">
                                             <thead class=" text-primary">
-                                            <th>ID</th>
-                                            <th>Numero</th>
-                                            <th>Cantidad De Personas Soportadas</th>
-                                            <th>Lugar</th>
+                                            <tr>
+
+                                                <th>ID</th>
+                                                <th>Numero</th>
+                                                <th>Cantidad De Personas Soportadas</th>
+                                                <th>Lugar</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
                                             <g:each in="${aulas}" var="a">
@@ -121,9 +124,9 @@
                                                             <button type="button" class="btn btn-warning"
                                                                     data-toggle="modal"
                                                                     data-target="#editarAula${a.numero}" disabled>Editar
-                                                            </button
-                                                        %{--
-                                                            TODO: Habilitar la edición de aulas.
+                                                            </button>
+
+%{--                                                            TODO: Habilitar la edición de aulas.--}%
                                                             <div class="modal fade bd-example-modal-lg" id="editarAula${a.numero}"
                                                                  tabindex="-1"
                                                                  role="dialog" aria-labelledby="exampleModalLabel"
@@ -181,7 +184,7 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        --}%
+
                                                         </div>
                                                     </td>
                                                 </tr>

@@ -19,6 +19,9 @@
     <!-- CSS Files -->
     <asset:stylesheet src="material-dashboard.css"/>
     <g:pageProperty name="page.css"/>
+    <asset:javascript src="core/jquery.min.js"/>
+
+    <g:layoutHead/>
 </head>
 
 <body class="">
@@ -115,7 +118,9 @@
         </nav>
         <!-- End Navbar -->
 
-        <g:pageProperty name="page.cont"/>
+        <g:pageProperty name="page.cont">
+        </g:pageProperty>
+        <g:layoutBody/>
 
         <footer class="footer">
             <div class="container-fluid">
@@ -139,7 +144,6 @@
     </div>
 </div>
 <!--   Core JS Files   -->
-<asset:javascript src="core/jquery.min.js"/>
 <asset:javascript src="core/popper.min.js"/>
 <asset:javascript src="core/bootstrap-material-design.min.js"/>
 <asset:javascript src="plugins/perfect-scrollbar.jquery.min.js"/>
@@ -154,6 +158,10 @@
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 <asset:javascript src="material-dashboard.min.js?v=2.1.0"/>
 <g:pageProperty name="page.js"/>
+<asset:javascript src="filepond.min.js"/>
+<asset:javascript src="filepond-plugin-image-preview.min.js"/>
+<asset:javascript src="filepond-plugin-file-encode.min.js"/>
+<asset:javascript src="filepond-plugin-file-validate-size.min.js"/>
 
 </body>
 

@@ -25,10 +25,11 @@ class CharlistaController {
         respond new Charlista(params)
     }
 
-    def guardarCharlista(String nombre, String pais, String imagenCharlista, String telefono) {
+    def guardarCharlista(String nombre, String pais, String telefono) {
         def charlista = new Charlista(nombre: nombre, pais: pais)
+        def data = JSON.parse(params.filepond)
 
-        charlista.setImagenCharlista(imagenCharlista)
+        charlista.setImagenCharlista(data?.data as String)
         charlista.setTelefono(telefono)
         charlista.save(flush: true, failOnError: true)
 

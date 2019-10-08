@@ -68,7 +68,7 @@ class AdminController {
         def cantPorCharla = [:]
         Charla.list().each {
             def map = [:]
-            map[it.tema] = it.cantidadAsistentes
+            map[it.tema] = it.cantidadParticipantes()
             cantPorCharla[it.id] = map
         }
         render cantPorCharla as JSON
@@ -78,8 +78,8 @@ class AdminController {
         def reg = Participante.findByCedula(params.noId as String)
         if (reg != null) {
             reg.charlas.each {
-                it.cantidadAsistentes--
-                if (it.cantidadAsistentes < it.aula.cantidadPersonas) {
+                it.cantidadParticipantes()--
+                if (it.cantidadParticipantes() < it.aula.cantidadPersonas) {
                     it.llena = false
                 }
                 it.save(flush: true, failOnError: true)

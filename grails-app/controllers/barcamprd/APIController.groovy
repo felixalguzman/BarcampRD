@@ -121,12 +121,12 @@ class APIController {
         charlas.each {
             def map = [:]
             map['numeroAula'] = it.aula.numero
-            map['cantidadAsistentes'] = it.cantidadAsistentes
+            map['cantidadAsistentes'] = it.cantidadParticipantes()
             map['descripcionCharla'] = it.descripcionCharla
             map['horario'] = it.horario.value
-            map['charlista'] = it.charlista
+            map['charlista'] = it.charlista.nombre
             map['tema'] = it.tema
-            map['imagenCharlista'] = it.imagenCharlista
+            map['imagenCharlista'] = it?.charlista?.imagenCharlista
             map['talkFormat'] = it?.talkFormat
             map['audienceLevel'] = it?.audienceLevel
             map['lugar'] = it?.aula?.lugar
