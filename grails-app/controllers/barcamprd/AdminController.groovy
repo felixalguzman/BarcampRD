@@ -53,6 +53,38 @@ class AdminController {
 
     }
 
+
+    def editarRegistro(int idRegistro) {
+        def registro = Participante.findById(idRegistro)
+        ['registro': registro, charlas: Charla.findAll()]
+    }
+
+    def agregarCharla(int idRegistro, int idCharla) {
+        def registro = Participante.findById(idRegistro)
+        def charla = Charla.findById(idCharla)
+
+//        if (registro.charlas == null)
+
+        registro.addToCharlas(charla)
+        registro.save(flush: true, failOnError: true)
+
+        render(view: "editarRegistro", model: [registro: registro, charlas: Charla.findAll()])
+
+    }
+
+    def quitarCharla(int idRegistro, Long idCharla) {
+        def registro = Participante.findById(idRegistro)
+
+        def charla = registro.charlas.find {
+            it.id == idCharla
+        }
+
+        registro.charlas.remove(charla)
+        registro.save(flush: true, failOnError: true)
+
+        render(view: "editarRegistro", model: [registro: registro, charlas: Charla.findAll()])
+    }
+
     def sizesCamisetas() {
         def sizes = [:]
         Participante.list().each {

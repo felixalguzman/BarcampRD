@@ -207,6 +207,9 @@
                                                                 <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Close</button>
 
+                                                                <a class="button btn btn-warning btn--pill"
+                                                                   href="${createLink(controller: "admin", action: "editarRegistro", params: [idRegistro: r.id])}">Editar</a>
+
                                                             </div>
                                                         </div>
                                                     </div>

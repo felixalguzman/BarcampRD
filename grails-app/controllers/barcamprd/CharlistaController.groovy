@@ -27,7 +27,7 @@ class CharlistaController {
 
     def guardarCharlista(String nombre, String pais, String telefono) {
         def charlista = new Charlista(nombre: nombre, pais: pais)
-        def data = JSON.parse(params.filepond)
+        def data = !(params.filepond as String).isEmpty() ? JSON.parse(params?.filepond) : null
 
         charlista.setImagenCharlista(data?.data as String)
         charlista.setTelefono(telefono)
