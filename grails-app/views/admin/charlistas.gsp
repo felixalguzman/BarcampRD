@@ -154,8 +154,126 @@
                                                     <td>${c.id}</td>
                                                     <td>${c.nombre}</td>
                                                     <td>${c.telefono}</td>
-                                                    <td><button class="btn btn-navy" id="${c.id}"
+                                                    <td>
+
+                                                        <button class="btn btn-navy" id="${c.id}"
                                                                 onclick="buscarCharlasPorCharlista(this.id)">Charlas</button>
+
+                                                        <button class="btn btn-navy" id="${c.id}"
+
+                                                                data-toggle="modal"
+                                                                data-target="#modificarCharlista_${c.id}"
+                                                                onclick="cargarFoto('${c.imagenCharlista}', ${c.id})">Editar</button>
+
+                                                        <div class="modal fade bd-example-modal-lg"
+                                                             id="modificarCharlista_${c.id}"
+                                                             tabindex="-1"
+                                                             role="dialog" aria-labelledby="exampleModalLabel"
+                                                             aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <div class="card-body">
+                                                                            <div class="table-responsive">
+                                                                                <div class="content">
+                                                                                    <div class="container-fluid">
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-12">
+                                                                                                <div class="card">
+                                                                                                    <div class="card-header card-header-danger">
+                                                                                                        <h4 class="card-title">Editar Charlista</h4>
+
+                                                                                                        <p class="card-category">Llene las informaciones del charlista.</p>
+                                                                                                    </div>
+
+                                                                                                    <div class="card-body">
+                                                                                                        <g:form controller="charlista"
+                                                                                                                action="guardarCharlista">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-md-6">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label id="numero-label-m"
+                                                                                                                               for="nombre-m"
+                                                                                                                               class="bmd-label-floating">Nombre</label>
+                                                                                                                        <input type="text"
+                                                                                                                               id="nombre-m"
+                                                                                                                               name="nombre"
+                                                                                                                               value="${c.nombre}"
+                                                                                                                               class="form-control"
+                                                                                                                               required>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="col-md-6">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label for="pais-m"
+                                                                                                                               class="bmd-label-floating">Pa&iacute;s</label>
+                                                                                                                        <input type="text"
+                                                                                                                               id="pais-m"
+                                                                                                                               name="pais"
+                                                                                                                               value="${c.pais}"
+                                                                                                                               class="form-control"
+                                                                                                                               required>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="col-md-12">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label for="telefono-m"
+                                                                                                                               class="bmd-label-floating">Tel&eacute;lefono</label>
+                                                                                                                        <input type="tel"
+                                                                                                                               id="telefono-m"
+                                                                                                                               value="${c.telefono}"
+                                                                                                                               name="telefono"
+                                                                                                                               class="form-control">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-md-12">
+
+                                                                                                                    <label for="images-m">Foto</label>
+                                                                                                                    <input type="file"
+                                                                                                                           class="my-${c.id}"
+                                                                                                                           name="f"/>
+
+                                                                                                                    <input id="images-m"
+                                                                                                                           hidden
+                                                                                                                           name="imagenCharlista">
+
+                                                                                                                </div>
+                                                                                                            </div>
+
+                                                                                                            <div class="card-avatar"
+                                                                                                                 id="fotos-m">
+
+                                                                                                            </div>
+
+                                                                                                            <button type="submit"
+                                                                                                                    id="submit"
+                                                                                                                    class="btn btn-danger pull-right">Editar</button>
+
+                                                                                                            <div class="clearfix"></div>
+                                                                                                        </g:form>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                                data-dismiss="modal">Close</button>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             </g:each>
@@ -202,6 +320,7 @@
 
         // Turn input element into a pond
         $('.my-pond').filepond();
+        $('.my').filepond();
 
         // Listen for addfile event
         $('.my-pond').on('FilePond:addfile', function (e) {
@@ -215,37 +334,14 @@
     });
 
 
-    %{--$("#submit").on('click', function (e) {--}%
-    %{--    e.preventDefault();--}%
-    %{--    $.ajax({--}%
-    %{--        url: "${createLink(controller: "charlista", action: "guardarCharlista")}",--}%
-    %{--        data: $("form").serialize(),--}%
-    %{--        success: function (data) {--}%
-
-    %{--            --}%%{--window.location.href = "${createLink(controller: "admin", action: "charlistas")}";--}%
+    function cargarFoto(foto, id) {
+        $('#fotos-m').append("<img class='img' height='300' alt='foto' src='" + foto + "'>");
 
 
-    %{--            //         var numeroOK = false;--}%
-    %{--            //         if (data === 'true') {--}%
-    %{--            //             $("#numero-label").text('* Ya existe un aula con este numero!');--}%
-    %{--            //             $("#numero-label").css('color', 'red');--}%
-    %{--            //             numeroOK = false;--}%
-    %{--            //         } else {--}%
-    %{--            //             $("#numero-label").text('Correo Electrónico');--}%
-    %{--            //             $("#numero-label").css('color', '');--}%
-    %{--            //             numeroOK = true;--}%
-    %{--            //         }--}%
-    %{--            //         if (!numeroOK) {--}%
-    %{--            //             e.preventDefault();--}%
-    %{--            //         } else {--}%
-    %{--            //             $(this).submit();--}%
-    %{--            //         }--}%
-    %{--        }--}%
-    %{--    });--}%
+        // Manually add a file using the addfile method
+        $('.my-' + id).filepond('addFile', foto);
 
-    %{--    //e.preventDefault();--}%
-    %{--    console.log('click')--}%
-    %{--});--}%
+    }
 
     function buscarCharlasPorCharlista(idCharlista) {
 

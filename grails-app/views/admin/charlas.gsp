@@ -211,6 +211,7 @@
                                                 <th>Cantidad Asistentes</th>
                                                 <th>Llena</th>
                                                 <th>Horario</th>
+                                                <th>Aula</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -235,6 +236,8 @@
 
                                                     </td>
                                                     <td>${a.horario.value}</td>
+                                                    <td>${a.aula.lugar} - ${a.aula.numero}</td>
+
                                                     <td>
                                                         <button type="button" class="btn btn-warning"
                                                                 data-toggle="modal"
