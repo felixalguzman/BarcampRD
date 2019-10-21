@@ -3,6 +3,7 @@ package barcamprd
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
+
 @Secured(['ROLE_ADMIN'])
 class CharlaController {
 
@@ -43,31 +44,34 @@ class CharlaController {
 
     }
 
+    def actualizarCharla(String tema, String descripcionCharla, int aula, int horario, String audienceLevel, String talkFormat, int charlaId) {
+
+        def charla = Charla.findById(charlaId)
+
+
+        def charlistaC = Charlista.findById(params.charlista as Integer)
+        def aulaC = Aula.findById(aula)
+        def horarioC = Horario.findById(horario)
+
+
+        charla.setDescripcionCharla(descripcionCharla)
+        charla.setAudienceLevel(audienceLevel)
+        charla.setTalkFormat(talkFormat)
+        charla.aula = aulaC
+        charla.horario = horarioC
+        charla.charlista = charlistaC
+
+        charla.save(flush: true, failOnError: true)
+
+        redirect(controller: "admin", action: "charlas")
+        return false
+
+    }
+
     def edit(Long id) {
         respond charlaService.get(id)
     }
 
-    def update(Charla charla) {
-        if (charla == null) {
-            notFound()
-            return
-        }
-
-        try {
-            charlaService.save(charla)
-        } catch (ValidationException e) {
-            respond charla.errors, view: 'edit'
-            return
-        }
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'charla.label', default: 'Charla'), charla.id])
-                redirect charla
-            }
-            '*' { respond charla, [status: OK] }
-        }
-    }
 
     def delete(Long id) {
         if (id == null) {

@@ -127,7 +127,6 @@
                                                                     data-target="#editarAula${a.numero}">Editar
                                                             </button>
 
-                                                            %{--                                                            TODO: Habilitar la edición de aulas.--}%
                                                             <div class="modal fade bd-example-modal-lg"
                                                                  id="editarAula${a.numero}"
                                                                  tabindex="-1"
