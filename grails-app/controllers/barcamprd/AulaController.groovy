@@ -45,26 +45,44 @@ class AulaController {
         respond aulaService.get(id)
     }
 
+    def actualizarAula() {
+
+        try {
+
+            println "id ${params.id}"
+            def aula = Aula.findById(params.id as Long)
+            def cantidad = params.cantidadPersonas as int
+
+            println "cantidad ${cantidad}"
+            println "aula ${aula} "
+
+            aula.cantidadPersonas = cantidad
+
+            aula.save(flush: true, failOnError: true)
+
+            redirect(controller: 'admin', 'action': 'aulas')
+            return false
+
+        } catch (Exception e) {
+
+            println "error ${e.message}"
+        }
+    }
+
     def update(Aula aula) {
         if (aula == null) {
             notFound()
             return
         }
 
-        try {
-            aulaService.save(aula)
-        } catch (ValidationException e) {
-            respond aula.errors, view: 'edit'
-            return
-        }
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'aula.label', default: 'Aula'), aula.id])
-                redirect aula
-            }
-            '*' { respond aula, [status: OK] }
-        }
+        aulaService.save(aula)
+//            render(view: "aulas", controller: 'admin', model: ['aulas': Aula.list()])
+
+        redirect(controller: 'admin', 'action': 'aulas')
+        return false
+
+
     }
 
     def delete(Long id) {

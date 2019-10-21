@@ -112,13 +112,12 @@
                                                                                                               name='aula'
                                                                                                               class="form-control valid"
                                                                                                               aria-invalid="false"
-                                                                                                              value="${{
-                                                                                                                  it.nombre
-                                                                                                              }}"
                                                                                                               noSelection="${['null': 'Seleccione...']}"
                                                                                                               from='${aulas}'
                                                                                                               optionKey="id"
-                                                                                                              optionValue="lugar">
+                                                                                                              optionValue="${{
+                                                                                                                  'Aula: ' + it.lugar + ' cantidad personas: ' + it.cantidadPersonas
+                                                                                                              }}">
 
                                                                                                         <span class="material-input"></span>
                                                                                                     </g:select>
@@ -212,7 +211,6 @@
                                                 <th>Cantidad Asistentes</th>
                                                 <th>Llena</th>
                                                 <th>Horario</th>
-                                                <th>Asistentes</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -238,6 +236,7 @@
                                                     </td>
                                                     <td>${a.horario.value}</td>
                                                     <td>
+                                                        <button type="submit" id="ed" class="btn btn-warning pull-right">Editar</button>
 
                                                     </td>
                                                 </tr>

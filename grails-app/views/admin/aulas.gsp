@@ -55,7 +55,7 @@
                                                                                         <div class="row">
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
-                                                                                                    <label id="numero-label"
+                                                                                                    <label for="numero"
                                                                                                            class="bmd-label-floating">Numero</label>
                                                                                                     <input type="text"
                                                                                                            id="numero"
@@ -67,7 +67,8 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <div class="form-group">
-                                                                                                    <label class="bmd-label-floating">Cantidad de Personas</label>
+                                                                                                    <label for="cantidadPersonas"
+                                                                                                           class="bmd-label-floating">Cantidad de Personas</label>
                                                                                                     <input type="text"
                                                                                                            id="cantidadPersonas"
                                                                                                            name="cantidadPersonas"
@@ -123,11 +124,12 @@
                                                         <div>
                                                             <button type="button" class="btn btn-warning"
                                                                     data-toggle="modal"
-                                                                    data-target="#editarAula${a.numero}" disabled>Editar
+                                                                    data-target="#editarAula${a.numero}">Editar
                                                             </button>
 
-%{--                                                            TODO: Habilitar la edición de aulas.--}%
-                                                            <div class="modal fade bd-example-modal-lg" id="editarAula${a.numero}"
+                                                            %{--                                                            TODO: Habilitar la edición de aulas.--}%
+                                                            <div class="modal fade bd-example-modal-lg"
+                                                                 id="editarAula${a.numero}"
                                                                  tabindex="-1"
                                                                  role="dialog" aria-labelledby="exampleModalLabel"
                                                                  aria-hidden="true">
@@ -135,7 +137,8 @@
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <button type="button" class="close"
-                                                                                    data-dismiss="modal" aria-label="Close">
+                                                                                    data-dismiss="modal"
+                                                                                    aria-label="Close">
                                                                                 <span aria-hidden="true">&times;</span>
                                                                             </button>
                                                                         </div>
@@ -150,26 +153,51 @@
                                                                                                     <div class="card">
                                                                                                         <div class="card-header card-header-danger">
                                                                                                             <h4 class="card-title">Crear Aula</h4>
+
                                                                                                             <p class="card-category">Llene las informaciones de la nueva aula.</p>
 
                                                                                                         </div>
+
                                                                                                         <div class="card-body">
-                                                                                                            <g:form method="put" controller="aula" action="update">
+                                                                                                            <g:form method="post"
+                                                                                                                    controller="aula"
+                                                                                                                    action="actualizarAula">
                                                                                                                 <div class="row">
                                                                                                                     <div class="col-md-6">
                                                                                                                         <div class="form-group">
-                                                                                                                            <label id="numero-label2" class="bmd-label-floating">Numero</label>
-                                                                                                                            <input type="text" name="numero" class="form-control" value="${a.numero}" disabled>
+                                                                                                                            <label for="numero-label2"
+                                                                                                                                   class="bmd-label-floating">Numero</label>
+                                                                                                                            <input id="numero-label2"
+                                                                                                                                   type="text"
+                                                                                                                                   name="numero"
+                                                                                                                                   class="form-control"
+                                                                                                                                   value="${a.numero}"
+                                                                                                                                   disabled>
+
+                                                                                                                            <input type="number"
+                                                                                                                                   hidden
+                                                                                                                                   name="id"
+                                                                                                                                   value="${a.id}">
                                                                                                                         </div>
                                                                                                                     </div>
+
                                                                                                                     <div class="col-md-6">
                                                                                                                         <div class="form-group">
-                                                                                                                            <label class="bmd-label-floating">Cantidad de Personas</label>
-                                                                                                                            <input type="text" name="cantidadPersonas" class="form-control" value="${a.cantidadPersonas}" required>
+                                                                                                                            <label for="cantidad"
+                                                                                                                                   class="bmd-label-floating">Cantidad de Personas</label>
+                                                                                                                            <input id="cantidad"
+                                                                                                                                   type="text"
+                                                                                                                                   name="cantidadPersonas"
+                                                                                                                                   class="form-control"
+                                                                                                                                   value="${a.cantidadPersonas}"
+                                                                                                                                   required>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <button type="submit" id="submit" class="btn btn-danger pull-right">Actualizar</button>
+                                                                                                                <button type="submit"
+                                                                                                                        id="submit"
+                                                                                                                        class="btn btn-danger pull-right">Actualizar</button>
+
                                                                                                                 <div class="clearfix"></div>
                                                                                                             </g:form>
                                                                                                         </div>
