@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <asset:link rel="icon" href="favicon-32x32.png.png" type="image/x-ico"/>
+    <asset:link rel="icon" href="LogoRojo-32x32.png" type="image/x-ico"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>Admin BarcampRD</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
@@ -36,7 +36,7 @@
             <a href="https://jconfdominicana.org" class="simple-text logo-normal">
                 <div class="logo">
                     <img style="margin-top: -50px; width: 250px; height: 125px;"
-                         src="${resource(dir: "images/", file: "jconfLogoPeq.png")}" width="200">
+                         src="${resource(dir: "images/", file: "barcamp.png")}" width="200">
                 </div>
 
                 <div class="brand" style="margin-bottom: -10px; margin-top: 10px;">

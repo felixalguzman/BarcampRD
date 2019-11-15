@@ -8,7 +8,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    <asset:link rel="icon" href="favicon-32x32.png" type="image/x-ico"/>
+    <asset:link rel="icon" href="LogoRojo-32x32.png" type="image/x-ico"/>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
@@ -56,7 +56,7 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <!--      Wizard container        -->
                 <div class="wizard-container">
-                    <div class="card wizard-card" data-color="navy" id="wizard">
+                    <div class="card wizard-card" data-color="rojo" id="wizard">
                         <g:form action="registrar" method="get">
                             <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
 
@@ -273,7 +273,7 @@
                                 <div class="wizard-footer">
                                     <div class="pull-right">
                                         <input type='button' id="primerSiguiente"
-                                               class='btn btn-next btn-fill btn-navy btn-wd' name='next'
+                                               class='btn btn-next btn-fill btn-rojo btn-wd' name='next'
 
                                                value='Siguiente'/>
                                         %{--<input id='btn-submit' type='submit'

@@ -8,7 +8,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
 
-    <asset:link rel="icon" href="favicon-32x32.png" type="image/x-ico"/>
+    <asset:link rel="icon" href="LogoRojo-32x32.png" type="image/x-ico"/>
 
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
