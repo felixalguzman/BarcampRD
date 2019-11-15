@@ -30,7 +30,7 @@ class CharlaController {
         def aulaC = Aula.findById(aula)
         def horarioC = Horario.findById(horario)
 
-        println "charlista: ${params.charlista as Integer} aula: ${aula} horario: ${horario}"
+        println "charlista: ${params.charlista as Integer} aula: ${aula} horario: ${horario} Charlista: ${charlistaC.nombre}"
 
         def charla = new Charla(charlista: charlistaC, aula: aulaC, horario: horarioC, tema: tema)
         charla.setDescripcionCharla(descripcionCharla)

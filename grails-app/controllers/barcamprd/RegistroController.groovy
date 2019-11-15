@@ -12,7 +12,7 @@ class RegistroController {
 
         def charlaHorario = [:]
         def charlaHorario2 = [:]
-        boolean ok = false
+        boolean ok = true
 
         for (Charla c : Charla.list()) {
             if (!c.llena) {

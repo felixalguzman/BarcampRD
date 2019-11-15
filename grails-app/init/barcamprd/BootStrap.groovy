@@ -23,27 +23,27 @@ class BootStrap {
         def a5 = Aula.findOrSaveWhere(numero: 1, cantidadPersonas: 300, lugar: "Teatro")
 
 
-//        def h1 = Horario.findOrSaveWhere(value: "9:00 a.m - 10:00 a.m")
-//        def h2 = Horario.findOrSaveWhere(value: "10:00 a.m - 11:00 a.m")
-//        def h3 = Horario.findOrSaveWhere(value: "11:00 a.m - 12:00 p.m")
-//        def h4 = Horario.findOrSaveWhere(value: "12:00 p.m - 1:00 p.m")
-//        def h5 = Horario.findOrSaveWhere(value: "2:30 p.m - 3:30 p.m")
-//        def h6 = Horario.findOrSaveWhere(value: "3:30 p.m - 4:30 p.m")
+        def h1 = Horario.findOrSaveWhere(value: "9:00 a.m - 10:00 a.m")
+        def h2 = Horario.findOrSaveWhere(value: "10:00 a.m - 11:00 a.m")
+        def h3 = Horario.findOrSaveWhere(value: "11:00 a.m - 12:00 p.m")
+        def h4 = Horario.findOrSaveWhere(value: "12:00 p.m - 1:00 p.m")
+        def h5 = Horario.findOrSaveWhere(value: "2:00 p.m - 3:00 p.m")
+        def h6 = Horario.findOrSaveWhere(value: "4:00 p.m - 5:00 p.m")
 
-        def h1 = Horario.findOrSaveWhere(value: "2:30 p.m - 3:30 p.m")
-        def h2 = Horario.findOrSaveWhere(value: "3:30 p.m - 4:30 p.m")
-        def h3 = Horario.findOrSaveWhere(value: "4:30 p.m - 5:30 p.m")
-        def h4 = Horario.findOrSaveWhere(value: "5:30 p.m - 6:30 p.m")
-
-
-        def h5 = Horario.findOrSaveWhere(value: "8:30 a.m - 9:30 a.m")
-        def h6 = Horario.findOrSaveWhere(value: "9:30 a.m - 10:30 a.m")
-        def h7 = Horario.findOrSaveWhere(value: "10:30 a.m - 11:30 a.m")
-        def h8 = Horario.findOrSaveWhere(value: "11:30 a.m - 1:00 p.m")
+//        def h1 = Horario.findOrSaveWhere(value: "2:30 p.m - 3:30 p.m")
+//        def h2 = Horario.findOrSaveWhere(value: "3:30 p.m - 4:30 p.m")
+//        def h3 = Horario.findOrSaveWhere(value: "4:30 p.m - 5:30 p.m")
+//        def h4 = Horario.findOrSaveWhere(value: "5:30 p.m - 6:30 p.m")
+//
+//
+//        def h5 = Horario.findOrSaveWhere(value: "8:30 a.m - 9:30 a.m")
+//        def h6 = Horario.findOrSaveWhere(value: "9:30 a.m - 10:30 a.m")
+//        def h7 = Horario.findOrSaveWhere(value: "10:30 a.m - 11:30 a.m")
+//        def h8 = Horario.findOrSaveWhere(value: "11:30 a.m - 1:00 p.m")
 //        def h5 = Horario.findOrSaveWhere(value: "6:00 p.m - 7:00 p.m")
 
-//        Charla.findOrSaveWhere(charlista: "Heather Van Cura",tema: "(EN) The Future of Java and You", horario: h5, aula: a5, descripcionCharla: "")
-//        Charla.findOrSaveWhere(charlista: "Sebastian Daschner",tema: "(ES) ¿Java EE? ¿Jakarta EE? ¿MicroProfile? ¿O tal vez, todos ellos? ", horario: h6, aula: a5, descripcionCharla: "")
+//        Charla.findOrSaveWhere(charlista: "Rafael Miguel Dorville Collado", tema: "Análisis de Redes Sociales", horario: h1, aula: a1, descripcionCharla: "Hoy en día vivimos en un mundo en que los individuos, las instituciones y los grupos están interconectados. Los patrones de conexión entre elementos forman un “espacio social” que se aprecia en múltiples contextos, pudiendo estudiar la influencia de un individuo dentro de su circulo.")
+//        Charla.findOrSaveWhere(charlista: "Sebastian Daschner", tema: "Procesamiento de Lenguaje Natural con Python: un vistazo a la librería Pattern", horario: h1, aula: a1, descripcionCharla: "")
 //        Charla.findOrSaveWhere(charlista: "Mark Heckler", tema: "(ES) Bebiendo del Stream: Como usar las plataformas de mensajería para escalamiento y rendimiento", horario: h7, aula: a5, descripcionCharla: "")
 //        Charla.findOrSaveWhere(charlista: "Igor Suhorukov, Sebastian Daschner, Oleh Dokuka,  Heather Van Cura", tema: "Panel", horario: h8, aula: a5, descripcionCharla: "")
 //
@@ -103,7 +103,7 @@ class BootStrap {
         def userRole = Role.findOrCreateWhere(authority: 'ROLE_ADMIN')
         def user = User.findOrCreateWhere(username: 'admin', password: 'ciscsti2018', nombre: 'CISC', email: 'comitestisc@gmail.com')
 //        if(user == null){
-            user.save(flush: true, failOnError: true)
+        user.save(flush: true, failOnError: true)
 //        }
         if (!user.getAuthorities().contains(userRole)) {
             UserRole.create(user, userRole, true)
@@ -113,5 +113,8 @@ class BootStrap {
 
 
     def destroy = {
+//        Charla.deleteAll()
+//        Charlista.deleteAll()
+//        Horario.deleteAll()
     }
 }

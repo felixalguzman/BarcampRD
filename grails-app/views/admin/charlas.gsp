@@ -116,7 +116,7 @@
                                                                                                               from='${aulas}'
                                                                                                               optionKey="id"
                                                                                                               optionValue="${{
-                                                                                                                  'Aula: ' + it.lugar + ' cantidad personas: ' + it.cantidadPersonas
+                                                                                                                  'Aula: ' + it.lugar + ' ' + it.numero + ', Cantidad personas: ' + it.cantidadPersonas
                                                                                                               }}">
 
                                                                                                         <span class="material-input"></span>
