@@ -146,6 +146,7 @@
                                             <th>Nombre</th>
                                             <th>Tel&eacute;lefono</th>
                                             <th>Charlas</th>
+                                            <th>Foto</th>
                                             %{--                                            <th>Cantidad De Personas Soportadas</th>--}%
                                             </thead>
                                             <tbody>
@@ -275,6 +276,8 @@
                                                             </div>
                                                         </div>
                                                     </td>
+                                                    <td><img src="${c?.imagenCharlista}" alt="foto" height="120"
+                                                             width="120"></td>
                                                 </tr>
                                             </g:each>
                                             </tbody>
@@ -322,13 +325,15 @@
         $('.my-pond').filepond();
         $('.my').filepond();
 
+
         // Listen for addfile event
         $('.my-pond').on('FilePond:addfile', function (e) {
-            // console.log('file added event', e);
-
+            console.log('file added event', e);
             // $('#images').val(base64);
+            console.log('file', $('.my-pond').getFile());
 
         });
+
 
 
     });

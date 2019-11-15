@@ -29,9 +29,8 @@ class CharlistaController {
         def charlista = new Charlista(nombre: nombre, pais: pais)
         def data = !(params.filepond as String).isEmpty() ? JSON.parse(params?.filepond) : null
 
-        println "data: ${data as JSON}"
         def foto = data?.data as String
-        charlista.setImagenCharlista(foto.trim())
+        charlista.setImagenCharlista(foto?.trim())
         charlista.setTelefono(telefono)
         charlista.save(flush: true, failOnError: true)
 
