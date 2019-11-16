@@ -21,7 +21,7 @@
 </head>
 <body>
 <div class="image-container set-full-height"
-     style="background-image: url('${resource(dir: "images/", file: "jconf fondo.png")}');">
+     style="background-image: url('${resource(dir: "images/", file: "fondo_barcamp2019.png")}');">
 
     <!--  Made With Material Kit  -->
 %{--    <a href="https://barcamp.org.do" class="made-with-mk">--}%
@@ -43,8 +43,8 @@
                                     REGISTRO COMPLETADO!
                                 </h3>
                             </div>
-                            <h5 class="info-text">Nos vemos este próximo 29 de Junio!</h5>
-                            <p class="info-text"><a href="https://jconfdominicana.org" class="btn btn-success">PÁGINA OFICIAL DE JCONF DOMINICANA</a></p>
+                            <h5 class="info-text">Nos vemos este próximo 23 de Noviembre!</h5>
+                            <p class="info-text"><a href="https://barcamp.org.do" class="btn btn-success">PÁGINA OFICIAL DE BARCAMP RD</a></p>
                         </g:if>
                         <g:else>
                             <div class="wizard-header">
@@ -61,9 +61,8 @@
     </div> <!--  big container -->
 
     <div class="footer">
-        <div style="color: black" class="container text-center">
-            Evento organizado con <i class="fa fa-heart heart"></i>
-            por el Comité de Estudiantes de Ingeniería de Sistemas y el equipo de Java Dominicano.
+        <div style="color: white" class="container text-center">
+            Hecho con <i class="fa fa-heart heart"></i> por el equipo de Barcamp RD 2019
         </div>
     </div>
 </div>

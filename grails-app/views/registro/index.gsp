@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>Registro JconfDominicana</title>
+    <title>Registro BarcampRD 2019</title>
 
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
     <meta name="viewport" content="width=device-width"/>
@@ -30,7 +30,7 @@
 
 <body>
 <div class="image-container set-full-height"
-     style="background-image: url('${resource(dir: "images/", file: "jconf fondo.png")}');">
+     style="background-image: url('${resource(dir: "images/", file: "fondo_barcamp2019.png")}');">
     <!--   Creative Tim Branding   -->
     <a href="http://creative-tim.com">
         <div class="logo-container">
@@ -62,7 +62,7 @@
 
                             <div class="wizard-header">
                                 <h3 class="wizard-title">
-                                    Registro para JconfDominicana
+                                    Registro para Barcamp RD 2019
                                 </h3>
                                 <h5>¡¿A cuáles conferencias quieres asistir?!</h5>
                             </div>
@@ -318,9 +318,8 @@
     </div> <!--  big container -->
 
     <div class="footer">
-        <div style="color: black" class="container text-center">
-            Evento organizado con <i class="fa fa-heart heart"></i>
-            por el Comité de Estudiantes de Ingeniería de Sistemas y el equipo de Java Dominicano.
+        <div style="color: white" class="container text-center">
+            Hecho con <i class="fa fa-heart heart"></i> por el equipo de Barcamp RD 2019
         </div>
     </div>
 </div>
