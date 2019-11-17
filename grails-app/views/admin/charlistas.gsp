@@ -189,7 +189,7 @@
 
                                                                                                     <div class="card-body">
                                                                                                         <g:form controller="charlista"
-                                                                                                                action="guardarCharlista">
+                                                                                                                action="update">
                                                                                                             <div class="row">
                                                                                                                 <div class="col-md-6">
                                                                                                                     <div class="form-group">
