@@ -23,6 +23,8 @@ class Charla {
 
     static mapping = {
         descripcionCharla type: "text"
+        horario sort: 'value', order: 'desc'
+
     }
 
     def cantidadParticipantes() {

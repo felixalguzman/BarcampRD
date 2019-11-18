@@ -222,7 +222,7 @@
                                                                 test="${s.llena}"><strike>${s.tema}</strike></g:if>
                                                             <g:else>
 
-                                                                ${s.charlista} - ${s.tema}
+                                                                ${s.charlista.nombre} - ${s.tema}
 
                                                                 <g:if test="${s.descripcionCharla != null}">
 
