@@ -11,6 +11,8 @@ class Participante {
     boolean correoEncuestaEnviado = false
     boolean pago = false
 
+    Critica critica
+
     static hasMany = [charlas: Charla]
 
     Date dateCreated;
@@ -19,6 +21,7 @@ class Participante {
     static constraints = {
         cedula unique: true
         correo unique: true
+        critica nullable: true
     }
 
     static mapping = {

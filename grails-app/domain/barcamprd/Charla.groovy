@@ -11,6 +11,8 @@ class Charla {
     String audienceLevel
     String talkFormat
 
+    static hasMany = [criticas: Critica]
+
     Date dateCreated;
     Date lastUpdated;
 
@@ -19,6 +21,7 @@ class Charla {
         audienceLevel nullable: true
         talkFormat nullable: true
         tema unique: true
+        criticas nullable: true
     }
 
     static mapping = {
