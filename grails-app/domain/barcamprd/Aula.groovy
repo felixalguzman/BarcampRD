@@ -14,7 +14,7 @@ class Aula {
         numero min: 0
         cantidadPersonas min: 0
         lugar nullable: true
-        color nullable: false
+        color nullable: true
     }
 
     static mapping = {

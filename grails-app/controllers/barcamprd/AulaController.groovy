@@ -2,7 +2,9 @@ package barcamprd
 
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
-import static org.springframework.http.HttpStatus.*
+
+import static org.springframework.http.HttpStatus.NOT_FOUND
+import static org.springframework.http.HttpStatus.NO_CONTENT
 
 @Secured(['ROLE_ADMIN'])
 class AulaController {
@@ -34,7 +36,8 @@ class AulaController {
         try {
             aulaService.save(aula)
         } catch (ValidationException e) {
-            respond aula.errors, view: '/admin/crearAula'
+            println "errores ${e}"
+            respond aula.errors, view: '/admin/aulas'
             return
         }
 
@@ -52,11 +55,13 @@ class AulaController {
             println "id ${params.id}"
             def aula = Aula.findById(params.id as Long)
             def cantidad = params.cantidadPersonas as int
+            def color = params.color as String
 
             println "cantidad ${cantidad}"
             println "aula ${aula} "
 
             aula.cantidadPersonas = cantidad
+            aula.color = color
 
             aula.save(flush: true, failOnError: true)
 

@@ -11,7 +11,8 @@ class Participante {
     boolean correoEncuestaEnviado = false
     boolean pago = false
 
-    static hasMany = [charlas: Charla]
+
+    static hasMany = [charlas: Charla, criticas: Critica]
 
     Date dateCreated;
     Date lastUpdated;
@@ -23,5 +24,6 @@ class Participante {
 
     static mapping = {
         charlas(lazy: false)
+        criticas(lazy: false)
     }
 }

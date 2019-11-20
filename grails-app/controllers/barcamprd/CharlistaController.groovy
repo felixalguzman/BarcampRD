@@ -1,9 +1,10 @@
 package barcamprd
 
-import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
-import static org.springframework.http.HttpStatus.*
+
+import static org.springframework.http.HttpStatus.NOT_FOUND
+import static org.springframework.http.HttpStatus.NO_CONTENT
 
 @Secured(['ROLE_ADMIN'])
 class CharlistaController {
@@ -25,12 +26,10 @@ class CharlistaController {
         respond new Charlista(params)
     }
 
-    def guardarCharlista(String nombre, String pais, String telefono) {
+    def guardarCharlista(String nombre, String pais, String telefono, String imagenCharlista) {
         def charlista = new Charlista(nombre: nombre, pais: pais)
-        def data = !(params.filepond as String).isEmpty() ? JSON.parse(params?.filepond) : null
 
-        def foto = data?.data as String
-        charlista.setImagenCharlista(foto?.trim())
+        charlista.setImagenCharlista(imagenCharlista)
         charlista.setTelefono(telefono)
         charlista.save(flush: true, failOnError: true)
 
@@ -43,6 +42,29 @@ class CharlistaController {
 
 
     }
+
+    def actualizarCharlista(Long id, String nombre, String pais, String telefono, String imagenCharlista) {
+        def charlista = Charlista.findById(id)
+
+        println "charlista viej ${charlista}"
+
+        println "nuevos val $nombre $pais $telefono"
+        charlista.setNombre(nombre)
+        charlista.setPais(pais)
+        charlista.setImagenCharlista(imagenCharlista)
+        charlista.setTelefono(telefono)
+        charlista.save(flush: true, failOnError: true)
+
+//        render view: '/admin/charlistas', model: [charlistas: Charlista.findAll()]
+        redirect(controller: "admin", action: "charlistas")
+
+        def ok = [ok: true]
+//        render ok as JSON
+        return false
+
+
+    }
+
 
     def save(Charlista charlista) {
         if (charlista == null) {
@@ -81,13 +103,8 @@ class CharlistaController {
             return
         }
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'charlista.label', default: 'Charlista'), charlista.id])
-                redirect charlista
-            }
-            '*' { respond charlista, [status: OK] }
-        }
+        respond view: '/admin/charlistas'
+
     }
 
     def delete(Long id) {

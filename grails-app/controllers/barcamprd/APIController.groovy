@@ -46,7 +46,7 @@ class APIController {
 
             map['correo'] = registro.correo
             map['charlas'] = registro.charlas
-            JSON.use('deep'){
+            JSON.use('deep') {
                 render map as JSON
             }
 
@@ -70,6 +70,10 @@ class APIController {
             registro.save(flush: true, failOnError: true)
             map['codigo'] = 200
             map['status'] = 'ok'
+            map['size'] = registro.sizeCamiseta
+            map['nombre'] = registro.nombre
+            map['correo'] = registro.correo
+            map['cedula'] = registro.cedula
             render map as JSON
         } else {
             response.status = 400
@@ -87,7 +91,7 @@ class APIController {
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.charlas
-            JSON.use('deep'){
+            JSON.use('deep') {
                 render map as JSON
             }
         } else {
@@ -104,7 +108,7 @@ class APIController {
             map['nombre'] = registro.nombre
             map['correo'] = registro.correo
             map['charlas'] = registro.charlas
-            JSON.use('deep'){
+            JSON.use('deep') {
                 render map as JSON
             }
 
@@ -114,12 +118,97 @@ class APIController {
         }
     }
 
+    def nuevaCritica(String numeroRegistro, String descripcion, float valor, Long idCharla) {
+
+        def registro = Participante.findByCedula(numeroRegistro)
+        def charla = Charla.findById(idCharla)
+
+        if (registro == null || charla == null) {
+            response.status = 404
+            render "Participante o charla no encontrado"
+        }
+
+        Critica critica = new Critica(valor: valor, descripcion: descripcion, charla: charla, participante: registro)
+        critica.save(flush: true, failOnError: true)
+
+        response.status = 200
+        def res = [ok: "OK"]
+        render res as JSON
+
+
+    }
+
+    def criticasPorParticipante(String numeroRegistro) {
+
+        def registro = Participante.findByCedula(numeroRegistro)
+        def criticas = Critica.findAllByParticipante(registro)
+
+        if (registro != null) {
+
+            def json = []
+            criticas.each {
+                def map = [:]
+                map['id'] = it.id
+                map['valor'] = it.valor
+                map['descripcion'] = it.descripcion
+                json.add(map)
+            }
+
+            render json as JSON
+        } else {
+            response.status = 404
+            render "Participante no encontrado"
+        }
+    }
+
+    def actualizarCritica(Long idCritica, String descripcion, float valor) {
+
+        def critica = Critica.findById(idCritica)
+
+        if (critica != null) {
+
+            critica.descripcion = descripcion
+            critica.valor = valor
+            critica.save(flush: true, failOnError: true)
+
+        } else {
+            response.status = 404
+            render "Critica no encontrada"
+        }
+
+    }
+
+    def criticasPorCharla(Long idCharla) {
+
+        def charla = Charla.findById(idCharla)
+        def criticas = Critica.findAllByCharla(charla)
+
+        if (charla != null) {
+
+            def json = []
+            criticas.each {
+                def map = [:]
+                map['id'] = it.id
+                map['valor'] = it.valor
+                map['descripcion'] = it.descripcion
+                json.add(map)
+            }
+
+            render json as JSON
+        } else {
+            response.status = 404
+            render "Charla no encontrado"
+        }
+    }
+
     def charlas() {
 
         def charlas = Charla.findAll()
         def listMap = []
         charlas.each {
             def map = [:]
+
+            map['idCharla'] = it.id
             map['numeroAula'] = it.aula.numero
             map['cantidadAsistentes'] = it.cantidadParticipantes()
             map['descripcionCharla'] = it.descripcionCharla
@@ -130,6 +219,7 @@ class APIController {
             map['talkFormat'] = it?.talkFormat
             map['audienceLevel'] = it?.audienceLevel
             map['lugar'] = it?.aula?.lugar
+            map['color'] = it?.aula?.color
             listMap.add(map)
         }
         render listMap as JSON
