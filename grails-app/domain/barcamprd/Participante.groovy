@@ -11,9 +11,8 @@ class Participante {
     boolean correoEncuestaEnviado = false
     boolean pago = false
 
-    Critica critica
 
-    static hasMany = [charlas: Charla]
+    static hasMany = [charlas: Charla, criticas: Critica]
 
     Date dateCreated;
     Date lastUpdated;
@@ -21,10 +20,10 @@ class Participante {
     static constraints = {
         cedula unique: true
         correo unique: true
-        critica nullable: true
     }
 
     static mapping = {
         charlas(lazy: false)
+        criticas(lazy: false)
     }
 }

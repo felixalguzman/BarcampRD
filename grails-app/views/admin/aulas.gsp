@@ -3,6 +3,16 @@
 <head>
     <meta name="layout" content="dashboard"/>
     <title>Aulas</title>
+
+    <style>
+    .caja {
+        float: left;
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+        border: 1px solid rgba(0, 0, 0, .2);
+    }
+    </style>
 </head>
 
 <body>
@@ -76,6 +86,18 @@
                                                                                                            required>
                                                                                                 </div>
                                                                                             </div>
+
+                                                                                            <div class="col-md-12">
+                                                                                                <div class="form-group">
+                                                                                                    <label for="colorAula"
+                                                                                                           class="bmd-label-floating">Color</label>
+                                                                                                    <input type="color"
+                                                                                                           id="colorAula"
+                                                                                                           name="color"
+                                                                                                           class="form-control"
+                                                                                                           required>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                         <button type="submit"
                                                                                                 id="submit"
@@ -110,6 +132,7 @@
                                                 <th>ID</th>
                                                 <th>Numero</th>
                                                 <th>Cantidad De Personas Soportadas</th>
+                                                <th>Color</th>
                                                 <th>Lugar</th>
                                             </tr>
                                             </thead>
@@ -119,6 +142,9 @@
                                                     <td>${a.id}</td>
                                                     <td>${a.numero}</td>
                                                     <td>${a.cantidadPersonas}</td>
+                                                    <td>
+                                                        <div class="caja" style="background: ${a?.color}"></div>
+                                                    </td>
                                                     <td>${a.lugar}</td>
                                                     <td>
                                                         <div>
@@ -191,6 +217,18 @@
                                                                                                                                    value="${a.cantidadPersonas}"
                                                                                                                                    required>
                                                                                                                         </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+
+                                                                                                                <div class="col-md-12">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label for="color"
+                                                                                                                               class="bmd-label-floating">Color</label>
+                                                                                                                        <input type="color"
+                                                                                                                               id="color"
+                                                                                                                               name="color"
+                                                                                                                               class="form-control"
+                                                                                                                               required value="${a?.color}">
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                                 <button type="submit"

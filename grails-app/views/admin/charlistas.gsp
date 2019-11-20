@@ -97,12 +97,13 @@
                                                                                         <div class="row">
                                                                                             <div class="col-md-12">
 
-                                                                                                <label for="images">Foto</label>
+                                                                                                <label for="imagen_seleccionarFoto">Foto</label>
                                                                                                 <input type="file"
-                                                                                                       class="my-pond"
-                                                                                                       name="filepond"/>
+                                                                                                       id="seleccionarFoto"
+                                                                                                       name="filepond"
+                                                                                                       onchange="preview_images(this.id, null, 'fotos')"/>
 
-                                                                                                <input id="images"
+                                                                                                <input id="imagen_seleccionarFoto"
                                                                                                        hidden
                                                                                                        name="imagenCharlista">
 
@@ -145,7 +146,6 @@
                                             <th>ID</th>
                                             <th>Nombre</th>
                                             <th>Tel&eacute;lefono</th>
-                                            <th>Charlas</th>
                                             <th>Foto</th>
                                             %{--                                            <th>Cantidad De Personas Soportadas</th>--}%
                                             </thead>
@@ -155,10 +155,10 @@
                                                     <td>${c.id}</td>
                                                     <td>${c.nombre}</td>
                                                     <td>${c.telefono}</td>
+                                                    <td><img src="${c?.imagenCharlista ?: '//:0'}" alt="foto"
+                                                             height="120"
+                                                             width="120"></td>
                                                     <td>
-
-                                                        <button class="btn btn-navy" id="${c.id}"
-                                                                onclick="buscarCharlasPorCharlista(this.id)">Charlas</button>
 
                                                         <button class="btn btn-navy" id="${c.id}"
 
@@ -189,15 +189,20 @@
 
                                                                                                     <div class="card-body">
                                                                                                         <g:form controller="charlista"
-                                                                                                                action="guardarCharlista">
+                                                                                                                action="actualizarCharlista">
+
+                                                                                                            <input hidden
+                                                                                                                   name="id"
+                                                                                                                   value="${c.id}">
+
                                                                                                             <div class="row">
                                                                                                                 <div class="col-md-6">
                                                                                                                     <div class="form-group">
                                                                                                                         <label id="numero-label-m"
-                                                                                                                               for="nombre-m"
+                                                                                                                               for="nombre_m"
                                                                                                                                class="bmd-label-floating">Nombre</label>
                                                                                                                         <input type="text"
-                                                                                                                               id="nombre-m"
+                                                                                                                               id="nombre_m"
                                                                                                                                name="nombre"
                                                                                                                                value="${c.nombre}"
                                                                                                                                class="form-control"
@@ -207,10 +212,10 @@
 
                                                                                                                 <div class="col-md-6">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label for="pais-m"
+                                                                                                                        <label for="pais_m"
                                                                                                                                class="bmd-label-floating">Pa&iacute;s</label>
                                                                                                                         <input type="text"
-                                                                                                                               id="pais-m"
+                                                                                                                               id="pais_m"
                                                                                                                                name="pais"
                                                                                                                                value="${c.pais}"
                                                                                                                                class="form-control"
@@ -220,10 +225,10 @@
 
                                                                                                                 <div class="col-md-12">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label for="telefono-m"
+                                                                                                                        <label for="telefono_m"
                                                                                                                                class="bmd-label-floating">Tel&eacute;lefono</label>
                                                                                                                         <input type="tel"
-                                                                                                                               id="telefono-m"
+                                                                                                                               id="telefono_m"
                                                                                                                                value="${c.telefono}"
                                                                                                                                name="telefono"
                                                                                                                                class="form-control">
@@ -234,12 +239,13 @@
                                                                                                             <div class="row">
                                                                                                                 <div class="col-md-12">
 
-                                                                                                                    <label for="images-m">Foto</label>
+                                                                                                                    <label for="imagen_nuevaSeleccionFoto_${c.id}">Foto</label>
                                                                                                                     <input type="file"
-                                                                                                                           class="my-${c.id}"
-                                                                                                                           name="f"/>
+                                                                                                                           id="nuevaSeleccionFoto"
+                                                                                                                           name="f"
+                                                                                                                           onchange="preview_images(this.id, ${c.id}, 'fotos-m')"/>
 
-                                                                                                                    <input id="images-m"
+                                                                                                                    <input id="imagen_nuevaSeleccionFoto_${c.id}"
                                                                                                                            hidden
                                                                                                                            name="imagenCharlista">
 
@@ -276,8 +282,7 @@
                                                             </div>
                                                         </div>
                                                     </td>
-                                                    <td><img src="${c?.imagenCharlista}" alt="foto" height="120"
-                                                             width="120"></td>
+
                                                 </tr>
                                             </g:each>
                                             </tbody>
@@ -297,16 +302,6 @@
 <!-- include jQuery library -->
 %{--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>--}%
 
-<!-- include FilePond library -->
-<script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
-
-<!-- include FilePond plugins -->
-<script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
-
-<!-- include FilePond jQuery adapter -->
-<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-
-
 <script>
 
 
@@ -318,24 +313,6 @@
         $("#table").DataTable();
 
 
-        // First register any plugins
-        $.fn.filepond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileEncode);
-
-        // Turn input element into a pond
-        $('.my-pond').filepond();
-        $('.my').filepond();
-
-
-        // Listen for addfile event
-        $('.my-pond').on('FilePond:addfile', function (e) {
-            console.log('file added event', e);
-            // $('#images').val(base64);
-            console.log('file', $('.my-pond').getFile());
-
-        });
-
-
-
     });
 
 
@@ -344,7 +321,6 @@
 
 
         // Manually add a file using the addfile method
-        $('.my-' + id).filepond('addFile', foto);
 
     }
 
@@ -353,14 +329,20 @@
 
     }
 
-    function preview_images() {
-        const total_file = document.getElementById("seleccionarFoto").files.length;
+    function preview_images(id, charlista, fotoId) {
+        const total_file = document.getElementById(id).files.length;
 
         for (let i = 0; i < total_file; i++) {
-            $('#fotos').children().remove();
-            $('#fotos').append("<img class='img' height='300' src='" + URL.createObjectURL(event.target.files[i]) + "'>");
+            $('#' + fotoId).children().remove();
+            $('#' + fotoId).append("<img class='img' height='300' src='" + URL.createObjectURL(event.target.files[i]) + "'>");
             toDataURL(URL.createObjectURL(event.target.files[i]), function (base64) {
-                $('#images').val(base64);
+                if (charlista === null) {
+                    $('#imagen_' + id).val(base64);
+
+                } else {
+
+                    $('#imagen_' + id + '_' + charlista).val(base64);
+                }
             });
         }
 
