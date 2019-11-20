@@ -6,6 +6,8 @@ class Aula {
     int cantidadPersonas
     String lugar
 
+    String color;
+
     Date dateCreated;
     Date lastUpdated;
 
@@ -13,5 +15,9 @@ class Aula {
         numero min: 0
         cantidadPersonas min: 0
         lugar nullable: true
+    }
+
+    static mapping = {
+        color defaultValue: "#FFFFFF"
     }
 }

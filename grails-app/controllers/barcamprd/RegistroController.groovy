@@ -1,5 +1,6 @@
 package barcamprd
 
+import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
 @Secured(['permitAll'])
@@ -8,10 +9,12 @@ class RegistroController {
     def index() {
 
         def teatro = Aula.findByLugar("Teatro")
-        def charlas = Charla.findAllByAulaNotEqual(teatro).collate(Charla.countByAulaNotEqual(teatro) / 2 as int)
+        def charlas = Charla.findAllByAulaNotEqual(teatro)
 
-        def charlaHorario = [:]
-        def charlaHorario2 = [:]
+        println charlas as JSON
+
+        def charlaHorario = [:] // am
+        def charlaHorario2 = [:] // pm
         boolean ok = true
 
         for (Charla c : Charla.list()) {
@@ -21,19 +24,25 @@ class RegistroController {
             }
         }
 
-        charlas[0].each {
-            if (charlaHorario.containsKey(it.horario.value)) {
-                charlaHorario[it.horario.value].add(it)
-            } else {
-                charlaHorario[it.horario.value] = [it]
+//        //am
+        charlas.each {
+            if ((it.horario.value =~ /(.+?)\s(a.m)\s(-)\s(.+?)\s(a.m)/) || (it.horario.value =~ /(.+?)\s(a.m)\s(-)\s(.+?)\s(p.m)/)) {
+                println it.horario.value
+                if (charlaHorario.containsKey(it.horario.value)) {
+                    charlaHorario[it.horario.value].add(it)
+                } else {
+                    charlaHorario[it.horario.value] = [it]
+                }
             }
-        }
 
-        charlas[1].each {
-            if (charlaHorario2.containsKey(it.horario.value)) {
-                charlaHorario2[it.horario.value].add(it)
-            } else {
-                charlaHorario2[it.horario.value] = [it]
+            //pm
+            if (it.horario.value =~ /(.+?)\s(p.m)\s(-)\s(.+?)\s(p.m)/) {
+                println it.horario.value
+                if (charlaHorario2.containsKey(it.horario.value)) {
+                    charlaHorario2[it.horario.value].add(it)
+                } else {
+                    charlaHorario2[it.horario.value] = [it]
+                }
             }
         }
 
