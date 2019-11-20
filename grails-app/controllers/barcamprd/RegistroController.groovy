@@ -9,9 +9,7 @@ class RegistroController {
     def index() {
 
         def teatro = Aula.findByLugar("Teatro")
-        def charlas = Charla.findAllByAulaNotEqual(teatro)
-
-        println charlas as JSON
+        def charlas = Charla.findAllByAulaNotEqual(teatro).sort { it.horario.value }
 
         def charlaHorario = [:] // am
         def charlaHorario2 = [:] // pm
@@ -27,7 +25,6 @@ class RegistroController {
 //        //am
         charlas.each {
             if ((it.horario.value =~ /(.+?)\s(a.m)\s(-)\s(.+?)\s(a.m)/) || (it.horario.value =~ /(.+?)\s(a.m)\s(-)\s(.+?)\s(p.m)/)) {
-                println it.horario.value
                 if (charlaHorario.containsKey(it.horario.value)) {
                     charlaHorario[it.horario.value].add(it)
                 } else {
@@ -37,7 +34,6 @@ class RegistroController {
 
             //pm
             if (it.horario.value =~ /(.+?)\s(p.m)\s(-)\s(.+?)\s(p.m)/) {
-                println it.horario.value
                 if (charlaHorario2.containsKey(it.horario.value)) {
                     charlaHorario2[it.horario.value].add(it)
                 } else {

@@ -105,8 +105,8 @@
                                                     </span>
 
                                                     <div class="form-group label-floating">
-                                                        <label class="control-label">Nombre</label>
-                                                        <input name="nombre" type="text" class="form-control"
+                                                        <label class="control-label">Nombre y Apellido</label>
+                                                        <input name="nombre" type="text" placeholder="Nombre y Apellido" class="form-control"
                                                               required>
                                                     </div>
                                                 </div>
