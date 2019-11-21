@@ -166,7 +166,7 @@
                                                         <fieldset name="charlas">
                                                             <input type="radio" name="h_${s.horario.id}"
                                                                    style="color: red;"
-                                                                   id="h_${s.horario.id}"
+                                                                   class="h_${s.horario.id}"
                                                                    value="${s.id}" <g:if
                                                                            test="${s.llena}">style="color: red;" disabled</g:if>
                                                                    required> <g:if
@@ -218,7 +218,7 @@
                                                         <fieldset name="charlas2">
                                                             <input type="radio" name="h_${s.horario.id}"
                                                                    value="${s.id}"
-                                                                   id="h_${s.horario.id}"
+                                                                   class="h_${s.horario.id}"
                                                                    <g:if test="${s.llena}">disabled</g:if>
                                                                    required> <g:if
                                                                 test="${s.llena}"><strike>${s.tema}</strike></g:if>
@@ -367,18 +367,21 @@
 
     //2 - 4
     $("#h_8").on('change', function (e) {
-        var horario8 = document.getElementById("h_5");
+        var horario8 = document.getElementsByClassName("h_5");
 
-        horario8.disabled = true;
-
-        horario8.name = null;
+        for(var i=0; i<elements.length; i++) {
+            elements[i].disable = true;
+            elements[i].name = null;
+        }
     });
 
     // 10-12
     $("#h_9").on('change', function (e) {
-        var horario7 = document.getElementById("h_2");
-        horario7.disabled = true;
-        horario7.name = null;
+        var horario7 = document.getElementsByClassName()("h_2");
+        for(var i=0; i<elements.length; i++) {
+            elements[i].disable = true;
+            elements[i].name = null;
+        }
     });
 
 
