@@ -366,7 +366,7 @@
     var okCorreo = false;
 
     //2 - 4
-    $(".h_8").on('select', function (e) {
+    $(".h_8").on('change', function (e) {
         var elements = document.getElementsByClassName("h_5");
 
         for(var i = 0; i < elements.length; i++) {
@@ -375,7 +375,7 @@
     });
 
     // 10-12
-    $(".h_9").on('select', function (e) {
+    $(".h_9").on('change', function (e) {
         var elements1 = document.getElementsByClassName("h_2");
         for(var i = 0; i < elements1.length; i++) {
             elements1[i].disabled = true;
