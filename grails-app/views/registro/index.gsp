@@ -374,6 +374,14 @@
         }
     });
 
+    $(".h_8").on('change', function (e) {
+        var elements = document.getElementsByClassName("h_7");
+
+        for(var i = 0; i < elements.length; i++) {
+            elements[i].disabled = true;
+        }
+    });
+
     $(".h_9").on('change', function (e) {
         var elements2 = document.getElementsByClassName("h_3");
         for(var i = 0; i < elements2.length; i++) {
