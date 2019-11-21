@@ -367,19 +367,19 @@
 
     //2 - 4
     $("#h_8").on('change', function (e) {
-        var horario8 = document.getElementsByClassName("h_5");
+        var elements = document.getElementsByClassName("h_5");
 
         for(var i=0; i<elements.length; i++) {
-            elements[i].disable = true;
+            elements[i].disabled = true;
             elements[i].name = null;
         }
     });
 
     // 10-12
     $("#h_9").on('change', function (e) {
-        var horario7 = document.getElementsByClassName()("h_2");
+        var elements = document.getElementsByClassName()("h_2");
         for(var i=0; i<elements.length; i++) {
-            elements[i].disable = true;
+            elements[i].disabled = true;
             elements[i].name = null;
         }
     });
