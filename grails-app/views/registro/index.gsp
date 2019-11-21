@@ -227,7 +227,7 @@
                                                     <h3>${c.key}</h3>
                                                     <g:each in="${c.value}" var="s">
                                                         <fieldset name="charlas2">
-                                                            <g:if test="${s.horario.id == 9}">
+                                                            <g:if test="${s.horario.id == 8}">
                                                                 <input type="radio" name="h_${s.horario.id}"
                                                                        style="color: red;"
                                                                        class="h_${s.horario.id}"
