@@ -218,6 +218,7 @@
                                                         <fieldset name="charlas2">
                                                             <input type="radio" name="h_${s.horario.id}"
                                                                    value="${s.id}"
+                                                                   id="h_${s.horario.id}"
                                                                    class="h_${s.horario.id}"
                                                                    <g:if test="${s.llena}">disabled</g:if>
                                                                    required> <g:if
@@ -369,18 +370,16 @@
     $("#h_8").on('change', function (e) {
         var elements = document.getElementsByClassName("h_5");
 
-        for(var i=0; i<elements.length; i++) {
+        for(var i = 0; i < elements.length; i++) {
             elements[i].disabled = true;
-            elements[i].name = null;
         }
     });
 
     // 10-12
     $("#h_9").on('change', function (e) {
-        var elements = document.getElementsByClassName()("h_2");
-        for(var i=0; i<elements.length; i++) {
-            elements[i].disabled = true;
-            elements[i].name = null;
+        var elements1 = document.getElementsByClassName("h_2");
+        for(var i = 0; i < elements1.length; i++) {
+            elements1[i].disabled = true;
         }
     });
 
