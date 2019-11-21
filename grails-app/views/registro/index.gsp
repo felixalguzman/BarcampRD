@@ -218,7 +218,6 @@
                                                         <fieldset name="charlas2">
                                                             <input type="radio" name="h_${s.horario.id}"
                                                                    value="${s.id}"
-                                                                   id="h_${s.horario.id}"
                                                                    class="h_${s.horario.id}"
                                                                    <g:if test="${s.llena}">disabled</g:if>
                                                                    required> <g:if
@@ -367,7 +366,7 @@
     var okCorreo = false;
 
     //2 - 4
-    $("#h_8").on('select', function (e) {
+    $(".h_8").on('select', function (e) {
         var elements = document.getElementsByClassName("h_5");
 
         for(var i = 0; i < elements.length; i++) {
@@ -376,7 +375,7 @@
     });
 
     // 10-12
-    $("#h_9").on('select', function (e) {
+    $(".h_9").on('select', function (e) {
         var elements1 = document.getElementsByClassName("h_2");
         for(var i = 0; i < elements1.length; i++) {
             elements1[i].disabled = true;
