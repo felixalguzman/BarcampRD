@@ -58,7 +58,10 @@ class RegistroController {
         def c4 = params.h_4 != null ? Charla.findById(params.h_4 as long) : null
         def c5 = params.h_5 != null ? Charla.findById(params.h_5 as long) : null
         def c6 = params.h_6 != null ? Charla.findById(params.h_6 as long) : null
-        def charlas = [c1, c2, c3, c4, c5, c6]
+        def c7 = params.h_7 != null ? Charla.findById(params.h_7 as long) : null
+        def c8 = params.h_8 != null ? Charla.findById(params.h_8 as long) : null
+        def c9 = params.h_9 != null ? Charla.findById(params.h_9 as long) : null
+        def charlas = [c1, c2, c3, c4, c5, c6, c7, c8, c9]
         def ok = verificarCupoCharla(charlas)
 
         if (ok) {
