@@ -163,7 +163,7 @@
                                                 <g:each in="${charlas}" var="c">
                                                     <h3>${c.key}</h3>
                                                     <g:each in="${c.value}" var="s">
-                                                        <fieldset name="charlas">
+                                                        <fieldset name="charlas" id="h_${s.horario.id}">
                                                             <input type="radio" name="h_${s.horario.id}"
                                                                    style="color: red;"
                                                                    value="${s.id}" <g:if
@@ -362,6 +362,26 @@
 
     var okCedula = false;
     var okCorreo = false;
+
+    $("#h_8").on('change', function (e) {
+        var horario8 = document.getElementById("h_3");
+
+        horario8.disabled = true;
+
+        horario8.name = null;
+    });
+
+    $("#h_8").on('change', function (e) {
+        var horario3 = document.getElementById("h_3");
+        horario3.disabled = true;
+        horario3.name = null;
+    });
+
+    $("#h_9").on('change', function (e) {
+        var horario7 = document.getElementById("h_7");
+        horario7.disabled = true;
+        horario7.name = null;
+    });
 
 
     $("#cedula").on('change', function (e) {
