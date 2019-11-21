@@ -106,8 +106,9 @@
 
                                                     <div class="form-group label-floating">
                                                         <label class="control-label">Nombre y Apellido</label>
-                                                        <input name="nombre" type="text" placeholder="Nombre y Apellido" class="form-control"
-                                                              required>
+                                                        <input name="nombre" type="text" placeholder="Nombre y Apellido"
+                                                               class="form-control"
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,13 +165,22 @@
                                                     <h3>${c.key}</h3>
                                                     <g:each in="${c.value}" var="s">
                                                         <fieldset name="charlas">
-                                                            <input type="radio" name="h_${s.horario.id}"
-                                                                   style="color: red;"
-                                                                   class="h_${s.horario.id}"
-                                                                   value="${s.id}" <g:if
-                                                                           test="${s.llena}">style="color: red;" disabled</g:if>
-                                                                   required> <g:if
-                                                                test="${s.llena}"><strike>${s.tema}</strike></g:if>
+                                                            <g:if test="${s.horario.id == 9}">
+                                                                <input type="radio" name="h_${s.horario.id}"
+                                                                       style="color: red;"
+                                                                       class="h_${s.horario.id}"
+                                                                       value="${s.id}" <g:if
+                                                                               test="${s.llena}">style="color: red;" disabled</g:if>>
+                                                            </g:if>
+                                                            <g:else>
+                                                                <input type="radio" name="h_${s.horario.id}"
+                                                                       style="color: red;"
+                                                                       class="h_${s.horario.id}"
+                                                                       value="${s.id}" <g:if
+                                                                               test="${s.llena}">style="color: red;" disabled</g:if>
+                                                                       required>
+                                                            </g:else>
+                                                            <g:if test="${s.llena}"><strike>${s.tema}</strike></g:if>
                                                             <g:else>
 
                                                                 ${s.charlista.nombre} - ${s.tema}
@@ -181,7 +191,7 @@
 
                                                                     <div class="col-sm-10">
                                                                         <a style="color: black" data-toggle="collapse"
-                                                                          onclick="toggle(${s.id})"
+                                                                           onclick="toggle(${s.id})"
                                                                            aria-expanded="true"
                                                                            aria-controls="collapseOne">
                                                                             Descripci&oacute;n <i
@@ -198,7 +208,8 @@
 
                                                                 </g:if>
 
-                                                            </g:else><br>
+                                                            </g:else>
+                                                            <br>
                                                         </fieldset>
                                                     </g:each>
                                                 </g:each>
@@ -216,12 +227,22 @@
                                                     <h3>${c.key}</h3>
                                                     <g:each in="${c.value}" var="s">
                                                         <fieldset name="charlas2">
-                                                            <input type="radio" name="h_${s.horario.id}"
-                                                                   value="${s.id}"
-                                                                   class="h_${s.horario.id}"
-                                                                   <g:if test="${s.llena}">disabled</g:if>
-                                                                   required> <g:if
-                                                                test="${s.llena}"><strike>${s.tema}</strike></g:if>
+                                                            <g:if test="${s.horario.id == 9}">
+                                                                <input type="radio" name="h_${s.horario.id}"
+                                                                       style="color: red;"
+                                                                       class="h_${s.horario.id}"
+                                                                       value="${s.id}" <g:if
+                                                                               test="${s.llena}">style="color: red;" disabled</g:if>>
+                                                            </g:if>
+                                                            <g:else>
+                                                                <input type="radio" name="h_${s.horario.id}"
+                                                                       style="color: red;"
+                                                                       class="h_${s.horario.id}"
+                                                                       value="${s.id}" <g:if
+                                                                               test="${s.llena}">style="color: red;" disabled</g:if>
+                                                                       required>
+                                                            </g:else>
+                                                            <g:if test="${s.llena}"><strike>${s.tema}</strike></g:if>
                                                             <g:else>
 
                                                                 ${s.charlista.nombre} - ${s.tema}
@@ -365,11 +386,15 @@
     var okCedula = false;
     var okCorreo = false;
 
+    //h2 - h3
+    // h9 disabled
+
+
     //2 - 4
     $(".h_8").on('change', function (e) {
         var elements = document.getElementsByClassName("h_5");
 
-        for(var i = 0; i < elements.length; i++) {
+        for (var i = 0; i < elements.length; i++) {
             elements[i].disabled = true;
         }
     });
@@ -377,14 +402,14 @@
     $(".h_8").on('change', function (e) {
         var elements = document.getElementsByClassName("h_7");
 
-        for(var i = 0; i < elements.length; i++) {
+        for (var i = 0; i < elements.length; i++) {
             elements[i].disabled = true;
         }
     });
 
     $(".h_9").on('change', function (e) {
         var elements2 = document.getElementsByClassName("h_3");
-        for(var i = 0; i < elements2.length; i++) {
+        for (var i = 0; i < elements2.length; i++) {
             elements2[i].disabled = true;
         }
     });
@@ -393,7 +418,7 @@
     // 10-12
     $(".h_9").on('change', function (e) {
         var elements1 = document.getElementsByClassName("h_2");
-        for(var i = 0; i < elements1.length; i++) {
+        for (var i = 0; i < elements1.length; i++) {
             elements1[i].disabled = true;
         }
     });
@@ -429,24 +454,23 @@
     $('#email').bind('input propertychange', function () {
         var correo = $("#email").val();
 
-            $.ajax({
-                url: "registro/verificarCorreo/",
-                data: {data: correo},
-                success: function (data) {
-                    if (data === 'true') {
-                        $("#correo-label").text('* Ya existe un registro con este correo!');
-                        $("#correo-label").css('color', 'red');
-                        okCorreo = false;
-                        $("#email").prop('required', true);
+        $.ajax({
+            url: "registro/verificarCorreo/",
+            data: {data: correo},
+            success: function (data) {
+                if (data === 'true') {
+                    $("#correo-label").text('* Ya existe un registro con este correo!');
+                    $("#correo-label").css('color', 'red');
+                    okCorreo = false;
+                    $("#email").prop('required', true);
 
-                    } else {
-                        $("#correo-label").text('Correo Electrónico');
-                        $("#correo-label").css('color', '');
-                        okCorreo = true;
-                    }
+                } else {
+                    $("#correo-label").text('Correo Electrónico');
+                    $("#correo-label").css('color', '');
+                    okCorreo = true;
                 }
-            });
-
+            }
+        });
 
 
     });
@@ -473,7 +497,7 @@
         if (okCedula && okCorreo) {
             $(this).submit();
 
-            console.log("cedula",okCedula, "correo", okCorreo);
+            console.log("cedula", okCedula, "correo", okCorreo);
         } else {
             alert('No se ha podido registrar su entrada, revise los datos ingresados.');
             e.preventDefault();
