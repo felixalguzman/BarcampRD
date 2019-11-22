@@ -46,9 +46,8 @@ class CharlistaController {
     def actualizarCharlista(Long id, String nombre, String pais, String telefono, String imagenCharlista) {
         def charlista = Charlista.findById(id)
 
-        println "charlista viej ${charlista}"
 
-        println "nuevos val $nombre $pais $telefono"
+        println "nuevos val $nombre $pais $imagenCharlista"
         charlista.setNombre(nombre)
         charlista.setPais(pais)
         charlista.setImagenCharlista(imagenCharlista)

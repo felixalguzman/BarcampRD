@@ -25,10 +25,11 @@ class CorreoController {
                 println "la salida: " + salida.body
                 String API_KEY = "7cc9b263021914c819d287b6ffc3bda8e90fd9d3";
                 Client client = new Client(API_KEY);
+
                 client.sendMessage(
                         "logistica@jconfdominicana.org",
                         it.correo.toLowerCase(),
-                        "Información importante Jconfdominicana 2019",
+                        "Información importante Barcamp 2019",
                         "",
                         salida.body)
                 it.correoConfirmacionEnviado = true
