@@ -27,7 +27,7 @@ class CorreoController {
                 Client client = new Client(API_KEY);
 
                 client.sendMessage(
-                        "logistica@jconfdominicana.org",
+                        "logistica@barcamp.org.do",
                         it.correo.toLowerCase(),
                         "Información importante Barcamp 2019",
                         "",
