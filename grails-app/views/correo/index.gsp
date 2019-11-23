@@ -39,7 +39,7 @@
 
     </g:each>
     <br>
-    <a href="https://form.barcamp.org/correo/qr/?id=${participante.id}">Ver QR</a>
+    <a href="https://form.barcamp.org/correo/qr?id=${participante.id}">Ver QR</a>
 
     <p>Adjunto a este correo encontrará el código de conducta del evento.     Esperamos lo lea y acepte todas las condiciones indicadas en el mismo, le recordamos que de no seguir el reglamento será escoltado fuera del evento.</p>
 

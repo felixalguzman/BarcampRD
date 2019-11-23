@@ -150,6 +150,16 @@
 
                                                     </td>
                                                 </g:if>
+
+                                                <g:if test="${r.estado.numero == EstadoRegistro.ESTADO_CONFIRMADO}">
+                                                    <td>
+                                                        <button type="button" class="btn btn-primary">
+                                                            CONFIRMADO
+                                                        </button>
+
+
+                                                    </td>
+                                                </g:if>
                                             </g:else>
                                             <td>
                                                 <button type="button" class="btn btn-twitter"
